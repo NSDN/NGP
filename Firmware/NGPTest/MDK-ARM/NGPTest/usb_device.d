@@ -3,7 +3,7 @@ ngptest\usb_device.o: ../Inc/usb_device.h
 ngptest\usb_device.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 ngptest\usb_device.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
 ngptest\usb_device.o: ../Drivers/CMSIS/Include/core_cm3.h
-ngptest\usb_device.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+ngptest\usb_device.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ngptest\usb_device.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 ngptest\usb_device.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 ngptest\usb_device.o: ../Drivers/CMSIS/Include/core_cmFunc.h
@@ -15,7 +15,7 @@ ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 ngptest\usb_device.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-ngptest\usb_device.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdio.h
+ngptest\usb_device.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -25,13 +25,15 @@ ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h
+ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h
 ngptest\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h
 ngptest\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
 ngptest\usb_device.o: ../Inc/usbd_conf.h
-ngptest\usb_device.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdlib.h
-ngptest\usb_device.o: D:\MDK\ARM\ARMCC\Bin\..\include\string.h
+ngptest\usb_device.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+ngptest\usb_device.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ngptest\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
 ngptest\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 ngptest\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h

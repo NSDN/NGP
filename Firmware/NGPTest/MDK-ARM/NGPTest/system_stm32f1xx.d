@@ -2,7 +2,7 @@ ngptest\system_stm32f1xx.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Source/Template
 ngptest\system_stm32f1xx.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 ngptest\system_stm32f1xx.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
 ngptest\system_stm32f1xx.o: ../Drivers/CMSIS/Include/core_cm3.h
-ngptest\system_stm32f1xx.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+ngptest\system_stm32f1xx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ngptest\system_stm32f1xx.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 ngptest\system_stm32f1xx.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 ngptest\system_stm32f1xx.o: ../Drivers/CMSIS/Include/core_cmFunc.h
@@ -14,7 +14,7 @@ ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rc
 ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 ngptest\system_stm32f1xx.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-ngptest\system_stm32f1xx.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdio.h
+ngptest\system_stm32f1xx.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -24,3 +24,8 @@ ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_co
 ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h
+ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h
+ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h
+ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h
+ngptest\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h
