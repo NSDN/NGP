@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * @file           : usbd_storage_if.h
-  * @brief          : header file for the usbd_storage_if.c file
+  * @file           : fatfs_platform.c
+  * @brief          : fatfs_platform source file
   ******************************************************************************
   *
   * Copyright (c) 2016 STMicroelectronics International N.V. 
@@ -40,93 +40,16 @@
   *
   ******************************************************************************
 */
+#include "fatfs_platform.h"
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-
-#ifndef __USBD_STORAGE_IF_H_
-#define __USBD_STORAGE_IF_H_
-#ifdef __cplusplus
- extern "C" {
-#endif
-
-/* Includes ------------------------------------------------------------------*/
-#include "usbd_msc.h"
-/* USER CODE BEGIN INCLUDE */
-/* USER CODE END INCLUDE */
-
-/** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
-  * @{
-  */
-  
-/** @defgroup USBD_STORAGE
-  * @brief header file for the USBD_STORAGE.c file
-  * @{
-  */ 
-
-/** @defgroup USBD_STORAGE_Exported_Defines
-  * @{
-  */ 
-/* USER CODE BEGIN EXPORTED_DEFINES */
-/* USER CODE END  EXPORTED_DEFINES */
-
-/**
-  * @}
-  */ 
-
-/** @defgroup USBD_STORAGE_Exported_Types
-  * @{
-  */  
-/* USER CODE BEGIN EXPORTED_TYPES */
-/* USER CODE END  EXPORTED_TYPES */
-
-/**
-  * @}
-  */ 
-
-/** @defgroup USBD_STORAGE_Exported_Macros
-  * @{
-  */ 
-/* USER CODE BEGIN EXPORTED_MACRO */
-/* USER CODE END  EXPORTED_MACRO */
-
-/**
-  * @}
-  */ 
-
-/** @defgroup USBD_STORAGE_Exported_Variables
-  * @{
-  */ 
-  extern USBD_StorageTypeDef  USBD_Storage_Interface_fops_FS;
-
-/* USER CODE BEGIN EXPORTED_VARIABLES */
-/* USER CODE END  EXPORTED_VARIABLES */
-
-/**
-  * @}
-  */ 
-
-/** @defgroup USBD_STORAGE_Exported_FunctionsPrototype
-  * @{
-  */ 
-
-/* USER CODE BEGIN EXPORTED_FUNCTIONS */
-/* USER CODE END  EXPORTED_FUNCTIONS */
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */ 
-  
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* __USBD_STORAGE_IF_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+uint8_t	BSP_PlatformIsDetected(void) {
+  uint8_t status = (uint8_t)0x01;
+  /* Check SD card detect pin */
+  if (HAL_GPIO_ReadPin(SD_PORT,SD_PIN) == GPIO_PIN_RESET) {
+    status = (uint8_t)0x00;
+  }
+  /* USER CODE BEGIN 1 */
+  /* user code can be inserted here */
+  /* USER CODE END 1 */ 
+  return status;
+}  

@@ -4,13 +4,13 @@ ngptest\usbd_storage_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/
 ngptest\usbd_storage_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_bot.h
 ngptest\usbd_storage_if.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 ngptest\usbd_storage_if.o: ../Inc/usbd_conf.h
-ngptest\usbd_storage_if.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-ngptest\usbd_storage_if.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-ngptest\usbd_storage_if.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+ngptest\usbd_storage_if.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdio.h
+ngptest\usbd_storage_if.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdlib.h
+ngptest\usbd_storage_if.o: D:\MDK\ARM\ARMCC\Bin\..\include\string.h
 ngptest\usbd_storage_if.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 ngptest\usbd_storage_if.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
 ngptest\usbd_storage_if.o: ../Drivers/CMSIS/Include/core_cm3.h
-ngptest\usbd_storage_if.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+ngptest\usbd_storage_if.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
 ngptest\usbd_storage_if.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 ngptest\usbd_storage_if.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 ngptest\usbd_storage_if.o: ../Drivers/CMSIS/Include/core_cmFunc.h

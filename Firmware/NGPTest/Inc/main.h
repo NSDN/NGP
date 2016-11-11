@@ -51,10 +51,22 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define PADS0_Pin GPIO_PIN_0
+#define PADS0_GPIO_Port GPIOC
+#define PADS1_Pin GPIO_PIN_1
+#define PADS1_GPIO_Port GPIOC
+#define PADS2_Pin GPIO_PIN_2
+#define PADS2_GPIO_Port GPIOC
+#define PADS3_Pin GPIO_PIN_3
+#define PADS3_GPIO_Port GPIOC
 #define LEDA_Pin GPIO_PIN_4
 #define LEDA_GPIO_Port GPIOC
 #define LEDB_Pin GPIO_PIN_5
 #define LEDB_GPIO_Port GPIOC
+#define LPAD_Pin GPIO_PIN_10
+#define LPAD_GPIO_Port GPIOB
+#define RPAD_Pin GPIO_PIN_11
+#define RPAD_GPIO_Port GPIOB
 #define SDST_Pin GPIO_PIN_15
 #define SDST_GPIO_Port GPIOA
 #define SCL_Pin GPIO_PIN_6

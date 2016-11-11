@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 #include <stdlib.h>
 
 #include "IICDevice.h"
@@ -62,6 +63,7 @@ typedef struct {
 	void (*draw)(pOLED* p, uint8_t x, uint8_t y, char character);
 	void (*print)(pOLED* p, uint8_t x, uint8_t y, char* string);
 	int (*printf)(pOLED* p, uint8_t x, uint8_t y, const char* format, ...);
+	int (*printfc)(pOLED* p, uint8_t y, const char* format, ...);
 } OLED;
 
 void _oled_trans(pOLED* p, uint8_t addr) {
@@ -252,6 +254,18 @@ void _oled_trans(pOLED* p, uint8_t addr) {
 		return result;
 	}
 	
+	int _oled_printfc(pOLED* p, uint8_t y, const char* format, ...) {
+		char* iobuf = malloc(sizeof(char) * IOBUF_SIZE);
+		va_list args;
+		va_start(args, format);
+		int result = vsprintf(iobuf, format, args);
+		va_end(args);
+		uint8_t x = (128 - strlen(iobuf) * ((p->FontSize == FontBig) ? 8 : 6)) / 2;
+		_oled_print(p, x, y, iobuf);
+		free(iobuf);
+		return result;
+	}
+	
 	OLED* OLEDInit(GPIO_TypeDef* SDAPortGroup, uint16_t SDAPortIndex, GPIO_TypeDef* SCLPortGroup, uint16_t SCLPortIndex, uint8_t address) {
 		pOLED* p = malloc(sizeof(pOLED));
 		p->base = SoftIICInit(SDAPortGroup, SDAPortIndex, SCLPortGroup, SCLPortIndex, address);
@@ -275,6 +289,7 @@ void _oled_trans(pOLED* p, uint8_t addr) {
 		c->draw = &_oled_draw;
 		c->print = &_oled_print;
 		c->printf = &_oled_printf;
+		c->printfc = &_oled_printfc;
 		
 		return c;
 	}

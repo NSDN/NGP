@@ -69,11 +69,11 @@
 #define USBD_VID     1155
 #define USBD_LANGID_STRING     1033
 #define USBD_MANUFACTURER_STRING     "NSDN"
-#define USBD_PID_FS     22314
-#define USBD_PRODUCT_STRING_FS     "NGP Card Reader"
+#define USBD_PID_FS     57105
+#define USBD_PRODUCT_STRING_FS     "STM32 DownLoad Firmware Update"
 #define USBD_SERIALNUMBER_STRING_FS     "00000000001A"
-#define USBD_CONFIGURATION_STRING_FS     "NGP-CR Config"
-#define USBD_INTERFACE_STRING_FS     "NGP-CR Interface"
+#define USBD_CONFIGURATION_STRING_FS     "DFU Config"
+#define USBD_INTERFACE_STRING_FS     "DFU Interface"
 
 /* USER CODE BEGIN 0 */
 

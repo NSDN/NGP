@@ -43,15 +43,19 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_hal.h"
+#include "fatfs.h"
 #include "usb_device.h"
 
 /* USER CODE BEGIN Includes */
 #include "OLED.h"
+#include "Keypad.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 SD_HandleTypeDef hsd;
 HAL_SD_CardInfoTypedef SDCardInfo;
+
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 	/* Private variables ---------------------------------------------------------*/
@@ -63,6 +67,7 @@ void SystemClock_Config(void);
 void Error_Handler(void);
 static void MX_GPIO_Init(void);
 static void MX_SDIO_SD_Init(void);
+static void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN PFP */
 	/* Private function prototypes -----------------------------------------------*/
@@ -70,14 +75,24 @@ static void MX_SDIO_SD_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+void checkSD() {
+	oled->trans(oled->p, OLED_SCREEN_SMALL);
+	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET) {
+		HAL_SD_Init(&hsd, &SDCardInfo);
+		oled->printfc(oled->p, 1, "SD card detected!");
+	} else {
+		HAL_SD_DeInit(&hsd);
+		oled->printfc(oled->p, 1, "                 ");
+	}
+	oled->trans(oled->p, OLED_SCREEN_BIG);
+}
 /* USER CODE END 0 */
 
 int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+	uint8_t index = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -92,6 +107,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USB_DEVICE_Init();
   MX_SDIO_SD_Init();
+  MX_USART2_UART_Init();
+  MX_FATFS_Init();
 
   /* USER CODE BEGIN 2 */
 		oled = OLEDInit(SDA_GPIO_Port, SDA_Pin, SCL_GPIO_Port, SCL_Pin, OLED_SCREEN_BIG);
@@ -100,64 +117,102 @@ int main(void)
 		oled->flash(oled->p, __NYAGAME_LOGO_);
 		oled->trans(oled->p, OLED_SCREEN_SMALL);
 		oled->init(oled->p);
-		oled->print(oled->p, 37, 0, "  Hello");
-		oled->print(oled->p, 37, 1, "Gensokyo!");
-		oled->print(oled->p, 37, 2, " -------");
+		oled->font(oled->p, FontBig);
+		oled->printfc(oled->p, 0, "NGP");
+		oled->font(oled->p, FontSmall);
+		oled->printfc(oled->p, 3, "Initializing!");
 		oled->trans(oled->p, OLED_SCREEN_BIG);
 		HAL_Delay(2000);
 		
 		oled->clear(oled->p);
+		oled->trans(oled->p, OLED_SCREEN_SMALL);
+		oled->clear(oled->p);
+		oled->trans(oled->p, OLED_SCREEN_BIG);
 		HAL_Delay(500);
-
-		oled->font(oled->p, FontBig);
-		oled->print(oled->p, 28, 0, "  Hello");
-		oled->print(oled->p, 28, 2, "Gensokyo!");
-		oled->font(oled->p, FontSmall);
-
-		for (int i = 8; i < 120; i += 8) {
-			oled->draw(oled->p, i, 5, '-');
-			oled->draw(oled->p, i, 7, '-');
-		}
 	  
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	  while (1)
-	  {
-		  HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_RESET);
-		  for (int i = 0; i < 122; i++) {
-				oled->draw(oled->p, i, 6, '*');
-				oled->draw(oled->p, 121 - i, 6, '*');
-				HAL_Delay(4);
-				oled->draw(oled->p, i - 1, 6, ' ');
-				oled->draw(oled->p, 122 - i, 6, ' ');
-				HAL_Delay(4);
-			}
-		  HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_SET);
-		  HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_RESET);
-		  for (int i = 0; i < 122; i++) {
-				oled->draw(oled->p, 121 - i, 6, '*');
-				oled->draw(oled->p, i, 6, '*');
-				HAL_Delay(4);
-				oled->draw(oled->p, 122 - i, 6, ' ');
-				oled->draw(oled->p, i - 1, 6, ' ');
-				HAL_Delay(4);
-			}
-		  HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_SET);
+	while (1) {
+		HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_SET);
+		
+		if (index < 10) {
+			/* MENU BUILD BEGIN */
+			oled->color(oled->p, Black);
+			oled->printfc(oled->p, 0, "MENU");
+			oled->color(oled->p, White);
+			oled->printfc(oled->p, 2, "Application 1"); //13 chars
+			oled->printfc(oled->p, 3, "Application 2");
+			oled->printfc(oled->p, 4, "Application 3");
+			oled->printfc(oled->p, 5, "Application 4");
+			oled->printfc(oled->p, 6, "About NyaGame");
 			
-		  oled->trans(oled->p, OLED_SCREEN_SMALL);
-		  if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET) {
-			  oled->print(oled->p, 0, 3, "SD card detected!");
-		  } else {
-		      oled->print(oled->p, 0, 3, "                 ");
-		  }
-		  oled->trans(oled->p, OLED_SCREEN_BIG);
+			oled->draw(oled->p, 16, index + 1, ' ');
+			oled->draw(oled->p, 16, index + 2, '>');
+			oled->draw(oled->p, 16, index + 3, ' ');
+			oled->draw(oled->p, 106, index + 1, ' ');
+			oled->draw(oled->p, 106, index + 2, '<');
+			oled->draw(oled->p, 106, index + 3, ' ');
+			
+			if (checkKeyUp(LPAD_UP)) index = ((index > 0) ? index - 1 : 0);
+			if (checkKeyUp(LPAD_DOWN)) index = ((index < 4) ? index + 1 : 4);
+			if (checkKeyUp(RPAD_UP)) {
+				index += 10;
+				oled->clear(oled->p);
+			}
+		} else if (index < 20) {
+			switch (index) {
+				case 10:
+					oled->color(oled->p, Black);
+					oled->printfc(oled->p, 0, "Application 1");
+					oled->color(oled->p, White);
+					oled->printfc(oled->p, 4, "This is a sample.");
+					break;
+				case 11:
+					oled->color(oled->p, Black);
+					oled->printfc(oled->p, 0, "Application 2");
+					oled->color(oled->p, White);
+					oled->printfc(oled->p, 4, "This is a sample.");
+					break;
+				case 12:
+					oled->color(oled->p, Black);
+					oled->printfc(oled->p, 0, "Application 3");
+					oled->color(oled->p, White);
+					oled->printfc(oled->p, 4, "This is a sample.");
+					break;
+				case 13:
+					oled->color(oled->p, Black);
+					oled->printfc(oled->p, 0, "Application 4");
+					oled->color(oled->p, White);
+					oled->printfc(oled->p, 4, "This is a sample.");
+					break;
+				case 14:
+					oled->flash(oled->p, __NYAGAME_LOGO_);
+					break;
+				default:
+					break;
+			}
+			
+			if (checkKeyUp(RPAD_RIGHT)) {
+				index -= 10;
+				oled->clear(oled->p);
+			}
+		} else {
+			index = 0;
+			oled->clear(oled->p);
+		}
+		
+		/* MENU BUILD END */
+		
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-
-	  }
+		HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_RESET);
+		checkSD();
+	}
   /* USER CODE END 3 */
 
 }
@@ -233,12 +288,25 @@ static void MX_SDIO_SD_Init(void)
   hsd.Init.BusWide = SDIO_BUS_WIDE_1B;
   hsd.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
   hsd.Init.ClockDiv = 0;
-  if (HAL_SD_Init(&hsd, &SDCardInfo) != SD_OK)
+
+}
+
+/* USART2 init function */
+static void MX_USART2_UART_Init(void)
+{
+
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 9600;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
   {
     Error_Handler();
   }
-
-  HAL_SD_WideBusOperation_Config(&hsd, SDIO_BUS_WIDE_4B);
 
 }
 
@@ -260,11 +328,11 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, LEDA_Pin|LEDB_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, SCL_Pin|SDA_Pin, GPIO_PIN_RESET);
+  /*Configure GPIO pins : PADS0_Pin PADS1_Pin PADS2_Pin PADS3_Pin */
+  GPIO_InitStruct.Pin = PADS0_Pin|PADS1_Pin|PADS2_Pin|PADS3_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LEDA_Pin LEDB_Pin */
   GPIO_InitStruct.Pin = LEDA_Pin|LEDB_Pin;
@@ -272,17 +340,23 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : LPAD_Pin RPAD_Pin SCL_Pin SDA_Pin */
+  GPIO_InitStruct.Pin = LPAD_Pin|RPAD_Pin|SCL_Pin|SDA_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
   /*Configure GPIO pin : SDST_Pin */
   GPIO_InitStruct.Pin = SDST_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(SDST_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SCL_Pin SDA_Pin */
-  GPIO_InitStruct.Pin = SCL_Pin|SDA_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, LEDA_Pin|LEDB_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, LPAD_Pin|RPAD_Pin|SCL_Pin|SDA_Pin, GPIO_PIN_RESET);
 
 }
 
