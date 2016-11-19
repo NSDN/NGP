@@ -70,10 +70,10 @@
 #define USBD_LANGID_STRING     1033
 #define USBD_MANUFACTURER_STRING     "NSDN"
 #define USBD_PID_FS     57105
-#define USBD_PRODUCT_STRING_FS     "STM32 DownLoad Firmware Update"
+#define USBD_PRODUCT_STRING_FS     "NyaGame Portable 32-bit"
 #define USBD_SERIALNUMBER_STRING_FS     "00000000001A"
-#define USBD_CONFIGURATION_STRING_FS     "DFU Config"
-#define USBD_INTERFACE_STRING_FS     "DFU Interface"
+#define USBD_CONFIGURATION_STRING_FS     "NGP Config"
+#define USBD_INTERFACE_STRING_FS     "NGP Interface"
 
 /* USER CODE BEGIN 0 */
 
