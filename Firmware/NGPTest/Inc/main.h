@@ -67,6 +67,10 @@
 #define LPAD_GPIO_Port GPIOB
 #define RPAD_Pin GPIO_PIN_11
 #define RPAD_GPIO_Port GPIOB
+#define RBEEP_Pin GPIO_PIN_6
+#define RBEEP_GPIO_Port GPIOC
+#define LBEEP_Pin GPIO_PIN_7
+#define LBEEP_GPIO_Port GPIOC
 #define SDST_Pin GPIO_PIN_15
 #define SDST_GPIO_Port GPIOA
 #define SCL_Pin GPIO_PIN_6

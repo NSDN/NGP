@@ -17,6 +17,8 @@
 "ngptest\stm32f1xx_ll_sdmmc.o"
 "ngptest\stm32f1xx_hal_sd.o"
 "ngptest\stm32f1xx_hal_uart.o"
+"ngptest\stm32f1xx_hal_spi.o"
+"ngptest\stm32f1xx_hal_spi_ex.o"
 "ngptest\system_stm32f1xx.o"
 "ngptest\stm32f1xx_hal_msp.o"
 "ngptest\stm32f1xx_it.o"

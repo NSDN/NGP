@@ -1,8 +1,8 @@
 Dependencies for Project 'NGPTest', Target 'NGPTest': (DO NOT MODIFY !)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_tim_ex.o --omf_browse ngptest\stm32f1xx_hal_tim_ex.crf --depend ngptest\stm32f1xx_hal_tim_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -26,6 +26,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -34,8 +35,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_dma.o --omf_browse ngptest\stm32f1xx_hal_dma.crf --depend ngptest\stm32f1xx_hal_dma.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -59,6 +60,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -67,8 +69,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal.o --omf_browse ngptest\stm32f1xx_hal.crf --depend ngptest\stm32f1xx_hal.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -92,6 +94,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -100,8 +103,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_pwr.o --omf_browse ngptest\stm32f1xx_hal_pwr.crf --depend ngptest\stm32f1xx_hal_pwr.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -125,6 +128,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -133,8 +137,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_gpio_ex.o --omf_browse ngptest\stm32f1xx_hal_gpio_ex.crf --depend ngptest\stm32f1xx_hal_gpio_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -158,6 +162,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -166,8 +171,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_tim.o --omf_browse ngptest\stm32f1xx_hal_tim.crf --depend ngptest\stm32f1xx_hal_tim.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -191,6 +196,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -199,8 +205,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_rcc_ex.o --omf_browse ngptest\stm32f1xx_hal_rcc_ex.crf --depend ngptest\stm32f1xx_hal_rcc_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -224,6 +230,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -232,8 +239,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_cortex.o --omf_browse ngptest\stm32f1xx_hal_cortex.crf --depend ngptest\stm32f1xx_hal_cortex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -257,6 +264,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -265,8 +273,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_flash.o --omf_browse ngptest\stm32f1xx_hal_flash.crf --depend ngptest\stm32f1xx_hal_flash.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -290,6 +298,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -298,8 +307,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_rcc.o --omf_browse ngptest\stm32f1xx_hal_rcc.crf --depend ngptest\stm32f1xx_hal_rcc.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -323,6 +332,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -331,8 +341,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_gpio.o --omf_browse ngptest\stm32f1xx_hal_gpio.crf --depend ngptest\stm32f1xx_hal_gpio.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -356,6 +366,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -364,8 +375,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_flash_ex.o --omf_browse ngptest\stm32f1xx_hal_flash_ex.crf --depend ngptest\stm32f1xx_hal_flash_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -389,6 +400,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -397,8 +409,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_ll_usb.o --omf_browse ngptest\stm32f1xx_ll_usb.crf --depend ngptest\stm32f1xx_ll_usb.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -422,6 +434,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -430,8 +443,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_pcd.o --omf_browse ngptest\stm32f1xx_hal_pcd.crf --depend ngptest\stm32f1xx_hal_pcd.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -455,6 +468,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -463,8 +477,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_pcd_ex.o --omf_browse ngptest\stm32f1xx_hal_pcd_ex.crf --depend ngptest\stm32f1xx_hal_pcd_ex.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -488,6 +502,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -496,8 +511,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_sdmmc.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_ll_sdmmc.o --omf_browse ngptest\stm32f1xx_ll_sdmmc.crf --depend ngptest\stm32f1xx_ll_sdmmc.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -521,6 +536,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -529,8 +545,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sd.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_sd.o --omf_browse ngptest\stm32f1xx_hal_sd.crf --depend ngptest\stm32f1xx_hal_sd.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -554,6 +570,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -562,8 +579,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_uart.o --omf_browse ngptest\stm32f1xx_hal_uart.crf --depend ngptest\stm32f1xx_hal_uart.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -587,6 +604,75 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_spi.o --omf_browse ngptest\stm32f1xx_hal_spi.crf --depend ngptest\stm32f1xx_hal_spi.d)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h)(0x58121AB9)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x58121B02)
+I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x58121B02)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
+I (D:\MDK\ARM\ARMCC\include\stdio.h)(0x574E3E26)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
+F (../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.c)(0x58121B04)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_spi_ex.o --omf_browse ngptest\stm32f1xx_hal_spi_ex.crf --depend ngptest\stm32f1xx_hal_spi_ex.d)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h)(0x58121AB9)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x58121B02)
+I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (../Drivers/CMSIS/Include/core_cmInstr.h)(0x58121B02)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
+I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
+I (D:\MDK\ARM\ARMCC\include\stdio.h)(0x574E3E26)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -603,8 +689,8 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
@@ -620,16 +706,17 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-F (../Src/stm32f1xx_hal_msp.c)(0x5825CB40)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_msp.o --omf_browse ngptest\stm32f1xx_hal_msp.crf --depend ngptest\stm32f1xx_hal_msp.d)
+F (../Src/stm32f1xx_hal_msp.c)(0x58317E14)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_msp.o --omf_browse ngptest\stm32f1xx_hal_msp.crf --depend ngptest\stm32f1xx_hal_msp.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -653,16 +740,17 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-F (../Src/stm32f1xx_it.c)(0x5825CB40)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_it.o --omf_browse ngptest\stm32f1xx_it.crf --depend ngptest\stm32f1xx_it.d)
+F (../Src/stm32f1xx_it.c)(0x58317E14)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_it.o --omf_browse ngptest\stm32f1xx_it.crf --depend ngptest\stm32f1xx_it.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -686,17 +774,18 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-I (../Inc/stm32f1xx_it.h)(0x5825CB40)
-F (..\Src\main.c)(0x5825E2C9)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\main.o --omf_browse ngptest\main.crf --depend ngptest\main.d)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_it.h)(0x58317E14)
+F (..\Src\main.c)(0x58319BB6)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\main.o --omf_browse ngptest\main.crf --depend ngptest\main.d)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -720,34 +809,38 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-I (../Inc/fatfs.h)(0x5825CB3E)
+I (../Inc/fatfs.h)(0x58317E12)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x58121B11)
-I (../Inc/ffconf.h)(0x5825CB3E)
-I (../Inc/bsp_driver_sd.h)(0x5825CB3E)
-I (../Inc/fatfs_platform.h)(0x5825CB3E)
+I (../Inc/ffconf.h)(0x58317E11)
+I (../Inc/bsp_driver_sd.h)(0x58317E11)
+I (../Inc/fatfs_platform.h)(0x58317E12)
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/drivers/sd_diskio.h)(0x58121B11)
-I (../Inc/usb_device.h)(0x5825CB3F)
+I (../Inc/usb_device.h)(0x58317E13)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x58121B0F)
-I (../Inc/usbd_conf.h)(0x5825CB3F)
+I (../Inc/usbd_conf.h)(0x58317E13)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\string.h)(0x574E3E26)
 I (..\NGP-Drivers\OLED.h)(0x5825C2BB)
 I (D:\MDK\ARM\ARMCC\include\stdarg.h)(0x574E3E26)
 I (..\NGP-Drivers\IICDevice.h)(0x58138177)
-I (..\NGP-Drivers\Fonts.h)(0x5812C2AD)
+I (..\NGP-Drivers\Fonts.h)(0x58319B21)
 I (..\NGP-Drivers\Keypad.h)(0x5825E0A4)
-F (../Src/usbd_desc.c)(0x5825CB3F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usbd_desc.o --omf_browse ngptest\usbd_desc.crf --depend ngptest\usbd_desc.d)
+I (..\NGP-Drivers\Beeper.h)(0x58319543)
+I (..\NGP-Drivers\Music.h)(0x58318649)
+I (..\NGP-Drivers\Symbol.h)(0x5831854B)
+F (../Src/usbd_desc.c)(0x58317E13)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usbd_desc.o --omf_browse ngptest\usbd_desc.crf --depend ngptest\usbd_desc.d)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x58121B0F)
-I (../Inc/usbd_conf.h)(0x5825CB3F)
+I (../Inc/usbd_conf.h)(0x58317E13)
 I (D:\MDK\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\string.h)(0x574E3E26)
@@ -760,8 +853,8 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
@@ -776,6 +869,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -785,9 +879,9 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x58121B0F)
-I (../Inc/usbd_desc.h)(0x5825CB3F)
-F (../Src/usb_device.c)(0x5825CB3E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usb_device.o --omf_browse ngptest\usb_device.crf --depend ngptest\usb_device.d)
-I (../Inc/usb_device.h)(0x5825CB3F)
+I (../Inc/usbd_desc.h)(0x58317E13)
+F (../Src/usb_device.c)(0x58317E13)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usb_device.o --omf_browse ngptest\usb_device.crf --depend ngptest\usb_device.d)
+I (../Inc/usb_device.h)(0x58317E13)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h)(0x58121AB9)
 I (../Drivers/CMSIS/Include/core_cm3.h)(0x58121B02)
@@ -797,8 +891,8 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
@@ -814,6 +908,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -821,16 +916,16 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x58121B0F)
-I (../Inc/usbd_conf.h)(0x5825CB3F)
+I (../Inc/usbd_conf.h)(0x58317E13)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\string.h)(0x574E3E26)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x58121B0F)
-I (../Inc/usbd_desc.h)(0x5825CB3F)
+I (../Inc/usbd_desc.h)(0x58317E13)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc/usbd_dfu.h)(0x58121B0F)
-I (../Inc/usbd_dfu_if.h)(0x5825CB3F)
-F (../Src/usbd_conf.c)(0x5825CB3F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usbd_conf.o --omf_browse ngptest\usbd_conf.crf --depend ngptest\usbd_conf.d)
+I (../Inc/usbd_dfu_if.h)(0x58317E13)
+F (../Src/usbd_conf.c)(0x58317E13)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usbd_conf.o --omf_browse ngptest\usbd_conf.crf --depend ngptest\usbd_conf.d)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h)(0x58121AB9)
 I (../Drivers/CMSIS/Include/core_cm3.h)(0x58121B02)
@@ -840,8 +935,8 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
@@ -857,6 +952,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -864,17 +960,17 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x58121B0F)
-I (../Inc/usbd_conf.h)(0x5825CB3F)
+I (../Inc/usbd_conf.h)(0x58317E13)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\string.h)(0x574E3E26)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc/usbd_dfu.h)(0x58121B0F)
-F (../Src/stm32f1xx_hal_timebase_TIM.c)(0x5825CB40)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_timebase_tim.o --omf_browse ngptest\stm32f1xx_hal_timebase_tim.crf --depend ngptest\stm32f1xx_hal_timebase_tim.d)
+F (../Src/stm32f1xx_hal_timebase_TIM.c)(0x58317E15)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\stm32f1xx_hal_timebase_tim.o --omf_browse ngptest\stm32f1xx_hal_timebase_tim.crf --depend ngptest\stm32f1xx_hal_timebase_tim.d)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -898,17 +994,18 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-F (../Src/fatfs_platform.c)(0x5825CB3E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\fatfs_platform.o --omf_browse ngptest\fatfs_platform.crf --depend ngptest\fatfs_platform.d)
-I (../Inc/fatfs_platform.h)(0x5825CB3E)
+F (../Src/fatfs_platform.c)(0x58317E12)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\fatfs_platform.o --omf_browse ngptest\fatfs_platform.crf --depend ngptest\fatfs_platform.d)
+I (../Inc/fatfs_platform.h)(0x58317E12)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -932,18 +1029,19 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-F (../Src/usbd_dfu_if.c)(0x5825CB40)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usbd_dfu_if.o --omf_browse ngptest\usbd_dfu_if.crf --depend ngptest\usbd_dfu_if.d)
-I (../Inc/usbd_dfu_if.h)(0x5825CB3F)
+F (../Src/usbd_dfu_if.c)(0x58317E14)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usbd_dfu_if.o --omf_browse ngptest\usbd_dfu_if.crf --depend ngptest\usbd_dfu_if.d)
+I (../Inc/usbd_dfu_if.h)(0x58317E13)
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc/usbd_dfu.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x58121B0F)
-I (../Inc/usbd_conf.h)(0x5825CB3F)
+I (../Inc/usbd_conf.h)(0x58317E13)
 I (D:\MDK\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\string.h)(0x574E3E26)
@@ -956,8 +1054,8 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
@@ -972,6 +1070,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -980,14 +1079,14 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x58121B0F)
-F (../Src/fatfs.c)(0x5825CB3E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\fatfs.o --omf_browse ngptest\fatfs.crf --depend ngptest\fatfs.d)
-I (../Inc/fatfs.h)(0x5825CB3E)
+F (../Src/fatfs.c)(0x58317E11)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\fatfs.o --omf_browse ngptest\fatfs.crf --depend ngptest\fatfs.d)
+I (../Inc/fatfs.h)(0x58317E12)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x58121B11)
-I (../Inc/ffconf.h)(0x5825CB3E)
+I (../Inc/ffconf.h)(0x58317E11)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -1011,22 +1110,23 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-I (../Inc/bsp_driver_sd.h)(0x5825CB3E)
-I (../Inc/fatfs_platform.h)(0x5825CB3E)
+I (../Inc/bsp_driver_sd.h)(0x58317E11)
+I (../Inc/fatfs_platform.h)(0x58317E12)
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/drivers/sd_diskio.h)(0x58121B11)
-F (../Src/bsp_driver_sd.c)(0x5825CB3E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\bsp_driver_sd.o --omf_browse ngptest\bsp_driver_sd.crf --depend ngptest\bsp_driver_sd.d)
-I (../Inc/bsp_driver_sd.h)(0x5825CB3E)
+F (../Src/bsp_driver_sd.c)(0x58317E11)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\bsp_driver_sd.o --omf_browse ngptest\bsp_driver_sd.crf --depend ngptest\bsp_driver_sd.d)
+I (../Inc/bsp_driver_sd.h)(0x58317E11)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -1050,18 +1150,19 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-I (../Inc/fatfs_platform.h)(0x5825CB3E)
-F (startup_stm32f103xe.s)(0x5825CB43)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include--pd "__UVISION_VERSION SETA 521" --pd "_RTE_ SETA 1" --pd "STM32F10X_HD SETA 1"--list startup_stm32f103xe.lst --xref -o ngptest\startup_stm32f103xe.o --depend ngptest\startup_stm32f103xe.d)
+I (../Inc/fatfs_platform.h)(0x58317E12)
+F (startup_stm32f103xe.s)(0x58317E18)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include--pd "__UVISION_VERSION SETA 521" --pd "_RTE_ SETA 1" --pd "STM32F10X_HD SETA 1"--list startup_stm32f103xe.lst --xref -o ngptest\startup_stm32f103xe.o --depend ngptest\startup_stm32f103xe.d)
 F (../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c)(0x58121B0F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usbd_ioreq.o --omf_browse ngptest\usbd_ioreq.crf --depend ngptest\usbd_ioreq.d)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x58121B0F)
-I (../Inc/usbd_conf.h)(0x5825CB3F)
+I (../Inc/usbd_conf.h)(0x58317E13)
 I (D:\MDK\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\string.h)(0x574E3E26)
@@ -1074,8 +1175,8 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
@@ -1090,6 +1191,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -1100,7 +1202,7 @@ I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x58121B0F)
 F (../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c)(0x58121B0F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usbd_core.o --omf_browse ngptest\usbd_core.crf --depend ngptest\usbd_core.d)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x58121B0F)
-I (../Inc/usbd_conf.h)(0x5825CB3F)
+I (../Inc/usbd_conf.h)(0x58317E13)
 I (D:\MDK\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\string.h)(0x574E3E26)
@@ -1113,8 +1215,8 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
@@ -1129,6 +1231,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -1141,7 +1244,7 @@ I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x58121B0F
 F (../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c)(0x58121B0F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\usbd_ctlreq.o --omf_browse ngptest\usbd_ctlreq.crf --depend ngptest\usbd_ctlreq.d)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x58121B0F)
-I (../Inc/usbd_conf.h)(0x5825CB3F)
+I (../Inc/usbd_conf.h)(0x58317E13)
 I (D:\MDK\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\string.h)(0x574E3E26)
@@ -1154,8 +1257,8 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
@@ -1170,6 +1273,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -1182,7 +1286,7 @@ F (../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c)(0x58121B
 I (../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc/usbd_dfu.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h)(0x58121B0F)
-I (../Inc/usbd_conf.h)(0x5825CB3F)
+I (../Inc/usbd_conf.h)(0x58317E13)
 I (D:\MDK\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\MDK\ARM\ARMCC\include\string.h)(0x574E3E26)
@@ -1195,8 +1299,8 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x58121B02)
 I (../Drivers/CMSIS/Include/core_cmFunc.h)(0x58121B02)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x58121AB9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x58121B03)
@@ -1211,6 +1315,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
@@ -1219,15 +1324,15 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h)(0x58121B0F)
 I (../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h)(0x58121B0F)
-I (../Inc/usbd_desc.h)(0x5825CB3F)
+I (../Inc/usbd_desc.h)(0x58317E13)
 F (../Middlewares/Third_Party/FatFs/src/option/syscall.c)(0x58121B12)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\syscall.o --omf_browse ngptest\syscall.crf --depend ngptest\syscall.d)
 I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (../Middlewares/Third_Party/FatFs/src/option/../ff.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/option/../integer.h)(0x58121B11)
-I (../Inc/ffconf.h)(0x5825CB3E)
+I (../Inc/ffconf.h)(0x58317E11)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -1251,23 +1356,24 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-I (../Inc/bsp_driver_sd.h)(0x5825CB3E)
-I (../Inc/fatfs_platform.h)(0x5825CB3E)
+I (../Inc/bsp_driver_sd.h)(0x58317E11)
+I (../Inc/fatfs_platform.h)(0x58317E12)
 F (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.c)(0x58121B11)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\ff_gen_drv.o --omf_browse ngptest\ff_gen_drv.crf --depend ngptest\ff_gen_drv.d)
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x58121B11)
-I (../Inc/ffconf.h)(0x5825CB3E)
+I (../Inc/ffconf.h)(0x58317E11)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -1291,21 +1397,22 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-I (../Inc/bsp_driver_sd.h)(0x5825CB3E)
-I (../Inc/fatfs_platform.h)(0x5825CB3E)
+I (../Inc/bsp_driver_sd.h)(0x58317E11)
+I (../Inc/fatfs_platform.h)(0x58317E12)
 F (../Middlewares/Third_Party/FatFs/src/ff.c)(0x58121B11)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\ff.o --omf_browse ngptest\ff.crf --depend ngptest\ff.d)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x58121B11)
-I (../Inc/ffconf.h)(0x5825CB3E)
+I (../Inc/ffconf.h)(0x58317E11)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -1329,14 +1436,15 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-I (../Inc/bsp_driver_sd.h)(0x5825CB3E)
-I (../Inc/fatfs_platform.h)(0x5825CB3E)
+I (../Inc/bsp_driver_sd.h)(0x58317E11)
+I (../Inc/fatfs_platform.h)(0x58317E12)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x58121B11)
 I (D:\MDK\ARM\ARMCC\include\stdarg.h)(0x574E3E26)
 F (../Middlewares/Third_Party/FatFs/src/drivers/sd_diskio.c)(0x58121B11)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\sd_diskio.o --omf_browse ngptest\sd_diskio.crf --depend ngptest\sd_diskio.d)
@@ -1345,10 +1453,10 @@ I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x58121B11)
-I (../Inc/ffconf.h)(0x5825CB3E)
+I (../Inc/ffconf.h)(0x58317E11)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -1372,23 +1480,24 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-I (../Inc/bsp_driver_sd.h)(0x5825CB3E)
-I (../Inc/fatfs_platform.h)(0x5825CB3E)
+I (../Inc/bsp_driver_sd.h)(0x58317E11)
+I (../Inc/fatfs_platform.h)(0x58317E12)
 F (../Middlewares/Third_Party/FatFs/src/diskio.c)(0x58121B11)(-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/Third_Party/FatFs/src/drivers -I ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc -I ../Middlewares/Third_Party/FatFs/src -I ..\NGP-Drivers --C99-IE:\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE-ID:\MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ngptest\diskio.o --omf_browse ngptest\diskio.crf --depend ngptest\diskio.d)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x58121B11)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x58121B11)
-I (../Inc/ffconf.h)(0x5825CB3E)
+I (../Inc/ffconf.h)(0x58317E11)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x58121B03)
-I (../Inc/stm32f1xx_hal_conf.h)(0x5825CB41)
-I (../Inc/main.h)(0x5825CB41)
+I (../Inc/stm32f1xx_hal_conf.h)(0x58317E15)
+I (../Inc/main.h)(0x58317E15)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x58121B03)
 I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x58121AB9)
@@ -1412,11 +1521,19 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h)(0x58121B03)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h)(0x58121B03)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h)(0x58121B04)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h)(0x58121B03)
-I (../Inc/bsp_driver_sd.h)(0x5825CB3E)
-I (../Inc/fatfs_platform.h)(0x5825CB3E)
+I (../Inc/bsp_driver_sd.h)(0x58317E11)
+I (../Inc/fatfs_platform.h)(0x58317E12)
+F (..\NGP-Drivers\Fonts.h)(0x58319B21)()
+F (..\NGP-Drivers\IICDevice.h)(0x58138177)()
+F (..\NGP-Drivers\Keypad.h)(0x5825E0A4)()
+F (..\NGP-Drivers\OLED.h)(0x5825C2BB)()
+F (..\NGP-Drivers\Beeper.h)(0x58319543)()
+F (..\NGP-Drivers\Music.h)(0x58318649)()
+F (..\NGP-Drivers\Symbol.h)(0x5831854B)()

@@ -26,6 +26,7 @@ ngptest\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 ngptest\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 ngptest\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h
 ngptest\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h
+ngptest\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 ngptest\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 ngptest\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 ngptest\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
@@ -52,3 +53,6 @@ ngptest\main.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdarg.h
 ngptest\main.o: ..\NGP-Drivers\IICDevice.h
 ngptest\main.o: ..\NGP-Drivers\Fonts.h
 ngptest\main.o: ..\NGP-Drivers\Keypad.h
+ngptest\main.o: ..\NGP-Drivers\Beeper.h
+ngptest\main.o: ..\NGP-Drivers\Music.h
+ngptest\main.o: ..\NGP-Drivers\Symbol.h

@@ -49,25 +49,38 @@
 /* USER CODE BEGIN Includes */
 #include "OLED.h"
 #include "Keypad.h"
+#include "Beeper.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 SD_HandleTypeDef hsd;
 HAL_SD_CardInfoTypedef SDCardInfo;
 
+SPI_HandleTypeDef hspi1;
+DMA_HandleTypeDef hdma_spi1_tx;
+DMA_HandleTypeDef hdma_spi1_rx;
+
+TIM_HandleTypeDef htim6;
+
+UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 	/* Private variables ---------------------------------------------------------*/
 	OLED* oled;
+	static uint8_t index = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void Error_Handler(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_SDIO_SD_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_SPI1_Init(void);
+static void MX_USART1_UART_Init(void);
+static void MX_TIM6_Init(void);
 
 /* USER CODE BEGIN PFP */
 	/* Private function prototypes -----------------------------------------------*/
@@ -92,7 +105,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	uint8_t index = 0;
+	
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -105,10 +118,14 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_USB_DEVICE_Init();
   MX_SDIO_SD_Init();
   MX_USART2_UART_Init();
   MX_FATFS_Init();
+  MX_SPI1_Init();
+  MX_USART1_UART_Init();
+  MX_TIM6_Init();
 
   /* USER CODE BEGIN 2 */
 		oled = OLEDInit(SDA_GPIO_Port, SDA_Pin, SCL_GPIO_Port, SCL_Pin, OLED_SCREEN_BIG);
@@ -143,10 +160,10 @@ int main(void)
 			oled->color(oled->p, Black);
 			oled->printfc(oled->p, 0, "MENU");
 			oled->color(oled->p, White);
-			oled->printfc(oled->p, 2, "Application 1"); //13 chars
-			oled->printfc(oled->p, 3, "Application 2");
-			oled->printfc(oled->p, 4, "Application 3");
-			oled->printfc(oled->p, 5, "Application 4");
+			oled->printfc(oled->p, 2, "Sample 1");
+			oled->printfc(oled->p, 3, "Sample 2");
+			oled->printfc(oled->p, 4, "Sample 3");
+			oled->printfc(oled->p, 5, "NSDN-Beeper");
 			oled->printfc(oled->p, 6, "About NyaGame");
 			
 			oled->draw(oled->p, 16, index + 1, ' ');
@@ -161,32 +178,39 @@ int main(void)
 			if (checkKeyUp(RPAD_UP)) {
 				index += 10;
 				oled->clear(oled->p);
+				if (index == 13) {
+					HAL_TIM_Base_Start_IT(&htim6);
+					setVolume(2);
+				}
 			}
 		} else if (index < 20) {
 			switch (index) {
 				case 10:
 					oled->color(oled->p, Black);
-					oled->printfc(oled->p, 0, "Application 1");
+					oled->printfc(oled->p, 0, "Sample 1");
 					oled->color(oled->p, White);
 					oled->printfc(oled->p, 4, "This is a sample.");
 					break;
 				case 11:
 					oled->color(oled->p, Black);
-					oled->printfc(oled->p, 0, "Application 2");
+					oled->printfc(oled->p, 0, "Sample 2");
 					oled->color(oled->p, White);
 					oled->printfc(oled->p, 4, "This is a sample.");
 					break;
 				case 12:
 					oled->color(oled->p, Black);
-					oled->printfc(oled->p, 0, "Application 3");
+					oled->printfc(oled->p, 0, "Sample 3");
 					oled->color(oled->p, White);
 					oled->printfc(oled->p, 4, "This is a sample.");
 					break;
 				case 13:
 					oled->color(oled->p, Black);
-					oled->printfc(oled->p, 0, "Application 4");
+					oled->printfc(oled->p, 0, "NSDN-Beeper");
 					oled->color(oled->p, White);
-					oled->printfc(oled->p, 4, "This is a sample.");
+					oled->printfc(oled->p, 3, "NOW Playing...");
+					oled->printfc(oled->p, 5, "Remilia");
+					oled->printfc(oled->p, 6, "Scarlet");
+					playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, PLAYTYPE_NORMAL, 1);
 					break;
 				case 14:
 					oled->flash(oled->p, __NYAGAME_LOGO_);
@@ -195,9 +219,11 @@ int main(void)
 					break;
 			}
 			
-			if (checkKeyUp(RPAD_RIGHT)) {
-				index -= 10;
-				oled->clear(oled->p);
+			if (index != 13) {
+				if (checkKeyUp(RPAD_RIGHT)) {
+					index -= 10;
+					oled->clear(oled->p);
+				}
 			}
 		} else {
 			index = 0;
@@ -208,7 +234,7 @@ int main(void)
 		
   /* USER CODE END WHILE */
 
-  /* USER CODE BEGIN 3 */
+  /* USER CODE BEGIN 3 */		
 		HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_RESET);
 		checkSD();
@@ -291,6 +317,72 @@ static void MX_SDIO_SD_Init(void)
 
 }
 
+/* SPI1 init function */
+static void MX_SPI1_Init(void)
+{
+
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 10;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
+/* TIM6 init function */
+static void MX_TIM6_Init(void)
+{
+
+  TIM_MasterConfigTypeDef sMasterConfig;
+
+  htim6.Instance = TIM6;
+  htim6.Init.Prescaler = 719;
+  htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim6.Init.Period = 1;
+  if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
+/* USART1 init function */
+static void MX_USART1_UART_Init(void)
+{
+
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 9600;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
 /* USART2 init function */
 static void MX_USART2_UART_Init(void)
 {
@@ -307,6 +399,24 @@ static void MX_USART2_UART_Init(void)
   {
     Error_Handler();
   }
+
+}
+
+/** 
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void) 
+{
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
+  /* DMA1_Channel3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
 
 }
 
@@ -334,8 +444,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LEDA_Pin LEDB_Pin */
-  GPIO_InitStruct.Pin = LEDA_Pin|LEDB_Pin;
+  /*Configure GPIO pins : LEDA_Pin LEDB_Pin RBEEP_Pin LBEEP_Pin */
+  GPIO_InitStruct.Pin = LEDA_Pin|LEDB_Pin|RBEEP_Pin|LBEEP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -353,7 +463,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(SDST_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, LEDA_Pin|LEDB_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, LEDA_Pin|LEDB_Pin|RBEEP_Pin|LBEEP_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LPAD_Pin|RPAD_Pin|SCL_Pin|SDA_Pin, GPIO_PIN_RESET);
@@ -361,6 +471,8 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+
 
 /* USER CODE END 4 */
 
@@ -381,7 +493,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
 /* USER CODE BEGIN Callback 1 */
-
+	if (htim->Instance == TIM6) {
+		if (index == 13) {
+			if (checkKeyUp(RPAD_RIGHT)) {
+				jumpOut();
+				index -= 10;
+				oled->clear(oled->p);
+				HAL_TIM_Base_Stop_IT(&htim6);
+			}
+		}
+		beeperInerrupt();
+	}
 /* USER CODE END Callback 1 */
 }
 
