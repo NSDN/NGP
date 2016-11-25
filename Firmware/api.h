@@ -68,3 +68,7 @@ void save(uint32_t addr, uint32_t length, uint8_t* data);
 /* EEPROM Begin */
 
 /* EEPROM End */
+
+/* Scripting Begin */
+
+/* Scripting End */

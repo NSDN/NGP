@@ -39,7 +39,7 @@ uint8_t checkKey(uint8_t key) {
 	return scanKeys() & key;
 }
 
-uint8_t checkKeyUp(uint8_t key) {
+uint8_t waitKeyUp(uint8_t key) {
 	if (checkKey(key)) {
 		while (checkKey(key));
 		return 1;

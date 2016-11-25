@@ -3,6 +3,10 @@
 #include <string.h>
 #include <stdlib.h>
 
+#ifndef __OLED_H_
+#define __OLED_H_
+
+
 #include "IICDevice.h"
 #include "Fonts.h"
 
@@ -293,3 +297,6 @@ void _oled_trans(pOLED* p, uint8_t addr) {
 		
 		return c;
 	}
+	
+	
+	#endif

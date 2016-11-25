@@ -2,6 +2,10 @@
 
 #include "stm32f1xx_hal.h"
 
+#ifndef __IICDEVICE_H_
+#define __IICDEVICE_H_
+
+
 typedef struct {
 	GPIO_TypeDef* SDAPortGroup;
 	uint16_t SDAPortIndex;
@@ -76,3 +80,6 @@ SoftIIC* SoftIICInit(GPIO_TypeDef* pSDAPortGroup, uint16_t pSDAPortIndex, GPIO_T
 	
 	return c;
 }
+
+
+#endif

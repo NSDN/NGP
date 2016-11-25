@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=E:/Works/NyaGamePortable/NyaGamePortable-32Bit/Firmware/NGPTest/Inc
+HeaderPath=E:/Works/NGP/Firmware/NGPTest/Inc
 HeaderFiles=usb_device.h;usbd_conf.h;usbd_desc.h;usbd_cdc_if.h;stm32f1xx_it.h;stm32f1xx_hal_conf.h;main.h;usbd_storage_if.h;ffconf.h;bsp_driver_sd.h;fatfs.h;fatfs_platform.h;usbd_dfu_if.h;
-SourcePath=E:/Works/NyaGamePortable/NyaGamePortable-32Bit/Firmware/NGPTest/Src
+SourcePath=E:/Works/NGP/Firmware/NGPTest/Src
 SourceFiles=usb_device.h;usbd_conf.h;usbd_desc.h;usbd_cdc_if.h;stm32f1xx_it.h;stm32f1xx_hal_conf.h;main.h;usb_device.c;usbd_conf.c;usbd_desc.c;usbd_cdc_if.c;stm32f1xx_it.c;stm32f1xx_hal_msp.c;main.c;usbd_storage_if.h;usbd_storage_if.c;ffconf.h;bsp_driver_sd.h;fatfs.h;bsp_driver_sd.c;fatfs.c;stm32f1xx_hal_timebase_TIM.c;fatfs_platform.h;usbd_dfu_if.h;fatfs_platform.c;usbd_dfu_if.c;
 
 [PreviousLibFiles]

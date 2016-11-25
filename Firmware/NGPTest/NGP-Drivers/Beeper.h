@@ -43,155 +43,52 @@ void setVolume(unsigned char vol) {
 	OUT_A_COUNT_POS = OUT_B_COUNT_POS = vol > 5 ? 5 : vol;
 }
 
-#define PLAYTYPE_NORMAL 0
-#define PLAYTYPE_MINOR_CHORD 1
-#define PLAYTYPE_MAJOR_CHORD 2
-
-void playMusic(const unsigned short* symbol, const char* music, unsigned short length, unsigned short patternLength, unsigned char type, uint8_t withControl) {
+void playMusic(const unsigned short* symbol, const char* music, unsigned short length, unsigned short patternLength, uint8_t withControl) {
 	unsigned short i;
 	char step;
-	switch (type) {
-		case PLAYTYPE_NORMAL:
-			for (i = 0; i < length; i++) {
-				while (!state && withControl);
-				if ((jump && withControl) || trans) { 
-					jump = 0; trans = 0;
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-					return; 
-				}
-				step = music[i];
-				if (step != 0xFF) {
-					OUT_A_COUNT_SUM = symbol[step];
-					OUT_B_COUNT_SUM = symbol[step];
-				} else {
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-				}
-				HAL_Delay(patternLength);
-			}
-			break;
-		case PLAYTYPE_MINOR_CHORD:
-			for (i = 0; i < length; i++) {
-				while (!state && withControl);
-				if ((jump && withControl) || trans) { 
-					jump = 0; trans = 0;
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-					return; 
-				}
-				step = music[i];
-				if (step != 0xFF) {
-					OUT_A_COUNT_SUM = symbol[step];
-					OUT_B_COUNT_SUM = symbol[step + 3];
-				} else {
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-				}
-				HAL_Delay(patternLength);
-			}
-			break;
-		case PLAYTYPE_MAJOR_CHORD:
-			for (i = 0; i < length; i++) {
-				while (!state && withControl);
-				if ((jump && withControl) || trans) { 
-					jump = 0; trans = 0;
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-					return; 
-				}
-				step = music[i];
-				if (step != 0xFF) {
-					OUT_A_COUNT_SUM = symbol[step];
-					OUT_B_COUNT_SUM = symbol[step + 4];
-				} else {
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-				}
-				HAL_Delay(patternLength);
-			}
-			break;
-		default:
-			break;
+	for (i = 0; i < length; i++) {
+		while (!state && withControl);
+		if ((jump && withControl) || trans) { 
+			jump = 0; trans = 0;
+			OUT_A_COUNT_SUM = 0;
+			OUT_B_COUNT_SUM = 0;
+			return; 
+		}
+		step = music[i];
+		if (step != 0xFF) {
+			OUT_A_COUNT_SUM = symbol[step];
+			OUT_B_COUNT_SUM = symbol[step];
+		} else {
+			OUT_A_COUNT_SUM = 0;
+			OUT_B_COUNT_SUM = 0;
+		}
+		HAL_Delay(patternLength);
 	}
-	
 }
 
-void playMusicWithSpace(const unsigned short* symbol, const char* music, unsigned short length, unsigned short patternLength, unsigned short spaceLength, unsigned char type, uint8_t withControl) {
+void playMusicWithSpace(const unsigned short* symbol, const char* music, unsigned short length, unsigned short patternLength, unsigned short spaceLength, uint8_t withControl) {
 	unsigned short i;
 	char step;
-	switch (type) {
-		case PLAYTYPE_NORMAL:
-			for (i = 0; i < length; i++) {
-				while (!state && withControl);
-				if ((jump && withControl) || trans) { 
-					jump = 0; trans = 0;
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-					return; 
-				}
-				step = music[i];
-				if (step != 0xFF) {
-					OUT_A_COUNT_SUM = symbol[step];
-					OUT_B_COUNT_SUM = symbol[step];
-				} else {
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-				}
-				HAL_Delay(patternLength);
-				OUT_A_COUNT_SUM = 0;
-				OUT_B_COUNT_SUM = 0;
-				HAL_Delay(spaceLength);		
-			}
-			break;
-		case PLAYTYPE_MINOR_CHORD:
-			for (i = 0; i < length; i++) {
-				while (!state && withControl);
-				if ((jump && withControl) || trans) { 
-					jump = 0; trans = 0;
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-					return; 
-				}
-				step = music[i];
-				if (step != 0xFF) {
-					OUT_A_COUNT_SUM = symbol[step];
-					OUT_B_COUNT_SUM = symbol[step + 3];
-				} else {
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-				}
-				HAL_Delay(patternLength);
-				OUT_A_COUNT_SUM = 0;
-				OUT_B_COUNT_SUM = 0;
-				HAL_Delay(spaceLength);	
-			}
-			break;
-		case PLAYTYPE_MAJOR_CHORD:
-			for (i = 0; i < length; i++) {
-				while (!state && withControl);
-				if ((jump && withControl) || trans) { 
-					jump = 0; trans = 0;
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-					return; 
-				}
-				step = music[i];
-				if (step != 0xFF) {
-					OUT_A_COUNT_SUM = symbol[step];
-					OUT_B_COUNT_SUM = symbol[step + 4];
-				} else {
-					OUT_A_COUNT_SUM = 0;
-					OUT_B_COUNT_SUM = 0;
-				}
-				HAL_Delay(patternLength);
-				OUT_A_COUNT_SUM = 0;
-				OUT_B_COUNT_SUM = 0;
-				HAL_Delay(spaceLength);	
-			}
-			break;
-		default:
-			break;
+	for (i = 0; i < length; i++) {
+		while (!state && withControl);
+		if ((jump && withControl) || trans) { 
+			jump = 0; trans = 0;
+			OUT_A_COUNT_SUM = 0;
+			OUT_B_COUNT_SUM = 0;
+			return; 
+		}
+		step = music[i];
+		if (step != 0xFF) {
+			OUT_A_COUNT_SUM = symbol[step];
+			OUT_B_COUNT_SUM = symbol[step];
+		} else {
+			OUT_A_COUNT_SUM = 0;
+			OUT_B_COUNT_SUM = 0;
+		}
+		HAL_Delay(patternLength);
+		OUT_A_COUNT_SUM = 0;
+		OUT_B_COUNT_SUM = 0;
+		HAL_Delay(spaceLength);		
 	}
 }
 

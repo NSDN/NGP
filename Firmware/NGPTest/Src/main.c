@@ -61,6 +61,7 @@ DMA_HandleTypeDef hdma_spi1_tx;
 DMA_HandleTypeDef hdma_spi1_rx;
 
 TIM_HandleTypeDef htim6;
+TIM_HandleTypeDef htim7;
 
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
@@ -81,6 +82,7 @@ static void MX_USART2_UART_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_TIM6_Init(void);
+static void MX_TIM7_Init(void);
 
 /* USER CODE BEGIN PFP */
 	/* Private function prototypes -----------------------------------------------*/
@@ -126,26 +128,29 @@ int main(void)
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   MX_TIM6_Init();
+  MX_TIM7_Init();
 
   /* USER CODE BEGIN 2 */
-		oled = OLEDInit(SDA_GPIO_Port, SDA_Pin, SCL_GPIO_Port, SCL_Pin, OLED_SCREEN_BIG);
-		
-		oled->init(oled->p);
-		oled->flash(oled->p, __NYAGAME_LOGO_);
-		oled->trans(oled->p, OLED_SCREEN_SMALL);
-		oled->init(oled->p);
-		oled->font(oled->p, FontBig);
-		oled->printfc(oled->p, 0, "NGP");
-		oled->font(oled->p, FontSmall);
-		oled->printfc(oled->p, 3, "Initializing!");
-		oled->trans(oled->p, OLED_SCREEN_BIG);
-		HAL_Delay(2000);
-		
-		oled->clear(oled->p);
-		oled->trans(oled->p, OLED_SCREEN_SMALL);
-		oled->clear(oled->p);
-		oled->trans(oled->p, OLED_SCREEN_BIG);
-		HAL_Delay(500);
+	HAL_Delay(500);
+	
+	oled = OLEDInit(SDA_GPIO_Port, SDA_Pin, SCL_GPIO_Port, SCL_Pin, OLED_SCREEN_BIG);
+	
+	oled->init(oled->p);
+	oled->flash(oled->p, __NYAGAME_LOGO_);
+	oled->trans(oled->p, OLED_SCREEN_SMALL);
+	oled->init(oled->p);
+	oled->font(oled->p, FontBig);
+	oled->printfc(oled->p, 0, "NGP");
+	oled->font(oled->p, FontSmall);
+	oled->printfc(oled->p, 3, "Initializing!");
+	oled->trans(oled->p, OLED_SCREEN_BIG);
+	HAL_Delay(2000);
+	
+	oled->clear(oled->p);
+	oled->trans(oled->p, OLED_SCREEN_SMALL);
+	oled->clear(oled->p);
+	oled->trans(oled->p, OLED_SCREEN_BIG);
+	HAL_Delay(500);
 	  
   /* USER CODE END 2 */
 
@@ -173,9 +178,9 @@ int main(void)
 			oled->draw(oled->p, 106, index + 2, '<');
 			oled->draw(oled->p, 106, index + 3, ' ');
 			
-			if (checkKeyUp(LPAD_UP)) index = ((index > 0) ? index - 1 : 0);
-			if (checkKeyUp(LPAD_DOWN)) index = ((index < 4) ? index + 1 : 4);
-			if (checkKeyUp(RPAD_UP)) {
+			if (waitKeyUp(LPAD_UP)) index = ((index > 0) ? index - 1 : 0);
+			if (waitKeyUp(LPAD_DOWN)) index = ((index < 4) ? index + 1 : 4);
+			if (waitKeyUp(RPAD_UP)) {
 				index += 10;
 				oled->clear(oled->p);
 				if (index == 13) {
@@ -210,7 +215,7 @@ int main(void)
 					oled->printfc(oled->p, 3, "NOW Playing...");
 					oled->printfc(oled->p, 5, "Remilia");
 					oled->printfc(oled->p, 6, "Scarlet");
-					playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, PLAYTYPE_NORMAL, 1);
+					playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, 1);
 					break;
 				case 14:
 					oled->flash(oled->p, __NYAGAME_LOGO_);
@@ -220,7 +225,7 @@ int main(void)
 			}
 			
 			if (index != 13) {
-				if (checkKeyUp(RPAD_RIGHT)) {
+				if (waitKeyUp(RPAD_RIGHT)) {
 					index -= 10;
 					oled->clear(oled->p);
 				}
@@ -234,7 +239,7 @@ int main(void)
 		
   /* USER CODE END WHILE */
 
-  /* USER CODE BEGIN 3 */		
+  /* USER CODE BEGIN 3 */
 		HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_RESET);
 		checkSD();
@@ -347,9 +352,9 @@ static void MX_TIM6_Init(void)
   TIM_MasterConfigTypeDef sMasterConfig;
 
   htim6.Instance = TIM6;
-  htim6.Init.Prescaler = 719;
+  htim6.Init.Prescaler = 2;
   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim6.Init.Period = 1;
+  htim6.Init.Period = 359;
   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
   {
     Error_Handler();
@@ -358,6 +363,30 @@ static void MX_TIM6_Init(void)
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
+/* TIM7 init function */
+static void MX_TIM7_Init(void)
+{
+
+  TIM_MasterConfigTypeDef sMasterConfig;
+
+  htim7.Instance = TIM7;
+  htim7.Init.Prescaler = 2;
+  htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim7.Init.Period = 35;
+  if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim7, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
@@ -444,14 +473,24 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : FLASH_CS_Pin */
+  GPIO_InitStruct.Pin = FLASH_CS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(FLASH_CS_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : LEDA_Pin LEDB_Pin RBEEP_Pin LBEEP_Pin */
   GPIO_InitStruct.Pin = LEDA_Pin|LEDB_Pin|RBEEP_Pin|LBEEP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LPAD_Pin RPAD_Pin SCL_Pin SDA_Pin */
-  GPIO_InitStruct.Pin = LPAD_Pin|RPAD_Pin|SCL_Pin|SDA_Pin;
+  /*Configure GPIO pins : BT_ENB_Pin BT_STATE_Pin LPAD_Pin RPAD_Pin 
+                           LCD_BK_Pin LCD_CS_Pin LCD_DC_Pin LCD_RST_Pin 
+                           SCL_Pin SDA_Pin */
+  GPIO_InitStruct.Pin = BT_ENB_Pin|BT_STATE_Pin|LPAD_Pin|RPAD_Pin 
+                          |LCD_BK_Pin|LCD_CS_Pin|LCD_DC_Pin|LCD_RST_Pin 
+                          |SCL_Pin|SDA_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -463,10 +502,15 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(SDST_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(FLASH_CS_GPIO_Port, FLASH_CS_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, LEDA_Pin|LEDB_Pin|RBEEP_Pin|LBEEP_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LPAD_Pin|RPAD_Pin|SCL_Pin|SDA_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, BT_ENB_Pin|BT_STATE_Pin|LPAD_Pin|RPAD_Pin 
+                          |LCD_BK_Pin|LCD_CS_Pin|LCD_DC_Pin|LCD_RST_Pin 
+                          |SCL_Pin|SDA_Pin, GPIO_PIN_RESET);
 
 }
 
@@ -493,9 +537,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
 /* USER CODE BEGIN Callback 1 */
+	if (htim->Instance == TIM7) {
+		//incTime();
+	}
+	
 	if (htim->Instance == TIM6) {
 		if (index == 13) {
-			if (checkKeyUp(RPAD_RIGHT)) {
+			if (waitKeyUp(RPAD_RIGHT)) {
 				jumpOut();
 				index -= 10;
 				oled->clear(oled->p);

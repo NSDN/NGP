@@ -579,17 +579,17 @@ ARM Macro Assembler    Page 9
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=ngptest\startup_stm32f103xe.d -ongptest\startup_stm32f103xe.o -IE:
-\Works\NyaGamePortable\NyaGamePortable-32Bit\Firmware\NGPTest\MDK-ARM\RTE -ID:\
-MDK\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -ID:\MDK\ARM\PACK\Keil\STM32F1xx_DFP
-\1.1.0\Device\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VE
-RSION SETA 521" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --
+\Works\NGP\Firmware\NGPTest\MDK-ARM\RTE -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\C
+MSIS\Include -ID:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include --pr
+edefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 521" --predefin
+e="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --list=startup_stm32f103xe.l
 
 
 
 ARM Macro Assembler    Page 10 
 
 
-list=startup_stm32f103xe.lst startup_stm32f103xe.s
+st startup_stm32f103xe.s
 
 
 

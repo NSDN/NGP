@@ -1,5 +1,5 @@
 ngptest\syscall.o: ../Middlewares/Third_Party/FatFs/src/option/syscall.c
-ngptest\syscall.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdlib.h
+ngptest\syscall.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ngptest\syscall.o: ../Middlewares/Third_Party/FatFs/src/option/../ff.h
 ngptest\syscall.o: ../Middlewares/Third_Party/FatFs/src/option/../integer.h
 ngptest\syscall.o: ../Inc/ffconf.h
@@ -11,14 +11,14 @@ ngptest\syscall.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 ngptest\syscall.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 ngptest\syscall.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
 ngptest\syscall.o: ../Drivers/CMSIS/Include/core_cm3.h
-ngptest\syscall.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+ngptest\syscall.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ngptest\syscall.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 ngptest\syscall.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 ngptest\syscall.o: ../Drivers/CMSIS/Include/core_cmFunc.h
 ngptest\syscall.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 ngptest\syscall.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 ngptest\syscall.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-ngptest\syscall.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdio.h
+ngptest\syscall.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ngptest\syscall.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 ngptest\syscall.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 ngptest\syscall.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
