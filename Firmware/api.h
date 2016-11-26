@@ -20,26 +20,24 @@ void delayMicroseconds(uint32_t time);
 /* Common End */
 
 /* Screen Begin */
-void initScreen();
-void openScreen();
-void closeScreen();
-void setBrgiht(char value);
+void init();
+void brgiht(char value);
 
 uint8_t _backColor, _foreColor, _fontSize;
 void backColor(uint8_t color);
 void foreColor(uint8_t color);
-void drawPixel(char x, char y, uint8_t color);
-void drawLine(char x1, char y1, char x2, char y2);
-void drawTri(char x1, char y1, char x2, char y2, char x3, char y3, uint8_t fillFlag);
-void drawRect(char x1, char y1, char x2, char y2, uint8_t fillFlag);
-void drawBitmap(char x, char y, char w, char h, uint8_t* data);
-void drawColoredBitmap(char x, char y, char w, char h, uint8_t transColor, uint8_t* data);
-void gBegin();  //CS` = 0;
-void gEnd();    //CS` = 1;
+void pixel(char x, char y, uint8_t color);
+void line(char x1, char y1, char x2, char y2);
+void tri(char x1, char y1, char x2, char y2, char x3, char y3, uint8_t fillFlag);
+void rect(char x1, char y1, char x2, char y2, uint8_t fillFlag);
+void bitmap(char x, char y, char w, char h, uint8_t* data);
+void coloredBitmap(char x, char y, char w, char h, uint8_t transColor, uint8_t* data);
 
-void fontSize(char size);
-void drawChar(char x, char y, char c);
-void print(char x, char y, char* format, ...)
+void font(char font);
+void draw(char x, char y, char c);
+void print(char x, char y, char* string)
+void printf(char x, char y, char* format, ...)
+void printfc(char y, char* format, ...)
 /* Screen End */
 
 /* Keypad Begin */

@@ -52,6 +52,8 @@ ngptest\main_1.o: ..\NGP-Drivers\OLED.h
 ngptest\main_1.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ngptest\main_1.o: ..\NGP-Drivers\IICDevice.h
 ngptest\main_1.o: ..\NGP-Drivers\Fonts.h
+ngptest\main_1.o: ..\NGP-Drivers\LCD.h
+ngptest\main_1.o: ..\NGP-Drivers\SPIDevice.h
 ngptest\main_1.o: ..\NGP-Drivers\Keypad.h
 ngptest\main_1.o: ..\NGP-Drivers\Beeper.h
 ngptest\main_1.o: ..\NGP-Drivers\Music.h

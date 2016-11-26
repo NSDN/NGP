@@ -48,6 +48,7 @@
 
 /* USER CODE BEGIN Includes */
 #include "OLED.h"
+#include "LCD.h"
 #include "Keypad.h"
 #include "Beeper.h"
 /* USER CODE END Includes */
@@ -68,7 +69,7 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 	/* Private variables ---------------------------------------------------------*/
-	OLED* oled;
+	LCD* lcd;
 	static uint8_t index = 0;
 /* USER CODE END PV */
 
@@ -91,15 +92,15 @@ static void MX_TIM7_Init(void);
 
 /* USER CODE BEGIN 0 */
 void checkSD() {
-	oled->trans(oled->p, OLED_SCREEN_SMALL);
+	
 	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET) {
 		HAL_SD_Init(&hsd, &SDCardInfo);
-		oled->printfc(oled->p, 1, "SD card detected!");
+		
 	} else {
 		HAL_SD_DeInit(&hsd);
-		oled->printfc(oled->p, 1, "                 ");
+		
 	}
-	oled->trans(oled->p, OLED_SCREEN_BIG);
+	
 }
 /* USER CODE END 0 */
 
@@ -133,25 +134,20 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	HAL_Delay(500);
 	
-	oled = OLEDInit(SDA_GPIO_Port, SDA_Pin, SCL_GPIO_Port, SCL_Pin, OLED_SCREEN_BIG);
+	lcd = LCDInit(&hspi1, 
+			LCD_DC_GPIO_Port, LCD_DC_Pin, 
+			LCD_CS_GPIO_Port, LCD_CS_Pin,
+			LCD_RST_GPIO_Port, LCD_RST_Pin,
+			LCD_BK_GPIO_Port, LCD_BK_Pin);
 	
-	oled->init(oled->p);
-	oled->flash(oled->p, __NYAGAME_LOGO_);
-	oled->trans(oled->p, OLED_SCREEN_SMALL);
-	oled->init(oled->p);
-	oled->font(oled->p, FontBig);
-	oled->printfc(oled->p, 0, "NGP");
-	oled->font(oled->p, FontSmall);
-	oled->printfc(oled->p, 3, "Initializing!");
-	oled->trans(oled->p, OLED_SCREEN_BIG);
+	lcd->init(lcd->p);
+	lcd->colorb(lcd->p, 0xFF9800);
+	lcd->colorf(lcd->p, 0xFFFFFF);
+	lcd->clear(lcd->p);
+	lcd->bitmapsc(lcd->p, 63, 63, 128, 64, __NYAGAME_LOGO_);
 	HAL_Delay(2000);
+	lcd->clear(lcd->p);
 	
-	oled->clear(oled->p);
-	oled->trans(oled->p, OLED_SCREEN_SMALL);
-	oled->clear(oled->p);
-	oled->trans(oled->p, OLED_SCREEN_BIG);
-	HAL_Delay(500);
-	  
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -162,27 +158,29 @@ int main(void)
 		
 		if (index < 10) {
 			/* MENU BUILD BEGIN */
-			oled->color(oled->p, Black);
-			oled->printfc(oled->p, 0, "MENU");
-			oled->color(oled->p, White);
-			oled->printfc(oled->p, 2, "Sample 1");
-			oled->printfc(oled->p, 3, "Sample 2");
-			oled->printfc(oled->p, 4, "Sample 3");
-			oled->printfc(oled->p, 5, "NSDN-Beeper");
-			oled->printfc(oled->p, 6, "About NyaGame");
+			lcd->colorb(lcd->p, 0xFFFFFF);
+			lcd->colorf(lcd->p, 0xFF9800);
+			lcd->printfc(lcd->p, 8, "MENU");
+			lcd->colorb(lcd->p, 0xFF9800);
+			lcd->colorf(lcd->p, 0xFFFFFF);
+			lcd->printfc(lcd->p, 24, "Sample 1");
+			lcd->printfc(lcd->p, 32, "Sample 2");
+			lcd->printfc(lcd->p, 40, "Sample 3");
+			lcd->printfc(lcd->p, 48, "NSDN-Beeper");
+			lcd->printfc(lcd->p, 56, "About NyaGame");
 			
-			oled->draw(oled->p, 16, index + 1, ' ');
-			oled->draw(oled->p, 16, index + 2, '>');
-			oled->draw(oled->p, 16, index + 3, ' ');
-			oled->draw(oled->p, 106, index + 1, ' ');
-			oled->draw(oled->p, 106, index + 2, '<');
-			oled->draw(oled->p, 106, index + 3, ' ');
+			lcd->draw(lcd->p, 16, (index + 2) * 8, ' ');
+			lcd->draw(lcd->p, 16, (index + 3) * 8, '>');
+			lcd->draw(lcd->p, 16, (index + 4) * 8, ' ');
+			lcd->draw(lcd->p, 106, (index + 2) * 8, ' ');
+			lcd->draw(lcd->p, 106, (index + 3) * 8, '<');
+			lcd->draw(lcd->p, 106, (index + 4) * 8, ' ');
 			
 			if (waitKeyUp(LPAD_UP)) index = ((index > 0) ? index - 1 : 0);
 			if (waitKeyUp(LPAD_DOWN)) index = ((index < 4) ? index + 1 : 4);
 			if (waitKeyUp(RPAD_UP)) {
 				index += 10;
-				oled->clear(oled->p);
+				lcd->clear(lcd->p);
 				if (index == 13) {
 					HAL_TIM_Base_Start_IT(&htim6);
 					setVolume(2);
@@ -191,34 +189,42 @@ int main(void)
 		} else if (index < 20) {
 			switch (index) {
 				case 10:
-					oled->color(oled->p, Black);
-					oled->printfc(oled->p, 0, "Sample 1");
-					oled->color(oled->p, White);
-					oled->printfc(oled->p, 4, "This is a sample.");
+					lcd->colorb(lcd->p, 0xFFFFFF);
+					lcd->colorf(lcd->p, 0xFF9800);
+					lcd->printfc(lcd->p, 8, "Sample 1");
+					lcd->colorb(lcd->p, 0xFF9800);
+					lcd->colorf(lcd->p, 0xFFFFFF);
+					lcd->printfc(lcd->p, 48, "This is a sample.");
 					break;
 				case 11:
-					oled->color(oled->p, Black);
-					oled->printfc(oled->p, 0, "Sample 2");
-					oled->color(oled->p, White);
-					oled->printfc(oled->p, 4, "This is a sample.");
+					lcd->colorb(lcd->p, 0xFFFFFF);
+					lcd->colorf(lcd->p, 0xFF9800);
+					lcd->printfc(lcd->p, 8, "Sample 2");
+					lcd->colorb(lcd->p, 0xFF9800);
+					lcd->colorf(lcd->p, 0xFFFFFF);
+					lcd->printfc(lcd->p, 48, "This is a sample.");
 					break;
 				case 12:
-					oled->color(oled->p, Black);
-					oled->printfc(oled->p, 0, "Sample 3");
-					oled->color(oled->p, White);
-					oled->printfc(oled->p, 4, "This is a sample.");
+					lcd->colorb(lcd->p, 0xFFFFFF);
+					lcd->colorf(lcd->p, 0xFF9800);
+					lcd->printfc(lcd->p, 8, "Sample 3");
+					lcd->colorb(lcd->p, 0xFF9800);
+					lcd->colorf(lcd->p, 0xFFFFFF);
+					lcd->printfc(lcd->p, 48, "This is a sample.");
 					break;
 				case 13:
-					oled->color(oled->p, Black);
-					oled->printfc(oled->p, 0, "NSDN-Beeper");
-					oled->color(oled->p, White);
-					oled->printfc(oled->p, 3, "NOW Playing...");
-					oled->printfc(oled->p, 5, "Remilia");
-					oled->printfc(oled->p, 6, "Scarlet");
+					lcd->colorb(lcd->p, 0xFFFFFF);
+					lcd->colorf(lcd->p, 0xFF9800);
+					lcd->printfc(lcd->p, 8, "NSDN-Beeper");
+					lcd->colorb(lcd->p, 0xFF9800);
+					lcd->colorf(lcd->p, 0xFFFFFF);
+					lcd->printfc(lcd->p, 32, "NOW Playing...");
+					lcd->printfc(lcd->p, 48, "Remilia");
+					lcd->printfc(lcd->p, 56, "Scarlet");
 					playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, 1);
 					break;
 				case 14:
-					oled->flash(oled->p, __NYAGAME_LOGO_);
+					lcd->bitmapsc(lcd->p, 63, 63, 128, 64, __NYAGAME_LOGO_);
 					break;
 				default:
 					break;
@@ -227,14 +233,13 @@ int main(void)
 			if (index != 13) {
 				if (waitKeyUp(RPAD_RIGHT)) {
 					index -= 10;
-					oled->clear(oled->p);
+					lcd->clear(lcd->p);
 				}
 			}
 		} else {
 			index = 0;
-			oled->clear(oled->p);
+			lcd->clear(lcd->p);
 		}
-		
 		/* MENU BUILD END */
 		
   /* USER CODE END WHILE */
@@ -330,7 +335,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.Mode = SPI_MODE_MASTER;
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_HIGH;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
@@ -476,23 +481,29 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : FLASH_CS_Pin */
   GPIO_InitStruct.Pin = FLASH_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(FLASH_CS_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LEDA_Pin LEDB_Pin RBEEP_Pin LBEEP_Pin */
   GPIO_InitStruct.Pin = LEDA_Pin|LEDB_Pin|RBEEP_Pin|LBEEP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : BT_ENB_Pin BT_STATE_Pin LPAD_Pin RPAD_Pin 
-                           LCD_BK_Pin LCD_CS_Pin LCD_DC_Pin LCD_RST_Pin 
-                           SCL_Pin SDA_Pin */
+                           LCD_BK_Pin */
   GPIO_InitStruct.Pin = BT_ENB_Pin|BT_STATE_Pin|LPAD_Pin|RPAD_Pin 
-                          |LCD_BK_Pin|LCD_CS_Pin|LCD_DC_Pin|LCD_RST_Pin 
-                          |SCL_Pin|SDA_Pin;
+                          |LCD_BK_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LCD_CS_Pin LCD_DC_Pin LCD_RST_Pin SCL_Pin 
+                           SDA_Pin */
+  GPIO_InitStruct.Pin = LCD_CS_Pin|LCD_DC_Pin|LCD_RST_Pin|SCL_Pin 
+                          |SDA_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SDST_Pin */
@@ -509,8 +520,11 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, BT_ENB_Pin|BT_STATE_Pin|LPAD_Pin|RPAD_Pin 
-                          |LCD_BK_Pin|LCD_CS_Pin|LCD_DC_Pin|LCD_RST_Pin 
-                          |SCL_Pin|SDA_Pin, GPIO_PIN_RESET);
+                          |LCD_BK_Pin|LCD_DC_Pin|LCD_RST_Pin|SCL_Pin 
+                          |SDA_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LCD_CS_GPIO_Port, LCD_CS_Pin, GPIO_PIN_SET);
 
 }
 
@@ -546,7 +560,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			if (waitKeyUp(RPAD_RIGHT)) {
 				jumpOut();
 				index -= 10;
-				oled->clear(oled->p);
+				lcd->clear(lcd->p);
 				HAL_TIM_Base_Stop_IT(&htim6);
 			}
 		}
