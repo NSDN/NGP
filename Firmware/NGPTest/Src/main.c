@@ -195,6 +195,7 @@ int main(void)
 					lcd->colorb(lcd->p, 0xFF9800);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					lcd->printfc(lcd->p, 48, "This is a sample.");
+					lcd->printfc(lcd->p, 64, "32's HEX: %X", 32);
 					break;
 				case 11:
 					lcd->colorb(lcd->p, 0xFFFFFF);
