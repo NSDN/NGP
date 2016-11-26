@@ -246,6 +246,10 @@ void _lcd_clear(pLCD* p) {
 	}
 }
 
+float _lcd_abs(float v) {
+	return v > 0 ? v : -v;
+}
+
 void _lcd_pixel(pLCD* p, uint8_t x, uint8_t y) {  
 	_lcd_setPosition(p, x, y, x, y);
 	_lcd_writeCommand(p, 0x2C);
@@ -253,11 +257,24 @@ void _lcd_pixel(pLCD* p, uint8_t x, uint8_t y) {
 }
 
 void _lcd_line(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2) {
-	float k = (y2 - y1) / (x2 - x1);
-	for (float dx = 0, dy = 0; dx <= x2 - x1; dx += 1, dy += k) {
-		_lcd_setPosition(p, x1 + dx, y1 + dy, x1 + dx, y1 + dy);
-		_lcd_writeCommand(p, 0x2C);
-		_lcd_writeData16(p, p->foreColor);
+	float k = (float)(y2 - y1) / (float)(x2 - x1), tmp = 0;
+	if (y2 < y1 || x2 < x1) {
+		tmp = y2; y2 = y1; y1 = tmp;
+		tmp = x2; x2 = x1; x1 = tmp;
+		k = (float)(y2 - y1) / (float)(x2 - x1);
+	}
+	if (x1 == x2) {
+		for (float dy = 0; dy <= y2 - y1; dy += 1) {
+			_lcd_setPosition(p, x1, y1 + dy, x1, y1 + dy);
+			_lcd_writeCommand(p, 0x2C);
+			_lcd_writeData16(p, p->foreColor);
+		}
+	} else {
+		for (float dx = 0, dy = 0; dx <= x2 - x1; dx += 1, dy += k) {
+			_lcd_setPosition(p, x1 + dx, y1 + dy, x1 + dx, y1 + dy);
+			_lcd_writeCommand(p, 0x2C);
+			_lcd_writeData16(p, p->foreColor);
+		}
 	}
 }
 
@@ -271,12 +288,12 @@ void _lcd_tri(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t x
 		uint8_t midx = (x1 == maxx) ? ((x2 == minx) ? x3 : x2) : ((x1 == minx) ? ((x2 == maxx) ? x3 : x2) : x1);
 		
 		float k1, k2; uint8_t xs, xe, tmp;
-		k1 = (maxy - miny) / (maxx - minx);
+		k1 = (float)(maxy - miny) / (float)(maxx - minx);
 		
-		k2 = (midy - miny) / (midx - minx);
+		k2 = (float)(midy - miny) / (float)(midx - minx);
 		for (uint8_t i = miny; i <= midy - miny; i++) {
-			xs = (i - miny) / k1 + minx;
-			xe = (i - miny) / k2 + minx;
+			xs = (float)(i - miny) / k1 + (float)minx;
+			xe = (float)(i - miny) / k2 + (float)minx;
 			if (xe < xs) { tmp = xe; xe = xs; xs = tmp; }
 			_lcd_setPosition(p, xs, i, xe, i);
 			_lcd_writeCommand(p, 0x2C);
@@ -285,7 +302,7 @@ void _lcd_tri(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t x
 			}
 		}
 		
-		k2 = (maxy - midy) / (maxx - midx);
+		k2 = (float)(maxy - midy) / (float)(maxx - midx);
 		for (uint8_t i = midy; i <= maxy - midy; i++) {
 			xs = (i - miny) / k1 + minx;
 			xe = (i - midy) / k2 + midx;
@@ -307,8 +324,8 @@ void _lcd_rect(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t 
 	if (fill) {
 		_lcd_setPosition(p, x1, y1, x2, y2);
 		_lcd_writeCommand(p, 0x2C);
-		for (uint8_t i = 0; i <= x2 - x1; i++) {
-			for (uint8_t j = 0; j <= y2 - y1; j++) {
+		for (uint8_t i = 0; i <= _lcd_abs(x2 - x1); i++) {
+			for (uint8_t j = 0; j <= _lcd_abs(y2 - y1); j++) {
 				_lcd_writeData16(p, p->foreColor);
 			}
 		}

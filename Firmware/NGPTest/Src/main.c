@@ -92,15 +92,21 @@ static void MX_TIM7_Init(void);
 
 /* USER CODE BEGIN 0 */
 void checkSD() {
-	
 	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET) {
 		HAL_SD_Init(&hsd, &SDCardInfo);
-		
+		lcd->colorb(lcd->p, 0x66CCFF);
+		lcd->colorf(lcd->p, 0x000000);
+		lcd->print(lcd->p, 0, 1, "SD");
+		lcd->colorf(lcd->p, 0x66CCFF);
+		lcd->rect(lcd->p, 0, 0, 12, 8, 0);
+		lcd->colorb(lcd->p, 0x000000);
+		lcd->colorf(lcd->p, 0xFFFFFF);
 	} else {
 		HAL_SD_DeInit(&hsd);
-		
+		lcd->colorf(lcd->p, 0x000000);
+		lcd->rect(lcd->p, 0, 0, 12, 8, 1);
+		lcd->colorf(lcd->p, 0xFFFFFF);
 	}
-	
 }
 /* USER CODE END 0 */
 
@@ -141,11 +147,13 @@ int main(void)
 			LCD_BK_GPIO_Port, LCD_BK_Pin);
 	
 	lcd->init(lcd->p);
-	lcd->colorb(lcd->p, 0xFF9800);
-	lcd->colorf(lcd->p, 0xFFFFFF);
+	lcd->colorb(lcd->p, 0xFFFFFF);
+	lcd->colorf(lcd->p, 0x000000);
 	lcd->clear(lcd->p);
 	lcd->bitmapsc(lcd->p, 63, 63, 128, 64, __NYAGAME_LOGO_);
 	HAL_Delay(2000);
+	lcd->colorb(lcd->p, 0x000000);
+	lcd->colorf(lcd->p, 0xFFFFFF);
 	lcd->clear(lcd->p);
 	
   /* USER CODE END 2 */
@@ -158,16 +166,16 @@ int main(void)
 		
 		if (index < 10) {
 			/* MENU BUILD BEGIN */
-			lcd->colorb(lcd->p, 0xFFFFFF);
+			lcd->colorb(lcd->p, 0x000000);
 			lcd->colorf(lcd->p, 0xFF9800);
 			lcd->printfc(lcd->p, 8, "MENU");
-			lcd->colorb(lcd->p, 0xFF9800);
+			lcd->colorb(lcd->p, 0x000000);
 			lcd->colorf(lcd->p, 0xFFFFFF);
 			lcd->printfc(lcd->p, 24, "Sample 1");
 			lcd->printfc(lcd->p, 32, "Sample 2");
 			lcd->printfc(lcd->p, 40, "Sample 3");
 			lcd->printfc(lcd->p, 48, "NSDN-Beeper");
-			lcd->printfc(lcd->p, 56, "About NyaGame");
+			lcd->printfc(lcd->p, 56, "About this NGP");
 			
 			lcd->draw(lcd->p, 16, (index + 2) * 8, ' ');
 			lcd->draw(lcd->p, 16, (index + 3) * 8, '>');
@@ -189,36 +197,36 @@ int main(void)
 		} else if (index < 20) {
 			switch (index) {
 				case 10:
-					lcd->colorb(lcd->p, 0xFFFFFF);
+					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFF9800);
 					lcd->printfc(lcd->p, 8, "Sample 1");
-					lcd->colorb(lcd->p, 0xFF9800);
+					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					lcd->printfc(lcd->p, 48, "This is a sample.");
 					lcd->printfc(lcd->p, 64, "32's HEX: %X", 32);
 					break;
 				case 11:
-					lcd->colorb(lcd->p, 0xFFFFFF);
+					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFF9800);
 					lcd->printfc(lcd->p, 8, "Sample 2");
-					lcd->colorb(lcd->p, 0xFF9800);
+					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					lcd->printfc(lcd->p, 48, "This is a sample.");
 					lcd->rect(lcd->p, 32, 64, 96, 96, 1);
 					break;
 				case 12:
-					lcd->colorb(lcd->p, 0xFFFFFF);
+					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFF9800);
 					lcd->printfc(lcd->p, 8, "Sample 3");
-					lcd->colorb(lcd->p, 0xFF9800);
+					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					lcd->printfc(lcd->p, 48, "This is a sample.");
 					break;
 				case 13:
-					lcd->colorb(lcd->p, 0xFFFFFF);
+					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFF9800);
 					lcd->printfc(lcd->p, 8, "NSDN-Beeper");
-					lcd->colorb(lcd->p, 0xFF9800);
+					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					lcd->printfc(lcd->p, 32, "NOW Playing...");
 					lcd->printfc(lcd->p, 48, "Remilia");
@@ -227,6 +235,10 @@ int main(void)
 					break;
 				case 14:
 					lcd->bitmapsc(lcd->p, 63, 63, 128, 64, __NYAGAME_LOGO_);
+					lcd->colorf(lcd->p, 0xFF9800);
+					lcd->printfc(lcd->p, 100, "NyaGame Portable");
+					lcd->printfc(lcd->p, 110, "dev161126");
+					lcd->colorf(lcd->p, 0xFFFFFF);
 					break;
 				default:
 					break;
