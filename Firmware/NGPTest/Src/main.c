@@ -204,6 +204,7 @@ int main(void)
 					lcd->colorb(lcd->p, 0xFF9800);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					lcd->printfc(lcd->p, 48, "This is a sample.");
+					lcd->rect(lcd->p, 32, 64, 96, 96, 1);
 					break;
 				case 12:
 					lcd->colorb(lcd->p, 0xFFFFFF);

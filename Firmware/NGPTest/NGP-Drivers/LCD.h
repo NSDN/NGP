@@ -281,7 +281,7 @@ void _lcd_tri(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t x
 			_lcd_setPosition(p, xs, i, xe, i);
 			_lcd_writeCommand(p, 0x2C);
 			for (uint8_t j = 0; j <= xe - xs; j++) {
-				_lcd_writeData16(p, p->backColor);
+				_lcd_writeData16(p, p->foreColor);
 			}
 		}
 		
@@ -293,7 +293,7 @@ void _lcd_tri(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t x
 			_lcd_setPosition(p, xs, i, xe, i);
 			_lcd_writeCommand(p, 0x2C);
 			for (uint8_t j = 0; j <= xe - xs; j++) {
-				_lcd_writeData16(p, p->backColor);
+				_lcd_writeData16(p, p->foreColor);
 			}
 		}
 	} else {
@@ -309,7 +309,7 @@ void _lcd_rect(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t 
 		_lcd_writeCommand(p, 0x2C);
 		for (uint8_t i = 0; i <= x2 - x1; i++) {
 			for (uint8_t j = 0; j <= y2 - y1; j++) {
-				_lcd_writeData16(p, p->backColor);
+				_lcd_writeData16(p, p->foreColor);
 			}
 		}
 	} else {
