@@ -78,8 +78,21 @@ void _lcd_writeData(pLCD* p, uint8_t data) {
 void _lcd_writeData16(pLCD* p, uint16_t data) {
 	p->base->start(p->base->p);
 	p->base->dcs(p->base->p, 1);
-	p->base->send(p->base->p, data >> 8);
-	p->base->send(p->base->p, data);
+	p->base->write(p->base->p, &data, 2);
+	p->base->stop(p->base->p);
+}
+
+void _lcd_writeData16s(pLCD* p, uint16_t* data, uint32_t length) {
+	p->base->start(p->base->p);
+	p->base->dcs(p->base->p, 1);
+	p->base->write(p->base->p, data, length * 2);
+	p->base->stop(p->base->p);
+}
+
+void _lcd_flashData16(pLCD* p, uint16_t data, uint32_t count) {
+	p->base->start(p->base->p);
+	p->base->dcs(p->base->p, 1);
+	p->base->writes(p->base->p, data, count);
 	p->base->stop(p->base->p);
 }
 
@@ -225,9 +238,11 @@ void _lcd_init(pLCD* p) {
 }
 
 uint16_t _color_conv(uint32_t color) {
-	return ((uint16_t)((float)((color & 0xFF0000) >> 16) * 0.122) << 11) |
-		   ((uint16_t)((float)((color & 0x00FF00) >> 8 ) * 0.247) << 5 ) |
-		   ((uint16_t)((float)((color & 0x0000FF)      ) * 0.122)      );
+	uint16_t c = ((uint16_t)((float)((color & 0xFF0000) >> 16) * 0.122) << 11) |
+				 ((uint16_t)((float)((color & 0x00FF00) >> 8 ) * 0.247) << 5 ) |
+				 ((uint16_t)((float)((color & 0x0000FF)      ) * 0.122)      ),
+		   tmp = c & 0x00FF;
+	return (c >> 8) | (tmp << 8);
 }
 
 void _lcd_back_color(pLCD* p, uint32_t color) { p->backColor = _color_conv(color); }
@@ -239,11 +254,7 @@ void _lcd_font(pLCD* p, LCDFont f) { p->Font = f; }
 void _lcd_clear(pLCD* p) {
 	_lcd_setPosition(p, 0, 0, 127, 127);
 	_lcd_writeCommand(p, 0x2C);
-	for (uint8_t i = 0; i < 128; i++) {
-		for (uint8_t j = 0; j < 128; j++) {
-			_lcd_writeData16(p, p->backColor);
-		}
-	}
+	_lcd_flashData16(p, p->backColor, 128 * 128);
 }
 
 float _lcd_abs(float v) {
@@ -324,11 +335,8 @@ void _lcd_rect(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t 
 	if (fill) {
 		_lcd_setPosition(p, x1, y1, x2, y2);
 		_lcd_writeCommand(p, 0x2C);
-		for (uint8_t i = 0; i <= _lcd_abs(x2 - x1); i++) {
-			for (uint8_t j = 0; j <= _lcd_abs(y2 - y1); j++) {
-				_lcd_writeData16(p, p->foreColor);
-			}
-		}
+		_lcd_flashData16(p, p->foreColor, 
+		(_lcd_abs((char)x2 - (char)x1) + 1) * (_lcd_abs((char)y2 - (char)y1) + 1));
 	} else {
 		_lcd_line(p, x1, y1, x2, y1);
 		_lcd_line(p, x2, y1, x2, y2);

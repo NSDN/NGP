@@ -70,6 +70,7 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 	/* Private variables ---------------------------------------------------------*/
 	LCD* lcd;
+	static uint8_t sdOK = 0;
 	static uint8_t index = 0;
 /* USER CODE END PV */
 
@@ -92,8 +93,14 @@ static void MX_TIM7_Init(void);
 
 /* USER CODE BEGIN 0 */
 void checkSD() {
-	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET) {
+	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET && sdOK == 0) {
 		HAL_SD_Init(&hsd, &SDCardInfo);
+		sdOK = 1;
+	} else if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_SET && sdOK == 1) {
+		HAL_SD_DeInit(&hsd);
+		sdOK = 0;	
+	}
+	if (sdOK == 1) {
 		lcd->colorb(lcd->p, 0x66CCFF);
 		lcd->colorf(lcd->p, 0x000000);
 		lcd->print(lcd->p, 0, 1, "SD");
@@ -102,7 +109,6 @@ void checkSD() {
 		lcd->colorb(lcd->p, 0x000000);
 		lcd->colorf(lcd->p, 0xFFFFFF);
 	} else {
-		HAL_SD_DeInit(&hsd);
 		lcd->colorf(lcd->p, 0x000000);
 		lcd->rect(lcd->p, 0, 0, 12, 8, 1);
 		lcd->colorf(lcd->p, 0xFFFFFF);
@@ -156,13 +162,14 @@ int main(void)
 	lcd->colorf(lcd->p, 0xFFFFFF);
 	lcd->clear(lcd->p);
 	
+	HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_SET);
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1) {
-		HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_SET);
 		
 		if (index < 10) {
 			/* MENU BUILD BEGIN */
@@ -172,17 +179,17 @@ int main(void)
 			lcd->colorb(lcd->p, 0x000000);
 			lcd->colorf(lcd->p, 0xFFFFFF);
 			lcd->printfc(lcd->p, 24, "Sample 1");
-			lcd->printfc(lcd->p, 32, "Sample 2");
-			lcd->printfc(lcd->p, 40, "Sample 3");
+			lcd->printfc(lcd->p, 32, "Flash Test 1");
+			lcd->printfc(lcd->p, 40, "Flash Test 2");
 			lcd->printfc(lcd->p, 48, "NSDN-Beeper");
 			lcd->printfc(lcd->p, 56, "About this NGP");
 			
-			lcd->draw(lcd->p, 16, (index + 2) * 8, ' ');
-			lcd->draw(lcd->p, 16, (index + 3) * 8, '>');
-			lcd->draw(lcd->p, 16, (index + 4) * 8, ' ');
-			lcd->draw(lcd->p, 106, (index + 2) * 8, ' ');
-			lcd->draw(lcd->p, 106, (index + 3) * 8, '<');
-			lcd->draw(lcd->p, 106, (index + 4) * 8, ' ');
+			lcd->draw(lcd->p, 10, (index + 2) * 8, ' ');
+			lcd->draw(lcd->p, 10, (index + 3) * 8, '>');
+			lcd->draw(lcd->p, 10, (index + 4) * 8, ' ');
+			lcd->draw(lcd->p, 112, (index + 2) * 8, ' ');
+			lcd->draw(lcd->p, 112, (index + 3) * 8, '<');
+			lcd->draw(lcd->p, 112, (index + 4) * 8, ' ');
 			
 			if (waitKeyUp(LPAD_UP)) index = ((index > 0) ? index - 1 : 0);
 			if (waitKeyUp(LPAD_DOWN)) index = ((index < 4) ? index + 1 : 4);
@@ -208,19 +215,23 @@ int main(void)
 				case 11:
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFF9800);
-					lcd->printfc(lcd->p, 8, "Sample 2");
+					lcd->printfc(lcd->p, 8, "Flash Test 1");
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
-					lcd->printfc(lcd->p, 48, "This is a sample.");
-					lcd->rect(lcd->p, 32, 64, 96, 96, 1);
+					lcd->tri(lcd->p, 64, 24, 112, 96, 16, 96, 1);
 					break;
 				case 12:
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFF9800);
-					lcd->printfc(lcd->p, 8, "Sample 3");
+					lcd->printfc(lcd->p, 8, "Flash Test 2");
 					lcd->colorb(lcd->p, 0x000000);
+					lcd->colorf(lcd->p, 0x3F51B5);
+					lcd->printfc(lcd->p, 24, "Flashing: 0x3F51B5");
+					lcd->rect(lcd->p, 16, 48, 112, 112, 1);
+					lcd->colorf(lcd->p, 0xB10000);
+					lcd->printfc(lcd->p, 24, "Flashing: 0xB10000");
+					lcd->rect(lcd->p, 16, 48, 112, 112, 1);
 					lcd->colorf(lcd->p, 0xFFFFFF);
-					lcd->printfc(lcd->p, 48, "This is a sample.");
 					break;
 				case 13:
 					lcd->colorb(lcd->p, 0x000000);
@@ -259,8 +270,8 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-		HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_TogglePin(LEDA_GPIO_Port, LEDA_Pin);
+		HAL_GPIO_TogglePin(LEDB_GPIO_Port, LEDB_Pin);
 		checkSD();
 	}
   /* USER CODE END 3 */
@@ -576,6 +587,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				index -= 10;
 				lcd->clear(lcd->p);
 				HAL_TIM_Base_Stop_IT(&htim6);
+				HAL_GPIO_WritePin(LBEEP_GPIO_Port, LBEEP_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(RBEEP_GPIO_Port, RBEEP_Pin, GPIO_PIN_RESET);
 			}
 		}
 		beeperInerrupt();
