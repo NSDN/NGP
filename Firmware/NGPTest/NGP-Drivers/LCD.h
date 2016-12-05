@@ -12,6 +12,13 @@
 
 #define IOBUF_SIZE 128
 
+static uint16_t _buf[] = {
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
 //#define LCD_USE_PRIVATE_FUN
 
 typedef enum {
@@ -396,34 +403,24 @@ void _lcd_bitmaptc(pLCD* p, uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint32_t
 void _lcd_bitmaps(pLCD* p, uint8_t x, uint8_t y, uint8_t w, uint8_t h, const unsigned char* data) {
 	uint32_t c = 0;
 	for (uint8_t m = 0; m < h; m += 8) {
-		for (uint8_t i = 0; i < w; i++) {
-			_lcd_setPosition(p, x + i, y + m, x + i, y + m + 8);
+		for (uint8_t n = 0; n < w; n += 8) {
+			for (uint8_t i = 0; i < 8; i++) {
+				for (uint8_t j = 0; j < 8; j++)
+					if (data[c] & (1 << j))
+						_buf[i + j * 8] = p->foreColor;
+					else 
+						_buf[i + j * 8] = p->backColor;
+				c++;
+			}
+			_lcd_setPosition(p, x + n, y + m, x + n + 7, y + m + 7);
 			_lcd_writeCommand(p, 0x2C);
-			for (uint8_t j = 0; j < 8; j++)
-				if (data[c] & (1 << j))
-					_lcd_writeData16(p, p->foreColor);
-				else 
-					_lcd_writeData16(p, p->backColor);
-			c++;
+			_lcd_writeData16s(p, _buf, 64);
 		}
 	}
 }
 
 void _lcd_bitmapsc(pLCD* p, uint8_t x, uint8_t y, uint8_t w, uint8_t h, const unsigned char* data) {
-	uint32_t c = 0;
-	for (uint8_t m = 0; m < h; m += 8) {
-		for (uint8_t i = 0; i < w; i++) {
-			_lcd_setPosition(p, x - w / 2 + i, y - h / 2 + m, x - w / 2 + i, y - h / 2 + m + 7);
-			_lcd_writeCommand(p, 0x2C);
-			for (uint8_t j = 0; j < 8; j++) {
-				if (data[c] & (1 << j))
-					_lcd_writeData16(p, p->foreColor);
-				else 
-					_lcd_writeData16(p, p->backColor);
-			}
-			c++;
-		}
-	}
+	_lcd_bitmaps(p, x - w / 2, y - h / 2, w, h, data);
 }
 
 void _lcd_draw(pLCD* p, uint8_t x, uint8_t y, char character) {
@@ -432,34 +429,37 @@ void _lcd_draw(pLCD* p, uint8_t x, uint8_t y, char character) {
 	{
 		if (x >= 128) { x = 0; y = y + 16; }
 		for (uint8_t i = 0; i < 8; i++) {
-			_lcd_setPosition(p, x + i, y, x + i, y + 7);
-			_lcd_writeCommand(p, 0x2C);
-			for (uint8_t j = 0; j < 8; j++)
+			for (uint8_t j = 0; j < 8; j++) {
 				if (__FONTS_BIG_[c * 16 + i] & (1 << j))
-					_lcd_writeData16(p, p->foreColor);
+					_buf[i + j * 8] = p->foreColor;
 				else 
-					_lcd_writeData16(p, p->backColor);
+					_buf[i + j * 8] = p->backColor;
+			}
 		}
 		for (uint8_t i = 0; i < 8; i++) {
-			_lcd_setPosition(p, x + i, y + 8, x + i, y + 15);
-			_lcd_writeCommand(p, 0x2C);
-			for (uint8_t j = 0; j < 8; j++)
+			for (uint8_t j = 0; j < 8; j++) {
 				if (__FONTS_BIG_[c * 16 + i + 8] & (1 << j))
-					_lcd_writeData16(p, p->foreColor);
+					_buf[i + j * 8 + 64] = p->foreColor;
 				else 
-					_lcd_writeData16(p, p->backColor);
+					_buf[i + j * 8 + 64] = p->backColor;
+			}
 		}
+		_lcd_setPosition(p, x, y, x + 7, y + 15);
+		_lcd_writeCommand(p, 0x2C);
+		_lcd_writeData16s(p, _buf, 128);
 	} else {
 		if (x >= 128) { x = 0; y = y + 8; }
 		for (uint8_t i = 0; i < 6; i++) {
-			_lcd_setPosition(p, x + i, y, x + i, y + 7);
-			_lcd_writeCommand(p, 0x2C);
-			for (uint8_t j = 0; j < 8; j++)
+			for (uint8_t j = 0; j < 8; j++) {
 				if (__FONTS_SMALL_[c][i] & (1 << j))
-					_lcd_writeData16(p, p->foreColor);
+					_buf[i + j * 6] = p->foreColor;
 				else 
-					_lcd_writeData16(p, p->backColor);
+					_buf[i + j * 6] = p->backColor;
+			}
 		}
+		_lcd_setPosition(p, x, y, x + 5, y + 7);
+		_lcd_writeCommand(p, 0x2C);
+		_lcd_writeData16s(p, _buf, 48);
 	}
 }
 
@@ -537,7 +537,7 @@ LCD* LCDInit(
 	p->Font = Small;
 	p->backColor = 0x0000;
 	p->foreColor = 0xFFFF;
-	
+			
 	LCD* c = malloc(sizeof(LCD));
 	c->p = p;
 	#ifdef LCD_USE_PRIVATE_FUN

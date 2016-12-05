@@ -156,7 +156,7 @@ int main(void)
 	lcd->colorb(lcd->p, 0xFFFFFF);
 	lcd->colorf(lcd->p, 0x000000);
 	lcd->clear(lcd->p);
-	lcd->bitmapsc(lcd->p, 63, 63, 128, 64, __NYAGAME_LOGO_);
+	lcd->bitmapsc(lcd->p, 63, 63, 64, 64, __NYAGAME_LOGO_);
 	HAL_Delay(2000);
 	lcd->colorb(lcd->p, 0x000000);
 	lcd->colorf(lcd->p, 0xFFFFFF);
@@ -245,7 +245,7 @@ int main(void)
 					playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, 1);
 					break;
 				case 14:
-					lcd->bitmapsc(lcd->p, 63, 63, 128, 64, __NYAGAME_LOGO_);
+					lcd->bitmapsc(lcd->p, 63, 63, 64, 64, __NYAGAME_LOGO_);
 					lcd->colorf(lcd->p, 0xFF9800);
 					lcd->printfc(lcd->p, 100, "NyaGame Portable");
 					lcd->printfc(lcd->p, 110, "dev161126");
