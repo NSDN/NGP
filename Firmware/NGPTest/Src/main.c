@@ -196,9 +196,25 @@ int main(void)
 			if (waitKeyUp(RPAD_UP)) {
 				index += 10;
 				lcd->clear(lcd->p);
-				if (index == 13) {
-					HAL_TIM_Base_Start_IT(&htim6);
-					setVolume(2);
+				
+				switch (index) {
+					case 10:
+						break;
+					case 11:
+						break;
+					case 12:
+						break;
+					case 13:
+						HAL_TIM_Base_Start_IT(&htim6);
+						setVolume(2);
+						break;
+					case 14:
+						lcd->colorb(lcd->p, 0xFFFFFF);
+						lcd->colorf(lcd->p, 0x000000);
+						lcd->clear(lcd->p);
+						break;
+					default:
+						break;
 				}
 			}
 		} else if (index < 20) {
@@ -245,10 +261,12 @@ int main(void)
 					playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, 1);
 					break;
 				case 14:
-					lcd->bitmapsc(lcd->p, 63, 63, 64, 64, __NYAGAME_LOGO_);
-					lcd->colorf(lcd->p, 0xFF9800);
-					lcd->printfc(lcd->p, 100, "NyaGame Portable");
-					lcd->printfc(lcd->p, 110, "dev161126");
+					lcd->colorb(lcd->p, 0xFFFFFF);
+					lcd->colorf(lcd->p, 0x000000);
+					lcd->bitmapsc(lcd->p, 63, 48, 64, 64, __NYAGAME_LOGO_);
+					lcd->printfc(lcd->p, 86, "NyaGame Portable");
+					lcd->printfc(lcd->p, 98, "dev161206");
+					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					break;
 				default:
@@ -259,6 +277,23 @@ int main(void)
 				if (waitKeyUp(RPAD_RIGHT)) {
 					index -= 10;
 					lcd->clear(lcd->p);
+					
+					switch (index) {
+						case 10:
+							break;
+						case 11:
+							break;
+						case 12:
+							break;
+						case 13:
+							HAL_TIM_Base_Start_IT(&htim6);
+							setVolume(2);
+							break;
+						case 14:
+							break;
+						default:
+							break;
+					}
 				}
 			}
 		} else {
