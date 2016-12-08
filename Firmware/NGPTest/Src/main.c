@@ -89,6 +89,89 @@ static void MX_TIM7_Init(void);
 /* USER CODE BEGIN PFP */
 	/* Private function prototypes -----------------------------------------------*/
 
+/** STG Begin *********************************************************************/
+
+#define STG_BACK 1
+#define STG_MAIN 2
+#define STG_COLORB 0x000000
+
+#define RANGE_X1 4
+#define RANGE_Y1 4
+#define RANGE_X2 92
+#define RANGE_Y2 123
+
+void onInitPlayer(void);
+void onUpdatePlayer(void);
+struct Player {
+	uint32_t color;
+	uint8_t size;
+	float x;
+	float y;
+	float prevX;
+	float prevY;
+	void (*onInit)();
+	void (*onUpdate)();
+} player = { 0xFF9800, 1,
+	(RANGE_X2 + RANGE_X1) / 2, 108,
+	(RANGE_X2 + RANGE_X1) / 2, 108,
+	&onInitPlayer,
+	&onUpdatePlayer
+};
+void onInitPlayer() {
+	player.x = (RANGE_X2 + RANGE_X1) / 2;
+	player.y = 108;
+}
+void onUpdatePlayer() {
+	player.prevX = player.x; player.prevY = player.y;
+	if (checkKey(LPAD_LEFT)) { player.x -= 0.5; }
+	if (checkKey(LPAD_RIGHT)) { player.x += 0.5; }
+	if (checkKey(LPAD_UP)) { player.y -= 0.5; }
+	if (checkKey(LPAD_DOWN)) { player.y += 0.5; }
+
+	if (player.x > RANGE_X2 - player.size) player.x = RANGE_X2 - player.size;
+	if (player.x < RANGE_X1 + player.size) player.x = RANGE_X1 + player.size;
+	if (player.y > RANGE_Y2 - player.size) player.y = RANGE_Y2 - player.size;
+	if (player.y < RANGE_Y1 + player.size) player.y = RANGE_Y1 + player.size;
+
+	if ((char) player.x != (char) player.prevX || (char) player.y != (char) player.prevY) {
+		lcd->colorf(lcd->p, STG_COLORB);
+		lcd->rect(lcd->p,
+			player.prevX - player.size, player.prevY - player.size,
+			player.prevX + player.size, player.prevY + player.size,
+			1
+		);
+	}
+	lcd->colorf(lcd->p, player.color);
+	lcd->rect(lcd->p,
+		player.x - player.size, player.y - player.size,
+		player.x + player.size, player.y + player.size,
+		1
+	);
+}
+
+void STG(uint8_t type) {
+	if (type == STG_BACK) {
+		lcd->colorf(lcd->p, 0xFFFFFF);
+		lcd->rect(lcd->p, RANGE_X1 - 4, RANGE_Y1 - 4, RANGE_X2 + 4, RANGE_Y2 + 4, 1);
+		lcd->colorf(lcd->p, STG_COLORB);
+		lcd->rect(lcd->p, RANGE_X1 - 2, RANGE_Y1 - 2, RANGE_X2 + 2, RANGE_Y2 + 2, 1);
+		lcd->colorf(lcd->p, 0xFFFFFF);
+		lcd->rect(lcd->p, RANGE_X1 - 1, RANGE_Y1 - 1, RANGE_X2 + 1, RANGE_Y2 + 1, 0);
+		lcd->colorf(lcd->p, 0x7986CB);
+		lcd->font(lcd->p, Big);
+		lcd->draw(lcd->p, RANGE_X2 + 12, RANGE_Y1 + 4, 'T');
+		lcd->draw(lcd->p, RANGE_X2 + 12 + 8, RANGE_Y1 + 4, 'H');
+		lcd->font(lcd->p, Small);
+		lcd->colorf(lcd->p, 0xFFFFFF);
+		
+		player.onInit();
+	} else if (type == STG_MAIN) {
+		player.onUpdate();
+	}
+}
+
+/** STG End ***********************************************************************/
+
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -103,14 +186,14 @@ void checkSD() {
 	if (sdOK == 1) {
 		lcd->colorb(lcd->p, 0x66CCFF);
 		lcd->colorf(lcd->p, 0x000000);
-		lcd->print(lcd->p, 0, 1, "SD");
+		lcd->print(lcd->p, 113, 118, "SD");
 		lcd->colorf(lcd->p, 0x66CCFF);
-		lcd->rect(lcd->p, 0, 0, 12, 8, 0);
+		lcd->rect(lcd->p, 113, 117, 125, 125, 0);
 		lcd->colorb(lcd->p, 0x000000);
 		lcd->colorf(lcd->p, 0xFFFFFF);
 	} else {
 		lcd->colorf(lcd->p, 0x000000);
-		lcd->rect(lcd->p, 0, 0, 12, 8, 1);
+		lcd->rect(lcd->p, 113, 117, 125, 125, 1);
 		lcd->colorf(lcd->p, 0xFFFFFF);
 	}
 }
@@ -178,9 +261,9 @@ int main(void)
 			lcd->printfc(lcd->p, 8, "MENU");
 			lcd->colorb(lcd->p, 0x000000);
 			lcd->colorf(lcd->p, 0xFFFFFF);
-			lcd->printfc(lcd->p, 24, "Sample 1");
-			lcd->printfc(lcd->p, 32, "Flash Test 1");
-			lcd->printfc(lcd->p, 40, "Flash Test 2");
+			lcd->printfc(lcd->p, 24, "Sample");
+			lcd->printfc(lcd->p, 32, "STG Sample");
+			lcd->printfc(lcd->p, 40, "Flash Test");
 			lcd->printfc(lcd->p, 48, "NSDN-Beeper");
 			lcd->printfc(lcd->p, 56, "About this NGP");
 			
@@ -201,6 +284,7 @@ int main(void)
 					case 10:
 						break;
 					case 11:
+						STG(STG_BACK);
 						break;
 					case 12:
 						break;
@@ -222,24 +306,19 @@ int main(void)
 				case 10:
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFF9800);
-					lcd->printfc(lcd->p, 8, "Sample 1");
+					lcd->printfc(lcd->p, 8, "Sample");
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					lcd->printfc(lcd->p, 48, "This is a sample.");
 					lcd->printfc(lcd->p, 64, "32's HEX: %X", 32);
 					break;
 				case 11:
-					lcd->colorb(lcd->p, 0x000000);
-					lcd->colorf(lcd->p, 0xFF9800);
-					lcd->printfc(lcd->p, 8, "Flash Test 1");
-					lcd->colorb(lcd->p, 0x000000);
-					lcd->colorf(lcd->p, 0xFFFFFF);
-					lcd->tri(lcd->p, 64, 24, 112, 96, 16, 96, 1);
+					STG(STG_MAIN);
 					break;
 				case 12:
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFF9800);
-					lcd->printfc(lcd->p, 8, "Flash Test 2");
+					lcd->printfc(lcd->p, 8, "Flash Test");
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0x3F51B5);
 					lcd->printfc(lcd->p, 24, "Flashing: 0x3F51B5");
@@ -273,7 +352,13 @@ int main(void)
 					break;
 			}
 			
-			if (index != 13) {
+			if (index == 11) {
+				if (waitKeyUp(RPAD_DOWN)) {
+					index -= 10;
+					lcd->clear(lcd->p);
+				}
+			}
+			if (index != 13 && index != 11) {
 				if (waitKeyUp(RPAD_RIGHT)) {
 					index -= 10;
 					lcd->clear(lcd->p);

@@ -276,7 +276,8 @@ void _lcd_pixel(pLCD* p, uint8_t x, uint8_t y) {
 
 void _lcd_line(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2) {
 	if (x1 == x2) {
-		for (float dy = 0; dy <= y2 - y1; dy += 1) {
+		float absY = _lcd_abs(y2 - y1), sig = (y2 - y1) / absY;
+		for (float dy = 0; _lcd_abs(dy) <= absY; dy += sig) {
 			_lcd_setPosition(p, x1, y1 + dy, x1, y1 + dy);
 			_lcd_writeCommand(p, 0x2C);
 			_lcd_writeData16(p, p->foreColor);

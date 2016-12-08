@@ -7,14 +7,18 @@
 
 #pragma region /NGP-Driver/LCD.h
 
-void pixel(SDL_Renderer* render, uint8_t x, uint8_t y) {
+static uint8_t CMD_BUF;
+static uint16_t LCD_PTR;
+
+static uint8_t EMU_SPEED = 0;
+
+void _PIXEL_(SDL_Renderer* render, uint8_t x, uint8_t y) {
 	pixelRect.x = x * pixelRect.w;
 	pixelRect.y = y * pixelRect.h;
 	SDL_RenderFillRect(renderer, &pixelRect);
+	//if (EMU_SPEED > 0 && (LCD_PTR % EMU_SPEED == 0 || rect.w * rect.h <= EMU_SPEED))
+	//	SDL_RenderPresent(renderer);
 }
-
-static uint8_t CMD_BUF;
-static uint16_t LCD_PTR;
 
 #include "Fonts.h"
 
@@ -71,7 +75,7 @@ typedef struct {
 
 void _lcd_writeCommand(pLCD* p, uint8_t cmd) {
 	CMD_BUF = cmd;
-	if (CMD_BUF == 0x2C) SDL_RenderPresent(renderer);
+	//if (EMU_SPEED == 0 && CMD_BUF == 0x2C) SDL_RenderPresent(renderer);
 }
 
 void _lcd_writeData(pLCD* p, uint8_t data) {
@@ -87,9 +91,10 @@ void _lcd_writeData16(pLCD* p, uint16_t data) {
 				(data & 0x1F) * 8.226,
 				255
 			);
-			pixel(renderer, rect.x + LCD_PTR % rect.w, rect.y + LCD_PTR / rect.w);
+			_PIXEL_(renderer, rect.x + LCD_PTR % rect.w, rect.y + LCD_PTR / rect.w);
 			LCD_PTR += 1;
 		} else LCD_PTR = 0;
+		SDL_RenderPresent(renderer);
 	}
 }
 
@@ -102,10 +107,11 @@ void _lcd_writeData16s(pLCD* p, uint16_t* data, uint32_t length) {
 				(data[LCD_PTR] & 0x1F) * 8.226,
 				255
 			);
-			pixel(renderer, rect.x + LCD_PTR % rect.w, rect.y + LCD_PTR / rect.w);
+			_PIXEL_(renderer, rect.x + LCD_PTR % rect.w, rect.y + LCD_PTR / rect.w);
 			LCD_PTR += 1;
 			if (LCD_PTR >= length) break;
 		}
+		SDL_RenderPresent(renderer);
 	}
 }
 
@@ -118,10 +124,11 @@ void _lcd_flashData16(pLCD* p, uint16_t data, uint32_t count) {
 			255
 		);
 		while (LCD_PTR < rect.w * rect.h) {
-			pixel(renderer, rect.x + LCD_PTR % rect.w, rect.y + LCD_PTR / rect.w);
+			_PIXEL_(renderer, rect.x + LCD_PTR % rect.w, rect.y + LCD_PTR / rect.w);
 			LCD_PTR += 1;
 			if (LCD_PTR >= count) break;
 		}
+		SDL_RenderPresent(renderer);
 	}
 }
 
@@ -296,21 +303,17 @@ void _lcd_pixel(pLCD* p, uint8_t x, uint8_t y) {
 }
 
 void _lcd_line(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2) {
-	float k = (float)(y2 - y1) / (float)(x2 - x1), tmp = 0;
-	if (y2 < y1 || x2 < x1) {
-		tmp = y2; y2 = y1; y1 = tmp;
-		tmp = x2; x2 = x1; x1 = tmp;
-		k = (float)(y2 - y1) / (float)(x2 - x1);
-	}
 	if (x1 == x2) {
-		for (float dy = 0; dy <= y2 - y1; dy += 1) {
+		float absY = _lcd_abs(y2 - y1), sig = (y2 - y1) / absY;
+		for (float dy = 0; _lcd_abs(dy) <= absY; dy += sig) {
 			_lcd_setPosition(p, x1, y1 + dy, x1, y1 + dy);
 			_lcd_writeCommand(p, 0x2C);
 			_lcd_writeData16(p, p->foreColor);
 		}
-	}
-	else {
-		for (float dx = 0, dy = 0; dx <= x2 - x1; dx += 1, dy += k) {
+	} else {
+		float k = (float)(y2 - y1) / (float)(x2 - x1), absX = _lcd_abs(x2 - x1);
+		float sig = (x2 - x1) / absX;
+		for (float dx = 0, dy = 0; _lcd_abs(dx) <= absX; dx += sig, dy += k) {
 			_lcd_setPosition(p, x1 + dx, y1 + dy, x1 + dx, y1 + dy);
 			_lcd_writeCommand(p, 0x2C);
 			_lcd_writeData16(p, p->foreColor);
@@ -327,31 +330,38 @@ void _lcd_tri(pLCD* p, uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t x
 		uint8_t minx = (x1 < x2) ? ((x1 < x3) ? x1 : x3) : ((x1 < x3) ? (x2) : ((x2 < x3) ? x2 : x3));
 		uint8_t midx = (x1 == maxx) ? ((x2 == minx) ? x3 : x2) : ((x1 == minx) ? ((x2 == maxx) ? x3 : x2) : x1);
 
-		float k1, k2; uint8_t xs, xe, tmp;
-		k1 = (float)(maxy - miny) / (float)(maxx - minx);
+		float k1, k2; uint8_t xs, xe, tmp, sig, absY;
+		if (maxx == minx) k1 = 65535;
+		else k1 = (float)(maxy - miny) / (float)(maxx - minx);
 
-		k2 = (float)(midy - miny) / (float)(midx - minx);
-		for (uint8_t i = miny; i <= midy - miny; i++) {
+		if (midx == minx) k2 = 65535;
+		else k2 = (float)(midy - miny) / (float)(midx - minx);
+		if (midy == miny) absY = midy;
+		else absY = _lcd_abs(midy - miny);
+		sig = (midy - miny) / absY;
+		if (sig == 0) sig = 1;
+		for (uint8_t i = miny; _lcd_abs(i) <= absY; i += sig) {
 			xs = (float)(i - miny) / k1 + (float)minx;
 			xe = (float)(i - miny) / k2 + (float)minx;
 			if (xe < xs) { tmp = xe; xe = xs; xs = tmp; }
 			_lcd_setPosition(p, xs, i, xe, i);
 			_lcd_writeCommand(p, 0x2C);
-			for (uint8_t j = 0; j <= xe - xs; j++) {
-				_lcd_writeData16(p, p->foreColor);
-			}
+			_lcd_flashData16(p, p->foreColor, xe - xs + 1);
 		}
 
-		k2 = (float)(maxy - midy) / (float)(maxx - midx);
-		for (uint8_t i = midy; i <= maxy - midy; i++) {
+		if (maxx == midx) k2 = 65535;
+		else k2 = (float)(maxy - midy) / (float)(maxx - midx);
+		if (maxy == midy) absY = maxy;
+		else absY = _lcd_abs(maxy - midy);
+		sig = (maxy - midy) / absY;
+		if (sig == 0) sig = 1;
+		for (uint8_t i = midy; _lcd_abs(i) <= absY; i += sig) {
 			xs = (i - miny) / k1 + minx;
 			xe = (i - midy) / k2 + midx;
 			if (xe < xs) { tmp = xe; xe = xs; xs = tmp; }
 			_lcd_setPosition(p, xs, i, xe, i);
 			_lcd_writeCommand(p, 0x2C);
-			for (uint8_t j = 0; j <= xe - xs; j++) {
-				_lcd_writeData16(p, p->foreColor);
-			}
+			_lcd_flashData16(p, p->foreColor, xe - xs + 1);
 		}
 	}
 	else {
