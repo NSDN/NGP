@@ -123,10 +123,10 @@ void onInitPlayer() {
 }
 void onUpdatePlayer() {
 	player.prevX = player.x; player.prevY = player.y;
-	if (checkKey(LPAD_LEFT)) { player.x -= 0.5; }
-	if (checkKey(LPAD_RIGHT)) { player.x += 0.5; }
-	if (checkKey(LPAD_UP)) { player.y -= 0.5; }
-	if (checkKey(LPAD_DOWN)) { player.y += 0.5; }
+	if (checkKey(LPAD_LEFT)) { player.x -= 0.4; }
+	if (checkKey(LPAD_RIGHT)) { player.x += 0.4; }
+	if (checkKey(LPAD_UP)) { player.y -= 0.4; }
+	if (checkKey(LPAD_DOWN)) { player.y += 0.4; }
 
 	if (player.x > RANGE_X2 - player.size) player.x = RANGE_X2 - player.size;
 	if (player.x < RANGE_X1 + player.size) player.x = RANGE_X1 + player.size;
@@ -234,6 +234,8 @@ int main(void)
 			LCD_CS_GPIO_Port, LCD_CS_Pin,
 			LCD_RST_GPIO_Port, LCD_RST_Pin,
 			LCD_BK_GPIO_Port, LCD_BK_Pin);
+			
+	lcd->reset(lcd->p);
 	
 	lcd->init(lcd->p);
 	lcd->colorb(lcd->p, 0xFFFFFF);
