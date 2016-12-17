@@ -213,7 +213,7 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
-
+  HAL_Delay(100);
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
@@ -227,6 +227,14 @@ int main(void)
   MX_TIM7_Init();
 
   /* USER CODE BEGIN 2 */
+	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET && sdOK == 0) {
+		HAL_SD_Init(&hsd, &SDCardInfo);
+		sdOK = 1;
+	} else if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_SET && sdOK == 1) {
+		HAL_SD_DeInit(&hsd);
+		sdOK = 0;	
+	}
+  
 	HAL_Delay(500);
 	
 	lcd = LCDInit(&hspi1, 
@@ -470,7 +478,7 @@ static void MX_SDIO_SD_Init(void)
   hsd.Init.ClockPowerSave = SDIO_CLOCK_POWER_SAVE_DISABLE;
   hsd.Init.BusWide = SDIO_BUS_WIDE_1B;
   hsd.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
-  hsd.Init.ClockDiv = 0;
+  hsd.Init.ClockDiv = 3;
 
 }
 

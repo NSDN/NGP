@@ -1,8 +1,7 @@
 /**
   ******************************************************************************
-  * @file           : USB_DEVICE  
-  * @version        : v1.0_Cube
-  * @brief          : This file implements the USB Device 
+  * @file           : usbd_storage_if.h
+  * @brief          : header file for the usbd_storage_if.c file
   ******************************************************************************
   *
   * Copyright (c) 2016 STMicroelectronics International N.V. 
@@ -42,36 +41,92 @@
   ******************************************************************************
 */
 
+/* Define to prevent recursive inclusion -------------------------------------*/
+
+#ifndef __USBD_STORAGE_IF_H_
+#define __USBD_STORAGE_IF_H_
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
 /* Includes ------------------------------------------------------------------*/
-
-#include "usb_device.h"
-#include "usbd_core.h"
-#include "usbd_desc.h"
 #include "usbd_msc.h"
-#include "usbd_storage_if.h"
+/* USER CODE BEGIN INCLUDE */
+/* USER CODE END INCLUDE */
 
-/* USB Device Core handle declaration */
-USBD_HandleTypeDef hUsbDeviceFS;
+/** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
+  * @{
+  */
+  
+/** @defgroup USBD_STORAGE
+  * @brief header file for the USBD_STORAGE.c file
+  * @{
+  */ 
 
-/* init function */				        
-void MX_USB_DEVICE_Init(void)
-{
-  /* Init Device Library,Add Supported Class and Start the library*/
-  USBD_Init(&hUsbDeviceFS, &FS_Desc, DEVICE_FS);
+/** @defgroup USBD_STORAGE_Exported_Defines
+  * @{
+  */ 
+/* USER CODE BEGIN EXPORTED_DEFINES */
+/* USER CODE END  EXPORTED_DEFINES */
 
-  USBD_RegisterClass(&hUsbDeviceFS, &USBD_MSC);
+/**
+  * @}
+  */ 
 
-  USBD_MSC_RegisterStorage(&hUsbDeviceFS, &USBD_Storage_Interface_fops_FS);
+/** @defgroup USBD_STORAGE_Exported_Types
+  * @{
+  */  
+/* USER CODE BEGIN EXPORTED_TYPES */
+/* USER CODE END  EXPORTED_TYPES */
 
-  USBD_Start(&hUsbDeviceFS);
+/**
+  * @}
+  */ 
 
+/** @defgroup USBD_STORAGE_Exported_Macros
+  * @{
+  */ 
+/* USER CODE BEGIN EXPORTED_MACRO */
+/* USER CODE END  EXPORTED_MACRO */
+
+/**
+  * @}
+  */ 
+
+/** @defgroup USBD_STORAGE_Exported_Variables
+  * @{
+  */ 
+  extern USBD_StorageTypeDef  USBD_Storage_Interface_fops_FS;
+
+/* USER CODE BEGIN EXPORTED_VARIABLES */
+/* USER CODE END  EXPORTED_VARIABLES */
+
+/**
+  * @}
+  */ 
+
+/** @defgroup USBD_STORAGE_Exported_FunctionsPrototype
+  * @{
+  */ 
+
+/* USER CODE BEGIN EXPORTED_FUNCTIONS */
+/* USER CODE END  EXPORTED_FUNCTIONS */
+/**
+  * @}
+  */ 
+
+/**
+  * @}
+  */ 
+
+/**
+  * @}
+  */ 
+  
+#ifdef __cplusplus
 }
-/**
-  * @}
-  */
+#endif
 
-/**
-  * @}
-  */
+#endif /* __USBD_STORAGE_IF_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -51,7 +51,7 @@
           <OutputName>NGPUsb</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath></ListingPath>
@@ -417,9 +417,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
           <GroupName>Middlewares/USB_Device_Library</GroupName>
           <Files>
             <File>
@@ -578,6 +575,9 @@
               <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
     </Target>

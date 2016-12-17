@@ -335,7 +335,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;    ../Drivers/STM32F1xx_HAL_Driver/Inc;    ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;    ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;    ../Drivers/CMSIS/Include;    ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;    ../Middlewares/Third_Party/FatFs/src/drivers;    ../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc;    ../Middlewares/Third_Party/FatFs/src;    ..\NGP-Drivers</IncludePath>
+              <IncludePath>../Inc;     ../Drivers/STM32F1xx_HAL_Driver/Inc;     ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;     ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;     ../Drivers/CMSIS/Include;     ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;     ../Middlewares/Third_Party/FatFs/src/drivers;     ../Middlewares/Third_Party/FatFs/src;     ..\NGP-Drivers;../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -530,11 +530,6 @@
               <FilePath>../Src/fatfs_platform.c</FilePath>
             </File>
             <File>
-              <FileName>usbd_dfu_if.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/usbd_dfu_if.c</FilePath>
-            </File>
-            <File>
               <FileName>fatfs.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/fatfs.c</FilePath>
@@ -548,6 +543,11 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/main.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_storage_if.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/usbd_storage_if.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -580,9 +580,24 @@
               <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c</FilePath>
             </File>
             <File>
-              <FileName>usbd_dfu.c</FileName>
+              <FileName>usbd_msc_bot.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/usbd_dfu.c</FilePath>
+              <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_msc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_msc_scsi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_msc_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c</FilePath>
             </File>
           </Files>
         </Group>
