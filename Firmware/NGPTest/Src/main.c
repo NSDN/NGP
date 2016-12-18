@@ -51,6 +51,7 @@
 #include "LCD.h"
 #include "Keypad.h"
 #include "Beeper.h"
+#include "Flash.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/

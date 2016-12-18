@@ -37,7 +37,7 @@
 
 #define DEFAULT_TIMEOUT 200
 
-enum partNumber {
+typedef enum {
     custom = -1,
     autoDetect = 0,
     W25Q80 = 1,
@@ -45,16 +45,16 @@ enum partNumber {
     W25Q32 = 4,
     W25Q64 = 8,
     W25Q128 = 16
-};
+} partNumber;
 
 typedef struct {
     partNumber pn;
     uint16_t id;
     uint32_t bytes;
-    uint16_t pages;
+    uint32_t pages;
     uint16_t sectors;
     uint16_t blocks;
-}pnListType;
+} pnListType;
   
 const static pnListType pnList[] = {
     { W25Q80, 0x4014,1048576, 4096, 256, 16  },
@@ -74,7 +74,7 @@ typedef struct {
 typedef struct {
     pFlash* p;
 
-    void        (*begin)            (pFlash* p);
+    uint8_t     (*begin)            (pFlash* p);
     void        (*end)              (pFlash* p);
 #ifdef FLASH_USE_PRIVATE
     void        (*select)           (pFlash* p);
@@ -119,6 +119,18 @@ typedef struct {
     uint64_t    (*readUniqueID)     (pFlash* p);
     uint16_t    (*readSR)           (pFlash* p);
 } Flash;
+
+void _flash_select(pFlash* p) {
+	return;
+}
+
+void _flash_deselect(pFlash* p) {
+	return;
+}
+ 
+uint8_t _flash_transfer(pFlash* p, uint8_t x) {
+	return 0;
+}
 
 uint16_t _flash_readSR(pFlash* p) {
     uint8_t r1,r2;
@@ -195,7 +207,7 @@ uint8_t _flash_checkPartNo(pFlash* p, partNumber _partno) {
     if(_partno == autoDetect) {
         for(int i = 0; i < sizeof(pnList) / sizeof(pnList[0]); i++) {
             if(id == pnList[i].id) {
-                _partno = pnList[i].pn);
+                _partno = pnList[i].pn;
                 return 1;
             }
         }
@@ -225,7 +237,7 @@ uint8_t _flash_busy(pFlash* p) {
     return 0;
 }
 
-void _flash_setWriteEnable(pFlash* p, uint8_t cmd = 1) {
+void _flash_setWriteEnable(pFlash* p, uint8_t cmd) {
     _flash_select(p);
     _flash_transfer(p, cmd ? W_EN : W_DE);
     _flash_deselect(p);
@@ -263,13 +275,13 @@ uint16_t _flash_blocks(pFlash* p) {
     return 0;
 }
 
-uint8_t _flash_begin(pFlash* p, partNumber _partno) {
+uint8_t _flash_begin(pFlash* p) {
     _flash_select(p);
     _flash_transfer(p, RELEASE);
     _flash_deselect(p);
     HAL_Delay(1); //>3us
     
-    if(!_flash_checkPartNo(p, _partno)) return 0;
+    if(!_flash_checkPartNo(p, p->partno)) return 0;
     return 1;
 }
 
@@ -280,7 +292,7 @@ void _flash_end(pFlash* p) {
     HAL_Delay(1); //>3us
 }
 
-uint16_t _flash_read(pFlash* p, uint32_t addr, uint8_t *buf, uint16_t n = 256) {
+uint16_t _flash_read(pFlash* p, uint32_t addr, uint8_t *buf, uint16_t n) {
     if(_flash_busy(p)) return 0;
     
     _flash_select(p);
@@ -353,18 +365,6 @@ void _flash_eraseResume(pFlash* p) {
     _flash_select(p);
     _flash_transfer(p, E_RESUME);
     _flash_deselect(p);
-}
-
-void _flash_select(pFlash* p) {
-
-}
-
-void _flash_deselect(pFlash* p) {
-
-}
- 
-uint8_t _flash_transfer(pFlash* p, uint8_t x) {
-
 }
 
 Flash* FlashInit(SPI_HandleTypeDef* hspi, GPIO_TypeDef* CSGroup, uint16_t CSIndex, partNumber partnum) {

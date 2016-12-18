@@ -679,6 +679,11 @@
               <FileType>5</FileType>
               <FilePath>..\NGP-Drivers\LCD.h</FilePath>
             </File>
+            <File>
+              <FileName>Flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\NGP-Drivers\Flash.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
