@@ -71,6 +71,7 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 	/* Private variables ---------------------------------------------------------*/
 	LCD* lcd;
+	Flash* flash;
 	static uint8_t sdOK = 0;
 	static uint8_t index = 0;
 /* USER CODE END PV */
@@ -238,6 +239,9 @@ int main(void)
   
 	HAL_Delay(500);
 	
+	flash = FlashInit(&hspi1,
+			FLASH_CS_GPIO_Port, FLASH_CS_Pin, W25Q64);
+	
 	lcd = LCDInit(&hspi1, 
 			LCD_DC_GPIO_Port, LCD_DC_Pin, 
 			LCD_CS_GPIO_Port, LCD_CS_Pin,
@@ -272,7 +276,7 @@ int main(void)
 			lcd->printfc(lcd->p, 8, "MENU");
 			lcd->colorb(lcd->p, 0x000000);
 			lcd->colorf(lcd->p, 0xFFFFFF);
-			lcd->printfc(lcd->p, 24, "Sample");
+			lcd->printfc(lcd->p, 24, "W25Q64 Test");
 			lcd->printfc(lcd->p, 32, "STG Sample");
 			lcd->printfc(lcd->p, 40, "Flash Test");
 			lcd->printfc(lcd->p, 48, "NSDN-Beeper");
@@ -317,11 +321,18 @@ int main(void)
 				case 10:
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFF9800);
-					lcd->printfc(lcd->p, 8, "Sample");
+					lcd->printfc(lcd->p, 8, "W25Q64 Test");
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
-					lcd->printfc(lcd->p, 48, "This is a sample.");
-					lcd->printfc(lcd->p, 64, "32's HEX: %X", 32);
+					lcd->printfc(lcd->p, 48, "Init W25Q64...");
+					uint8_t result, manuf, buf;
+					result = flash->begin(flash->p);
+					manuf = flash->readManufacturer(flash->p);
+					buf = flash->read(flash->p, 0x00000000, &buf, 1);
+					flash->end(flash->p);
+					lcd->printfc(lcd->p, 64, "Result: %X", result);
+					lcd->printfc(lcd->p, 72, "Manuf: %X", manuf);
+					lcd->printfc(lcd->p, 80, "Buf: %X", buf);
 					break;
 				case 11:
 					STG(STG_MAIN);
@@ -355,7 +366,7 @@ int main(void)
 					lcd->colorf(lcd->p, 0x000000);
 					lcd->bitmapsc(lcd->p, 63, 48, 64, 64, __NYAGAME_LOGO_);
 					lcd->printfc(lcd->p, 86, "NyaGame Portable");
-					lcd->printfc(lcd->p, 98, "dev161206");
+					lcd->printfc(lcd->p, 98, "dev161218");
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					break;
@@ -669,7 +680,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(SDST_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(FLASH_CS_GPIO_Port, FLASH_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(FLASH_CS_GPIO_Port, FLASH_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, LEDA_Pin|LEDB_Pin|RBEEP_Pin|LBEEP_Pin, GPIO_PIN_RESET);

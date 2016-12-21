@@ -6,6 +6,10 @@
 * for more information, please visit bbs.kechuang.org
 **/
 
+#ifndef __FLASH_H_
+#define __FLASH_H_
+
+
 #define W_EN 	0x06	//write enable
 #define W_DE	0x04	//write disable
 #define R_SR1	0x05	//read status reg 1
@@ -36,6 +40,8 @@
 #define WINBOND_MANUF	0xef
 
 #define DEFAULT_TIMEOUT 200
+
+#define DUMMY_BYTE 0xFF
 
 typedef enum {
     custom = -1,
@@ -121,27 +127,29 @@ typedef struct {
 } Flash;
 
 void _flash_select(pFlash* p) {
-	return;
+	HAL_GPIO_WritePin(p->CSPortGroup, p->CSPortIndex, GPIO_PIN_RESET);
 }
 
 void _flash_deselect(pFlash* p) {
-	return;
+	HAL_GPIO_WritePin(p->CSPortGroup, p->CSPortIndex, GPIO_PIN_SET);
 }
  
 uint8_t _flash_transfer(pFlash* p, uint8_t x) {
-	return 0;
+	uint8_t data = 0;
+	HAL_SPI_TransmitReceive(p->spi, &x, &data, 1, 1);
+	return data;
 }
 
 uint16_t _flash_readSR(pFlash* p) {
     uint8_t r1,r2;
     _flash_select(p);
     _flash_transfer(p, R_SR1);
-    r1 = _flash_transfer(p, 0xff);
+    r1 = _flash_transfer(p, DUMMY_BYTE);
     _flash_deselect(p);
     _flash_deselect(p); //some delay
     _flash_select(p);
     _flash_transfer(p, R_SR2);
-    r2 = _flash_transfer(p, 0xff);
+    r2 = _flash_transfer(p, DUMMY_BYTE);
     _flash_deselect(p);
     return (((uint16_t)r2) << 8) | r1;
 }
@@ -150,7 +158,7 @@ uint8_t _flash_readManufacturer(pFlash* p) {
     uint8_t c;
     _flash_select(p);
     _flash_transfer(p, R_JEDEC_ID);
-    c = _flash_transfer(p, 0x00);
+    c = _flash_transfer(p, DUMMY_BYTE);
     _flash_transfer(p, 0x00);
     _flash_transfer(p, 0x00);
     _flash_deselect(p);
@@ -170,7 +178,7 @@ uint64_t _flash_readUniqueID(pFlash* p) {
     //for little endian machine only
     for(int i = 7; i >= 0; i--)
     {
-        arr[i] = _flash_transfer(p, 0x00);
+        arr[i] = _flash_transfer(p, DUMMY_BYTE);
     }
     _flash_deselect(p);
     return uid;
@@ -181,8 +189,8 @@ uint16_t _flash_readPartID(pFlash* p) {
     _flash_select(p);
     _flash_transfer(p, R_JEDEC_ID);
     _flash_transfer(p, 0x00);
-    a = _flash_transfer(p, 0x00);
-    b = _flash_transfer(p, 0x00);
+    a = _flash_transfer(p, DUMMY_BYTE);
+    b = _flash_transfer(p, DUMMY_BYTE);
     _flash_deselect(p);
     return (a << 8) | b;
 }
@@ -193,9 +201,9 @@ uint8_t _flash_checkPartNo(pFlash* p, partNumber _partno) {
     
     _flash_select(p);
     _flash_transfer(p, R_JEDEC_ID);
-    manuf = _flash_transfer(p, 0x00);
-    id = _flash_transfer(p, 0x00) << 8;
-    id |= _flash_transfer(p, 0x00);
+    manuf = _flash_transfer(p, DUMMY_BYTE);
+    id = _flash_transfer(p, DUMMY_BYTE) << 8;
+    id |= _flash_transfer(p, DUMMY_BYTE);
     _flash_deselect(p);
     
     if(manuf != WINBOND_MANUF)
@@ -230,7 +238,7 @@ uint8_t _flash_busy(pFlash* p) {
     uint8_t r1;
     _flash_select(p);
     _flash_transfer(p, R_SR1);
-    r1 = _flash_transfer(p, 0xff);
+    r1 = _flash_transfer(p, DUMMY_BYTE);
     _flash_deselect(p);
     if(r1 & SR1_BUSY_MASK)
         return 1;
@@ -301,7 +309,7 @@ uint16_t _flash_read(pFlash* p, uint32_t addr, uint8_t *buf, uint16_t n) {
     _flash_transfer(p, addr >> 8);
     _flash_transfer(p, addr);
     for(uint16_t i = 0; i < n; i++) {
-        buf[i] = _flash_transfer(p, 0x00);
+        buf[i] = _flash_transfer(p, DUMMY_BYTE);
     }
     _flash_deselect(p);
     
@@ -309,6 +317,7 @@ uint16_t _flash_read(pFlash* p, uint32_t addr, uint8_t *buf, uint16_t n) {
 }
 
 void _flash_writePage(pFlash* p, uint32_t addr_start, uint8_t *buf) {
+	_flash_setWriteEnable(p, 1);
     _flash_select(p);
     _flash_transfer(p, PAGE_PGM);
     _flash_transfer(p, addr_start >> 16);
@@ -320,15 +329,20 @@ void _flash_writePage(pFlash* p, uint32_t addr_start, uint8_t *buf) {
         i++;
     } while (i != 0);
     _flash_deselect(p);
+	while (_flash_busy(p));
+	_flash_setWriteEnable(p, 0);
 }
 
 void _flash_eraseSector(pFlash* p, uint32_t addr_start) {
+	_flash_setWriteEnable(p, 1);
     _flash_select(p);
     _flash_transfer(p, SECTOR_E);
     _flash_transfer(p, addr_start >> 16);
     _flash_transfer(p, addr_start >> 8);
     _flash_transfer(p, addr_start);
     _flash_deselect(p);
+	while (_flash_busy(p));
+	_flash_setWriteEnable(p, 0);
 }
 
 void _flash_erase32kBlock(pFlash* p, uint32_t addr_start) {
@@ -406,3 +420,6 @@ Flash* FlashInit(SPI_HandleTypeDef* hspi, GPIO_TypeDef* CSGroup, uint16_t CSInde
 
     return c;
 }
+
+
+#endif
