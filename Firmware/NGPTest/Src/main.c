@@ -328,7 +328,7 @@ int main(void)
 					uint8_t result, manuf, buf;
 					result = flash->begin(flash->p);
 					manuf = flash->readManufacturer(flash->p);
-					buf = flash->read(flash->p, 0x00000000, &buf, 1);
+					flash->read(flash->p, 0x00000000, &buf, 1);
 					flash->end(flash->p);
 					lcd->printfc(lcd->p, 64, "Result: %X", result);
 					lcd->printfc(lcd->p, 72, "Manuf: %X", manuf);
@@ -665,10 +665,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LCD_CS_Pin LCD_DC_Pin LCD_RST_Pin SCL_Pin 
-                           SDA_Pin */
-  GPIO_InitStruct.Pin = LCD_CS_Pin|LCD_DC_Pin|LCD_RST_Pin|SCL_Pin 
-                          |SDA_Pin;
+  /*Configure GPIO pins : LCD_CS_Pin LCD_DC_Pin LCD_RST_Pin SCL_Pin */
+  GPIO_InitStruct.Pin = LCD_CS_Pin|LCD_DC_Pin|LCD_RST_Pin|SCL_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -678,6 +676,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(SDST_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SDA_Pin */
+  GPIO_InitStruct.Pin = SDA_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(SDA_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(FLASH_CS_GPIO_Port, FLASH_CS_Pin, GPIO_PIN_SET);
