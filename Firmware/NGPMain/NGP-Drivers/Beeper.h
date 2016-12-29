@@ -31,13 +31,12 @@ void beeperInerrupt() {
 	OUT_B_COUNT += 1;
 }
 
-static uint8_t mode = 1;
-static uint8_t state = 1;
-static uint8_t jump = 0;
-void jumpOut() { jump = 1; }
+static uint8_t _state = 1;
+void setState(uint8_t v) { _state = v; }
+uint8_t getState() { return _state; }
 
-static uint8_t trans = 0;
-void trMode() { trans = 1; }
+static uint8_t _jump = 0;
+void jumpOut() { _jump = 1; }
 
 void setVolume(unsigned char vol) {
 	OUT_A_COUNT_POS = OUT_B_COUNT_POS = vol > 5 ? 5 : vol;
@@ -47,9 +46,9 @@ void playMusic(const unsigned short* symbol, const char* music, unsigned short l
 	unsigned short i;
 	char step;
 	for (i = 0; i < length; i++) {
-		while (!state && withControl);
-		if ((jump && withControl) || trans) { 
-			jump = 0; trans = 0;
+		while (!_state && withControl);
+		if (_jump && withControl) { 
+			_jump = 0;
 			OUT_A_COUNT_SUM = 0;
 			OUT_B_COUNT_SUM = 0;
 			return; 
@@ -70,9 +69,9 @@ void playMusicWithSpace(const unsigned short* symbol, const char* music, unsigne
 	unsigned short i;
 	char step;
 	for (i = 0; i < length; i++) {
-		while (!state && withControl);
-		if ((jump && withControl) || trans) { 
-			jump = 0; trans = 0;
+		while (!_state && withControl);
+		if (_jump && withControl) { 
+			_jump = 0;
 			OUT_A_COUNT_SUM = 0;
 			OUT_B_COUNT_SUM = 0;
 			return; 

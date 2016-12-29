@@ -72,6 +72,13 @@ UART_HandleTypeDef huart2;
 	Flash* flash;
 	static uint8_t sdOK = 0;
 	static uint8_t index = 0;
+	static uint8_t music = 0;
+	
+	FATFS fileSystem;
+	FIL testFile;
+	uint8_t testBuffer[16] = "Hello Gensokyo!\0";
+	UINT testBytes;
+	FRESULT res;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -223,7 +230,6 @@ int main(void)
   MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN 2 */
-	//HAL_GPIO_WritePin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin, GPIO_PIN_SET);
 	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET && sdOK == 0) {
 		HAL_SD_Init(&hsd, &SDCardInfo);
 		sdOK = 1;
@@ -257,6 +263,22 @@ int main(void)
 	
 	HAL_GPIO_WritePin(LEDA_GPIO_Port, LEDA_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LEDB_GPIO_Port, LEDB_Pin, GPIO_PIN_SET);
+	
+	{
+		
+		f_mount(&fileSystem, SD_Path, 1);
+		if(f_mount(&fileSystem, SD_Path, 1) == FR_OK) {
+			uint8_t path[13] = "NYA_GAME.TXT";
+			path[12] = '\0';
+		 
+			res = f_open(&testFile, (char*)path, FA_WRITE | FA_CREATE_ALWAYS);
+		 
+			res = f_write(&testFile, testBuffer, 16, &testBytes);
+		 
+			res = f_close(&testFile);
+		}
+	
+	}
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -300,6 +322,7 @@ int main(void)
 					case 13:
 						HAL_TIM_Base_Start_IT(&htim10);
 						setVolume(2);
+						music = 0;
 						break;
 					case 14:
 						lcd->colorb(lcd->p, 0xFFFFFF);
@@ -351,16 +374,45 @@ int main(void)
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					lcd->printfc(lcd->p, 32, "NOW Playing...");
-					lcd->printfc(lcd->p, 48, "Remilia");
-					lcd->printfc(lcd->p, 56, "Scarlet");
-					playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, 1);
+					switch (music) {
+						case 0:
+							lcd->printfc(lcd->p, 48, "5 of 1");
+							lcd->printfc(lcd->p, 64, "Septet for");
+							lcd->printfc(lcd->p, 72, "the Dead Princess");
+							playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, 1);
+							break;
+						case 1:
+							lcd->printfc(lcd->p, 48, "5 of 2");
+							lcd->printfc(lcd->p, 64, "The Way of Doom God");
+							lcd->printfc(lcd->p, 72, "- Dark Road -");
+							playMusicWithSpace(SYMBOL, MID_hina, MID_hina_LENGTH, 233, 16, 1);
+							break;
+						case 2:
+							lcd->printfc(lcd->p, 48, "5 of 3");
+							lcd->printfc(lcd->p, 64, "Romantic Escape");
+							lcd->printfc(lcd->p, 72, "Flight & Foul for");
+							lcd->printfc(lcd->p, 80, "Impossible Bullets"); 
+							playMusicWithSpace(SYMBOL, MID_seija, MID_seija_LENGTH, 233, 16, 1);
+							break;
+						case 3:
+							lcd->printfc(lcd->p, 48, "5 of 4");
+							lcd->printfc(lcd->p, 64, "Lively and Innocent");
+							lcd->printfc(lcd->p, 72, "Girl (9)");
+							playMusicWithSpace(SYMBOL, MID_9, MID_9_LENGTH, 233, 16, 1);
+							break;
+						case 4:
+							lcd->printfc(lcd->p, 48, "5 of 5");
+							lcd->printfc(lcd->p, 64, "Broken Moon");
+							playMusicWithSpace(SYMBOL, MUSIC, MUSIC_LENGTH, 233, 16, 1);
+							break;
+					}
 					break;
 				case 14:
 					lcd->colorb(lcd->p, 0xFFFFFF);
 					lcd->colorf(lcd->p, 0x000000);
 					lcd->bitmapsc(lcd->p, 63, 48, 64, 64, __NYAGAME_LOGO_);
 					lcd->printfc(lcd->p, 86, "NyaGame Portable");
-					lcd->printfc(lcd->p, 98, "dev161218");
+					lcd->printfc(lcd->p, 98, "dev161229");
 					break;
 				default:
 					break;
@@ -434,10 +486,10 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 4;
+  RCC_OscInitStruct.PLL.PLLM = 8;
   RCC_OscInitStruct.PLL.PLLN = 192;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
-  RCC_OscInitStruct.PLL.PLLQ = 8;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+  RCC_OscInitStruct.PLL.PLLQ = 4;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -665,10 +717,24 @@ void TIM_IRQ_Callback(TIM_HandleTypeDef *htim)
 			if (waitKeyUp(RPAD_RIGHT)) {
 				jumpOut();
 				index -= 10;
+				lcd->colorb(lcd->p, 0x000000);
 				lcd->clear(lcd->p);
 				HAL_TIM_Base_Stop_IT(&htim10);
 				HAL_GPIO_WritePin(LBEEP_GPIO_Port, LBEEP_Pin, GPIO_PIN_RESET);
 				HAL_GPIO_WritePin(RBEEP_GPIO_Port, RBEEP_Pin, GPIO_PIN_RESET);
+			}
+			if (waitKeyUp(LPAD_UP)) {
+				if (music > 0) music -= 1;
+				else music = 4;
+				jumpOut();
+				lcd->colorb(lcd->p, 0x000000);
+				lcd->clear(lcd->p);
+			} else if (waitKeyUp(LPAD_DOWN)) {
+				if (music < 4) music += 1;
+				else music = 0;
+				jumpOut();
+				lcd->colorb(lcd->p, 0x000000);
+				lcd->clear(lcd->p);
 			}
 		}
 		beeperInerrupt();
