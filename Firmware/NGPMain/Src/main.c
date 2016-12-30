@@ -227,6 +227,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_FATFS_Init();
+  HAL_GPIO_WritePin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin, GPIO_PIN_SET);
   MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN 2 */
@@ -655,10 +656,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BT_ENB_Pin LCD_BK_Pin LCD_CS_Pin LCD_DC_Pin 
-                           LCD_RST_Pin SCL_Pin USB_OTG_Pin */
-  GPIO_InitStruct.Pin = BT_ENB_Pin|LCD_BK_Pin|LCD_CS_Pin|LCD_DC_Pin 
-                          |LCD_RST_Pin|SCL_Pin|USB_OTG_Pin;
+  /*Configure GPIO pins : BT_ENB_Pin USB_PULLUP_Pin LCD_BK_Pin LCD_CS_Pin 
+                           LCD_DC_Pin LCD_RST_Pin SCL_Pin USB_OTG_Pin */
+  GPIO_InitStruct.Pin = BT_ENB_Pin|USB_PULLUP_Pin|LCD_BK_Pin|LCD_CS_Pin 
+                          |LCD_DC_Pin|LCD_RST_Pin|SCL_Pin|USB_OTG_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -669,13 +670,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(BT_STATE_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : USB_PULLUP_Pin */
-  GPIO_InitStruct.Pin = USB_PULLUP_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  HAL_GPIO_Init(USB_PULLUP_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SDST_Pin */
   GPIO_InitStruct.Pin = SDST_Pin;
@@ -701,10 +695,10 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, BT_ENB_Pin|USB_PULLUP_Pin|LCD_BK_Pin|LCD_DC_Pin 
-                          |SCL_Pin|SDA_Pin|USB_OTG_Pin, GPIO_PIN_RESET);
+                          |SCL_Pin|SDA_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LCD_CS_Pin|LCD_RST_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, LCD_CS_Pin|LCD_RST_Pin|USB_OTG_Pin, GPIO_PIN_SET);
 
 }
 
