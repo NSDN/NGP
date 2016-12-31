@@ -69,7 +69,7 @@ static void MX_SPI1_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+	
 /* USER CODE END 0 */
 
 int main(void)
@@ -93,13 +93,16 @@ int main(void)
   MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN 2 */
-	
+	HAL_GPIO_TogglePin(LEDA_GPIO_Port, LEDA_Pin);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HAL_GPIO_TogglePin(LEDA_GPIO_Port, LEDA_Pin);
+	  HAL_GPIO_TogglePin(LEDB_GPIO_Port, LEDB_Pin);
+	  HAL_Delay(100);
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -207,17 +210,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOC, LEDA_Pin|LEDB_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin : USB_PULLUP_Pin */
-  GPIO_InitStruct.Pin = USB_PULLUP_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  /*Configure GPIO pins : LEDA_Pin LEDB_Pin */
+  GPIO_InitStruct.Pin = LEDA_Pin|LEDB_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(USB_PULLUP_GPIO_Port, &GPIO_InitStruct);
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
 }
 

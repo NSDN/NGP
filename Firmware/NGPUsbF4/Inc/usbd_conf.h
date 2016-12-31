@@ -81,6 +81,8 @@
 #define USBD_LPM_ENABLED     0
 /*---------- -----------*/
 #define USBD_SELF_POWERED     0
+/*---------- -----------*/
+#define USBD_AUDIO_FREQ     22100
 
 /****************************************/
 /* #define for FS and HS identification */

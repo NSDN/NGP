@@ -51,8 +51,10 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define USB_PULLUP_Pin GPIO_PIN_10
-#define USB_PULLUP_GPIO_Port GPIOB
+#define LEDA_Pin GPIO_PIN_4
+#define LEDA_GPIO_Port GPIOC
+#define LEDB_Pin GPIO_PIN_5
+#define LEDB_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

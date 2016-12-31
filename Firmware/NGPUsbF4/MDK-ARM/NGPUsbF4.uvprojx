@@ -335,7 +335,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F411xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;   ../Drivers/STM32F4xx_HAL_Driver/Inc;   ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;   ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;   ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;   ../Drivers/CMSIS/Include;../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc</IncludePath>
+              <IncludePath>../Inc;         ../Drivers/STM32F4xx_HAL_Driver/Inc;         ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;         ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;         ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;         ../Drivers/CMSIS/Include;../Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -377,9 +377,6 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
           <GroupName>Application/User</GroupName>
           <Files>
             <File>
@@ -411,6 +408,11 @@
               <FileName>stm32f4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32f4xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_audio_if.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/usbd_audio_if.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -528,9 +530,9 @@
               <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c</FilePath>
             </File>
             <File>
-              <FileName>usbd_hid.c</FileName>
+              <FileName>usbd_audio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src/usbd_hid.c</FilePath>
+              <FilePath>../Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Src/usbd_audio.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -553,6 +555,9 @@
               <FilePath>../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
     </Target>
