@@ -149,7 +149,7 @@ __ALIGN_BEGIN uint8_t USBD_MSC_CfgHSDesc[USB_MSC_CONFIG_DESC_SIZ]  __ALIGN_END =
   0x01,   /* bConfigurationValue: */
   0x04,   /* iConfiguration: */
   0xC0,   /* bmAttributes: */
-  0x32,   /* MaxPower 100 mA */
+  0x64,   /* MaxPower 100 mA */
   
   /********************  Mass Storage interface ********************/
   0x09,   /* bLength: Interface Descriptor size */

@@ -4,7 +4,7 @@
   * Description        : Main program body
   ******************************************************************************
   *
-  * Copyright (c) 2016 STMicroelectronics International N.V. 
+  * Copyright (c) 2017 STMicroelectronics International N.V. 
   * All rights reserved.
   *
   * Redistribution and use in source and binary forms, with or without 
@@ -227,7 +227,6 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   MX_FATFS_Init();
-  HAL_GPIO_WritePin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin, GPIO_PIN_SET);
   MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN 2 */
@@ -377,34 +376,39 @@ int main(void)
 					lcd->printfc(lcd->p, 32, "NOW Playing...");
 					switch (music) {
 						case 0:
-							lcd->printfc(lcd->p, 48, "5 of 1");
+							lcd->printfc(lcd->p, 48, "6 of 1");
 							lcd->printfc(lcd->p, 64, "Septet for");
 							lcd->printfc(lcd->p, 72, "the Dead Princess");
 							playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, 1);
 							break;
 						case 1:
-							lcd->printfc(lcd->p, 48, "5 of 2");
+							lcd->printfc(lcd->p, 48, "6 of 2");
 							lcd->printfc(lcd->p, 64, "The Way of Doom God");
 							lcd->printfc(lcd->p, 72, "- Dark Road -");
 							playMusicWithSpace(SYMBOL, MID_hina, MID_hina_LENGTH, 233, 16, 1);
 							break;
 						case 2:
-							lcd->printfc(lcd->p, 48, "5 of 3");
+							lcd->printfc(lcd->p, 48, "6 of 3");
 							lcd->printfc(lcd->p, 64, "Romantic Escape");
 							lcd->printfc(lcd->p, 72, "Flight & Foul for");
 							lcd->printfc(lcd->p, 80, "Impossible Bullets"); 
 							playMusicWithSpace(SYMBOL, MID_seija, MID_seija_LENGTH, 233, 16, 1);
 							break;
 						case 3:
-							lcd->printfc(lcd->p, 48, "5 of 4");
+							lcd->printfc(lcd->p, 48, "6 of 4");
 							lcd->printfc(lcd->p, 64, "Lively and Innocent");
 							lcd->printfc(lcd->p, 72, "Girl (9)");
 							playMusicWithSpace(SYMBOL, MID_9, MID_9_LENGTH, 233, 16, 1);
 							break;
 						case 4:
-							lcd->printfc(lcd->p, 48, "5 of 5");
+							lcd->printfc(lcd->p, 48, "6 of 5");
 							lcd->printfc(lcd->p, 64, "Broken Moon");
 							playMusicWithSpace(SYMBOL, MUSIC, MUSIC_LENGTH, 233, 16, 1);
+							break;
+						case 5:
+							lcd->printfc(lcd->p, 48, "6 of 6");
+							lcd->printfc(lcd->p, 64, "U.N. Owen was her?");
+							playMusicWithSpace(SYMBOL, MID_U_N_Owen_was_her, MID_U_N_Owen_was_her_LENGTH, 128, 16, 1);
 							break;
 					}
 					break;
@@ -719,12 +723,12 @@ void TIM_IRQ_Callback(TIM_HandleTypeDef *htim)
 			}
 			if (waitKeyUp(LPAD_UP)) {
 				if (music > 0) music -= 1;
-				else music = 4;
+				else music = 5;
 				jumpOut();
 				lcd->colorb(lcd->p, 0x000000);
 				lcd->clear(lcd->p);
 			} else if (waitKeyUp(LPAD_DOWN)) {
-				if (music < 4) music += 1;
+				if (music < 5) music += 1;
 				else music = 0;
 				jumpOut();
 				lcd->colorb(lcd->p, 0x000000);

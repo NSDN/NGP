@@ -15,7 +15,7 @@
         <TargetCommonOption>
           <Device>STM32F411RETx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.4.0</PackID>
+          <PackID>Keil.STM32F4xx_DFP.2.11.0</PackID>
           <PackURL>http://www.keil.com/pack</PackURL>
           <Cpu>IRAM(0x20000000-0x2001FFFF) IROM(0x8000000-0x807FFFF) CLOCK(25000000) FPU2 CPUTYPE("Cortex-M4")</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -335,7 +335,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F411xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;               ../Drivers/STM32F4xx_HAL_Driver/Inc;               ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;               ../Middlewares/Third_Party/FatFs/src/drivers;               ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;               ../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc;               ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;               ../Middlewares/Third_Party/FatFs/src;               ../Drivers/CMSIS/Include;               ..\NGP-Drivers</IncludePath>
+              <IncludePath>../Inc;                ../Drivers/STM32F4xx_HAL_Driver/Inc;                ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;                ../Middlewares/Third_Party/FatFs/src/drivers;                ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;                ../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc;                ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;                ../Middlewares/Third_Party/FatFs/src;                ../Drivers/CMSIS/Include;                ..\NGP-Drivers</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -562,7 +562,7 @@
             <File>
               <FileName>system_stm32f4xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c</FilePath>
+              <FilePath>../Src/system_stm32f4xx.c</FilePath>
             </File>
           </Files>
         </Group>
