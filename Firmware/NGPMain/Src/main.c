@@ -74,6 +74,8 @@ UART_HandleTypeDef huart2;
 	static uint8_t index = 0;
 	static uint8_t music = 0;
 	
+	const uint8_t cmusic = 7;
+	
 	FATFS fileSystem;
 	FIL testFile;
 	uint8_t testBuffer[16] = "Hello Gensokyo!\0";
@@ -374,41 +376,41 @@ int main(void)
 					lcd->colorb(lcd->p, 0x000000);
 					lcd->colorf(lcd->p, 0xFFFFFF);
 					lcd->printfc(lcd->p, 32, "NOW Playing...");
+					lcd->printfc(lcd->p, 48, "%d of %d", cmusic, music + 1);
 					switch (music) {
 						case 0:
-							lcd->printfc(lcd->p, 48, "6 of 1");
 							lcd->printfc(lcd->p, 64, "Septet for");
 							lcd->printfc(lcd->p, 72, "the Dead Princess");
 							playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, 1);
 							break;
 						case 1:
-							lcd->printfc(lcd->p, 48, "6 of 2");
 							lcd->printfc(lcd->p, 64, "The Way of Doom God");
 							lcd->printfc(lcd->p, 72, "- Dark Road -");
 							playMusicWithSpace(SYMBOL, MID_hina, MID_hina_LENGTH, 233, 16, 1);
 							break;
 						case 2:
-							lcd->printfc(lcd->p, 48, "6 of 3");
 							lcd->printfc(lcd->p, 64, "Romantic Escape");
 							lcd->printfc(lcd->p, 72, "Flight & Foul for");
 							lcd->printfc(lcd->p, 80, "Impossible Bullets"); 
 							playMusicWithSpace(SYMBOL, MID_seija, MID_seija_LENGTH, 233, 16, 1);
 							break;
 						case 3:
-							lcd->printfc(lcd->p, 48, "6 of 4");
 							lcd->printfc(lcd->p, 64, "Lively and Innocent");
 							lcd->printfc(lcd->p, 72, "Girl (9)");
 							playMusicWithSpace(SYMBOL, MID_9, MID_9_LENGTH, 233, 16, 1);
 							break;
 						case 4:
-							lcd->printfc(lcd->p, 48, "6 of 5");
 							lcd->printfc(lcd->p, 64, "Broken Moon");
 							playMusicWithSpace(SYMBOL, MUSIC, MUSIC_LENGTH, 233, 16, 1);
 							break;
 						case 5:
-							lcd->printfc(lcd->p, 48, "6 of 6");
 							lcd->printfc(lcd->p, 64, "U.N. Owen was her?");
 							playMusicWithSpace(SYMBOL, MID_U_N_Owen_was_her, MID_U_N_Owen_was_her_LENGTH, 128, 16, 1);
+							break;
+						case 6:
+							lcd->printfc(lcd->p, 64, "Staking Your Life");
+							lcd->printfc(lcd->p, 72, "on a Prank");
+							playMusicWithSpace(SYMBOL, MID_Staking_Your_Life_on_a_Prank, MID_Staking_Your_Life_on_a_Prank_LENGTH, 192, 8, 1);
 							break;
 					}
 					break;
@@ -723,12 +725,12 @@ void TIM_IRQ_Callback(TIM_HandleTypeDef *htim)
 			}
 			if (waitKeyUp(LPAD_UP)) {
 				if (music > 0) music -= 1;
-				else music = 5;
+				else music = cmusic - 1;
 				jumpOut();
 				lcd->colorb(lcd->p, 0x000000);
 				lcd->clear(lcd->p);
 			} else if (waitKeyUp(LPAD_DOWN)) {
-				if (music < 5) music += 1;
+				if (music < cmusic - 1) music += 1;
 				else music = 0;
 				jumpOut();
 				lcd->colorb(lcd->p, 0x000000);
