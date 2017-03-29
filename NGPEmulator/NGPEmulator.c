@@ -1,6 +1,5 @@
 #include "NGPEmulator.h"
 
-
 #pragma region STG
 #define STG_BACK 1
 #define STG_MAIN 2
