@@ -47,6 +47,8 @@
 #include "usb_device.h"
 
 /* USER CODE BEGIN Includes */
+#include "usbd_core.h"
+
 #include "IRQ.h"
 #include "OLED.h"
 #include "LCD.h"
@@ -283,6 +285,7 @@ int main(void)
 		}
 	
 	}
+	HAL_GPIO_WritePin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin, GPIO_PIN_SET);
 	USBD_Start(&hUsbDeviceFS);
   /* USER CODE END 2 */
 
