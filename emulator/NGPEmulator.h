@@ -56,16 +56,16 @@ void eventCook() {
 			case SDLK_d:
 				keyValue |= LPAD_RIGHT;
 				break;
-			case SDLK_i:
+			case SDLK_u:
 				keyValue |= RPAD_UP;
 				break;
-			case SDLK_k:
+			case SDLK_j:
 				keyValue |= RPAD_DOWN;
 				break;
-			case SDLK_j:
+			case SDLK_h:
 				keyValue |= RPAD_LEFT;
 				break;
-			case SDLK_l:
+			case SDLK_k:
 				keyValue |= RPAD_RIGHT;
 				break;
 			default:
@@ -86,16 +86,16 @@ void eventCook() {
 			case SDLK_d:
 				keyValue &= ~LPAD_RIGHT;
 				break;
-			case SDLK_i:
+			case SDLK_u:
 				keyValue &= ~RPAD_UP;
 				break;
-			case SDLK_k:
+			case SDLK_j:
 				keyValue &= ~RPAD_DOWN;
 				break;
-			case SDLK_j:
+			case SDLK_h:
 				keyValue &= ~RPAD_LEFT;
 				break;
-			case SDLK_l:
+			case SDLK_k:
 				keyValue &= ~RPAD_RIGHT;
 				break;
 			default:

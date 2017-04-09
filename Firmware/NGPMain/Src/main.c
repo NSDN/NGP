@@ -47,6 +47,8 @@
 #include "usb_device.h"
 
 /* USER CODE BEGIN Includes */
+#include "usbd_core.h"
+
 #include "IRQ.h"
 #include "OLED.h"
 #include "LCD.h"
@@ -210,7 +212,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+	
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -232,6 +234,8 @@ int main(void)
   MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN 2 */
+	USBD_Stop(&hUsbDeviceFS);
+	
 	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET && sdOK == 0) {
 		HAL_SD_Init(&hsd, &SDCardInfo);
 		sdOK = 1;
@@ -281,6 +285,8 @@ int main(void)
 		}
 	
 	}
+	HAL_GPIO_WritePin(USB_PULLUP_GPIO_Port, USB_PULLUP_Pin, GPIO_PIN_SET);
+	USBD_Start(&hUsbDeviceFS);
   /* USER CODE END 2 */
 
   /* Infinite loop */
