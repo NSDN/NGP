@@ -1,0 +1,455 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\Works\NyaGamePortable\NyaGamePortable-8Bit\Test\Test.uvproj
+Project File Date:  04/02/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling key.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_POW?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IIC_WR_BYTE?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_INIT_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_CLEAR_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEOPEN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GECLOSE?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBRIGHTNESS?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBEGIN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEEND?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEVERTEX2?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEFILL?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AEVOLUME?AE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+Program Size: data=9.1 xdata=209 code=6427
+creating hex file from "Test"...
+"Test" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+compiling key.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_POW?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IIC_WR_BYTE?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_INIT_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_CLEAR_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEOPEN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GECLOSE?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBRIGHTNESS?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBEGIN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEEND?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEVERTEX2?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEFILL?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AEVOLUME?AE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+Program Size: data=9.1 xdata=209 code=6155
+creating hex file from "Test"...
+"Test" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+compiling base.c...
+compiling ge.c...
+GE.C(10): warning C280: 'k': unreferenced local variable
+GE.C(10): warning C280: 'l': unreferenced local variable
+GE.C(33): warning C182: pointer to different objects
+GE.C(69): warning C182: pointer to different objects
+GE.C(81): warning C182: pointer to different objects
+GE.C(242): warning C182: pointer to different objects
+compiling main.c...
+compiling ae.c...
+compiling key.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_POW?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IIC_WR_BYTE?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_INIT_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_CLEAR_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEOPEN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GECLOSE?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBRIGHTNESS?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBEGIN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEEND?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEVERTEX2?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEFILL?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AEVOLUME?AE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+Program Size: data=9.1 xdata=209 code=6155
+creating hex file from "Test"...
+"Test" - 0 Error(s), 19 Warning(s).
+Build target 'Target 1'
+compiling base.c...
+compiling ge.c...
+GE.C(10): warning C280: 'k': unreferenced local variable
+GE.C(10): warning C280: 'l': unreferenced local variable
+GE.C(33): warning C182: pointer to different objects
+GE.C(69): warning C182: pointer to different objects
+GE.C(81): warning C182: pointer to different objects
+GE.C(242): warning C182: pointer to different objects
+compiling main.c...
+MAIN.C(41): error C141: syntax error near 'unsigned'
+MAIN.C(41): error C202: 'i': undefined identifier
+MAIN.C(42): error C141: syntax error near 'char'
+MAIN.C(42): error C202: 'tmp': undefined identifier
+MAIN.C(42): error C101: '''': invalid character constant
+MAIN.C(43): error C202: 'i': undefined identifier
+MAIN.C(44): error C202: 'tmp': undefined identifier
+MAIN.C(45): error C202: 'i': undefined identifier
+MAIN.C(46): error C202: 'i': undefined identifier
+compiling ae.c...
+compiling key.c...
+Target not created
+Build target 'Target 1'
+compiling base.c...
+compiling ge.c...
+GE.C(33): warning C182: pointer to different objects
+GE.C(69): warning C182: pointer to different objects
+GE.C(81): warning C182: pointer to different objects
+GE.C(242): warning C182: pointer to different objects
+compiling main.c...
+MAIN.C(41): error C141: syntax error near 'unsigned'
+MAIN.C(41): error C202: 'i': undefined identifier
+MAIN.C(42): error C141: syntax error near 'char'
+MAIN.C(42): error C202: 'tmp': undefined identifier
+MAIN.C(42): error C101: '''': invalid character constant
+MAIN.C(43): error C202: 'i': undefined identifier
+MAIN.C(44): error C202: 'tmp': undefined identifier
+MAIN.C(45): error C202: 'i': undefined identifier
+MAIN.C(46): error C202: 'i': undefined identifier
+compiling ae.c...
+compiling key.c...
+Target not created
+Build target 'Target 1'
+compiling base.c...
+compiling ge.c...
+GE.C(33): warning C182: pointer to different objects
+GE.C(69): warning C182: pointer to different objects
+GE.C(81): warning C182: pointer to different objects
+GE.C(242): warning C182: pointer to different objects
+compiling main.c...
+MAIN.C(41): error C141: syntax error near 'unsigned'
+MAIN.C(41): error C202: 'i': undefined identifier
+MAIN.C(42): error C141: syntax error near 'char'
+MAIN.C(42): error C202: 'tmp': undefined identifier
+MAIN.C(43): error C202: 'i': undefined identifier
+MAIN.C(44): error C202: 'tmp': undefined identifier
+MAIN.C(45): error C202: 'i': undefined identifier
+MAIN.C(46): error C202: 'i': undefined identifier
+compiling ae.c...
+compiling key.c...
+Target not created
+Build target 'Target 1'
+compiling base.c...
+compiling ge.c...
+GE.C(33): warning C182: pointer to different objects
+GE.C(69): warning C182: pointer to different objects
+GE.C(81): warning C182: pointer to different objects
+GE.C(242): warning C182: pointer to different objects
+compiling main.c...
+MAIN.C(41): error C141: syntax error near 'unsigned'
+MAIN.C(41): error C202: 'i': undefined identifier
+MAIN.C(42): error C141: syntax error near 'char'
+MAIN.C(42): error C202: 'tmp': undefined identifier
+MAIN.C(43): error C202: 'i': undefined identifier
+MAIN.C(44): error C202: 'tmp': undefined identifier
+MAIN.C(45): error C202: 'i': undefined identifier
+MAIN.C(46): error C202: 'i': undefined identifier
+compiling ae.c...
+compiling key.c...
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(41): error C141: syntax error near 'char'
+MAIN.C(41): error C202: 'i': undefined identifier
+MAIN.C(42): error C141: syntax error near 'char'
+MAIN.C(42): error C202: 'tmp': undefined identifier
+MAIN.C(43): error C202: 'i': undefined identifier
+MAIN.C(44): error C202: 'tmp': undefined identifier
+MAIN.C(45): error C202: 'i': undefined identifier
+MAIN.C(46): error C202: 'i': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling base.c...
+compiling ge.c...
+GE.C(33): warning C182: pointer to different objects
+GE.C(69): warning C182: pointer to different objects
+GE.C(81): warning C182: pointer to different objects
+GE.C(242): warning C182: pointer to different objects
+compiling main.c...
+MAIN.C(41): error C141: syntax error near 'char'
+MAIN.C(41): error C202: 'i': undefined identifier
+MAIN.C(42): error C141: syntax error near 'char'
+MAIN.C(42): error C202: 'tmp': undefined identifier
+MAIN.C(43): error C202: 'i': undefined identifier
+MAIN.C(44): error C202: 'tmp': undefined identifier
+MAIN.C(45): error C202: 'i': undefined identifier
+MAIN.C(46): error C202: 'i': undefined identifier
+compiling ae.c...
+compiling key.c...
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(41): error C141: syntax error near 'char'
+MAIN.C(41): error C202: 'i': undefined identifier
+MAIN.C(42): error C141: syntax error near 'char'
+MAIN.C(42): error C202: 'tmp': undefined identifier
+MAIN.C(43): error C202: 'i': undefined identifier
+MAIN.C(44): error C202: 'tmp': undefined identifier
+MAIN.C(45): error C202: 'i': undefined identifier
+MAIN.C(46): error C202: 'i': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+MAIN.C(41): error C141: syntax error near 'char'
+MAIN.C(41): error C202: 'i': undefined identifier
+MAIN.C(42): error C141: syntax error near 'char'
+MAIN.C(42): error C202: 'tmp': undefined identifier
+MAIN.C(43): error C202: 'i': undefined identifier
+MAIN.C(44): error C202: 'tmp': undefined identifier
+MAIN.C(45): error C202: 'i': undefined identifier
+MAIN.C(46): error C202: 'i': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_POW?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IIC_WR_BYTE?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_INIT_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_CLEAR_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEOPEN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GECLOSE?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBRIGHTNESS?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBEGIN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEEND?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEVERTEX2?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEFILL?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AEVOLUME?AE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+Program Size: data=9.1 xdata=211 code=6246
+creating hex file from "Test"...
+"Test" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_POW?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IIC_WR_BYTE?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_INIT_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_CLEAR_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEOPEN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GECLOSE?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBRIGHTNESS?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBEGIN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEEND?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEVERTEX2?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEFILL?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AEVOLUME?AE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+Program Size: data=9.1 xdata=211 code=6221
+creating hex file from "Test"...
+"Test" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+compiling base.c...
+compiling ge.c...
+GE.C(33): warning C182: pointer to different objects
+GE.C(69): warning C182: pointer to different objects
+GE.C(81): warning C182: pointer to different objects
+GE.C(242): warning C182: pointer to different objects
+compiling main.c...
+compiling ae.c...
+compiling key.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_POW?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IIC_WR_BYTE?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_INIT_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_CLEAR_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEOPEN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GECLOSE?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBRIGHTNESS?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBEGIN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEEND?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEVERTEX2?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEFILL?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AEVOLUME?AE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+Program Size: data=9.1 xdata=211 code=6192
+creating hex file from "Test"...
+"Test" - 0 Error(s), 17 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_POW?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IIC_WR_BYTE?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_INIT_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_CLEAR_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEOPEN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GECLOSE?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBRIGHTNESS?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBEGIN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEEND?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEVERTEX2?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEFILL?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AEVOLUME?AE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+Program Size: data=9.1 xdata=211 code=6190
+creating hex file from "Test"...
+"Test" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_POW?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IIC_WR_BYTE?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_INIT_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_CLEAR_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEOPEN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GECLOSE?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBRIGHTNESS?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBEGIN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEEND?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEVERTEX2?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEFILL?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AEVOLUME?AE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+Program Size: data=9.1 xdata=211 code=6192
+creating hex file from "Test"...
+"Test" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+compiling base.c...
+compiling ge.c...
+GE.C(33): warning C182: pointer to different objects
+GE.C(69): warning C182: pointer to different objects
+GE.C(81): warning C182: pointer to different objects
+GE.C(242): warning C182: pointer to different objects
+compiling main.c...
+compiling ae.c...
+compiling key.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_POW?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_IIC_WR_BYTE?BASE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_INIT_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?__GE_VERTEX_BUF_CLEAR_?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEOPEN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GECLOSE?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBRIGHTNESS?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEBEGIN?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GEEND?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEVERTEX2?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GEFILL?GE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AEVOLUME?AE
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_INIT_MEMPOOL?INIT_MEM
+Program Size: data=9.1 xdata=211 code=6221
+creating hex file from "Test"...
+"Test" - 0 Error(s), 17 Warning(s).

@@ -1,0 +1,6 @@
+# For Keil C51
+
+/Listings
+/Objects
+*.uvgui.*
+*.uvopt
