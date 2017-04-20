@@ -188,9 +188,11 @@ void checkSD() {
 	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET && sdOK == 0) {
 		HAL_SD_Init(&hsd, &SDCardInfo);
 		sdOK = 1;
+		USBD_Start(&hUsbDeviceFS);
 	} else if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_SET && sdOK == 1) {
 		HAL_SD_DeInit(&hsd);
 		sdOK = 0;
+		USBD_Stop(&hUsbDeviceFS);
 	}
 	if (sdOK == 1) {
 		lcd->colorb(lcd->p, 0x66CCFF);
@@ -238,9 +240,11 @@ int main(void)
 	if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_RESET && sdOK == 0) {
 		HAL_SD_Init(&hsd, &SDCardInfo);
 		sdOK = 1;
+		USBD_Start(&hUsbDeviceFS);
 	} else if (HAL_GPIO_ReadPin(SDST_GPIO_Port, SDST_Pin) == GPIO_PIN_SET && sdOK == 1) {
 		HAL_SD_DeInit(&hsd);
 		sdOK = 0;
+		USBD_Stop(&hUsbDeviceFS);
 	}
   
 	HAL_Delay(500);
@@ -284,7 +288,7 @@ int main(void)
 		}
 	
 	}
-	USBD_Start(&hUsbDeviceFS);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
