@@ -1,78 +1,10 @@
+#include "./Include/oled.h"
+#include "./Include/fonts.h"
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
-
-#ifndef __OLED_H_
-#define __OLED_H_
-
-
-#include "IICDevice.h"
-#include "Fonts.h"
-
-#define IOBUF_SIZE 128
-
-/*
-12864:
-[0]0 1 2 3 ... 127
-[1]0 1 2 3 ... 127
-[2]0 1 2 3 ... 127
-[3]0 1 2 3 ... 127
-[4]0 1 2 3 ... 127
-[5]0 1 2 3 ... 127
-[6]0 1 2 3 ... 127
-[7]0 1 2 3 ... 127
-*/
-#define OLED_SCREEN_BIG 0x7A
-
-/*
-12832:
-[1]0 1 2 3 ... 127
-[3]0 1 2 3 ... 127
-[5]0 1 2 3 ... 127
-[7]0 1 2 3 ... 127
-*/
-#define OLED_SCREEN_SMALL 0x78
-
-//#define OLED_USE_PRIVATE_FUN
-
-typedef enum {
-	Black = 0,
-	White = 1
-} OLEDColor;
-
-typedef enum {
-	FontSmall = 1,
-	FontBig = 2
-} OLEDFontSize;
-
-typedef struct {
-	SoftIIC* base;
-	OLEDColor Color;
-	OLEDFontSize FontSize;
-} pOLED;
-
-typedef struct {
-	pOLED* p;
-	void (*trans)(pOLED* p, uint8_t addr);
-	#ifdef OLED_USE_PRIVATE_FUN
-	void (*writeCommand)(pOLED* p, uint8_t cmd);
-	void (*writeData)(pOLED* p, uint8_t data);
-	void (*setPosition)(pOLED* p, uint8_t x, uint8_t y);
-	#endif
-	void (*color)(pOLED* p, OLEDColor color);
-	void (*font)(pOLED* p, OLEDFontSize size);
-	void (*clear)(pOLED* p);
-	void (*init)(pOLED* p);
-	void (*bright)(pOLED* p, uint8_t brightness);
-	void (*open)(pOLED* p);
-	void (*close)(pOLED* p);
-	void (*flash)(pOLED* p, const unsigned char* data);
-	void (*draw)(pOLED* p, uint8_t x, uint8_t y, char character);
-	void (*print)(pOLED* p, uint8_t x, uint8_t y, char* string);
-	int (*printf)(pOLED* p, uint8_t x, uint8_t y, const char* format, ...);
-	int (*printfc)(pOLED* p, uint8_t y, const char* format, ...);
-} OLED;
 
 void _oled_trans(pOLED* p, uint8_t addr) {
 	p->base->turn(p->base->p, addr);
@@ -100,7 +32,7 @@ void _oled_writeData(pOLED* p, uint8_t data) {
 	p->base->stop(p->base->p);
 }
 
-void _oled_setPosition(pOLED* p, uint8_t x, uint8_t y) { 
+void _oled_setPosition(pOLED* p, uint8_t x, uint8_t y) {
 	_oled_writeCommand(p, 0xb0 + y);
 	_oled_writeCommand(p, (((x + 2) & 0xf0) >> 4) | 0x10);
 	_oled_writeCommand(p, (x + 2) & 0x0f);
@@ -124,11 +56,11 @@ void _oled_init(pOLED* p) {
 	_oled_writeCommand(p, 0xAE);//--display off
 	_oled_writeCommand(p, 0x00);//---set low column address
 	_oled_writeCommand(p, 0x10);//---set high column address
-	_oled_writeCommand(p, 0x40);//--set start line address  
+	_oled_writeCommand(p, 0x40);//--set start line address
 	_oled_writeCommand(p, 0xB0);//--set page address
 	_oled_writeCommand(p, 0x81); // contract control
-	_oled_writeCommand(p, 0xFF);//--128   
-	_oled_writeCommand(p, 0xA1);//set segment remap 
+	_oled_writeCommand(p, 0xFF);//--128
+	_oled_writeCommand(p, 0xA1);//set segment remap
 	_oled_writeCommand(p, 0xA6);//--normal / reverse
 
 	_oled_writeCommand(p, 0xA8);//--set multiplex ratio(1 to 64)
@@ -211,15 +143,15 @@ void _oled_draw(pOLED* p, uint8_t x, uint8_t y, char character) {
 		if (x >= 128) { x = 0; y = y + 2; }
 		_oled_setPosition(p, x, y);
 		for (uint8_t i = 0; i < 8; i++)
-			_oled_writeData(p, (p->Color == White) ? __FONTS_BIG_[c * 16 + i] : ~__FONTS_BIG_[c * 16 + i]);
+			_oled_writeData(p, (p->Color == White) ? getFont(1)[c * 16 + i] : ~getFont(1)[c * 16 + i]);
 		_oled_setPosition(p, x, y + 1);
 		for (uint8_t i = 0; i < 8; i++)
-			_oled_writeData(p, (p->Color == White) ? __FONTS_BIG_[c * 16 + i + 8] : ~__FONTS_BIG_[c * 16 + i + 8]);
+			_oled_writeData(p, (p->Color == White) ? getFont(1)[c * 16 + i + 8] : ~getFont(1)[c * 16 + i + 8]);
 	} else {
 		if (x >= 128) { x = 0; y = y + 1; }
 		_oled_setPosition(p, x, y);
 		for (uint8_t i = 0; i < 6; i++)
-			_oled_writeData(p, (p->Color == White) ? __FONTS_SMALL_[c][i] : ~__FONTS_SMALL_[c][i]);
+			_oled_writeData(p, (p->Color == White) ? getFont(0)[c * 6 + i] : ~getFont(0)[c * 6 + i]);
 	}
 }
 
@@ -273,36 +205,3 @@ int _oled_printfc(pOLED* p, uint8_t y, const char* format, ...) {
 	free(iobuf);
 	return result;
 }
-
-OLED* OLEDInit(GPIO_TypeDef* SDAPortGroup, uint16_t SDAPortIndex, GPIO_TypeDef* SCLPortGroup, uint16_t SCLPortIndex, uint8_t address) {
-	pOLED* p = malloc(sizeof(pOLED));
-	p->base = SoftIICInit(SDAPortGroup, SDAPortIndex, SCLPortGroup, SCLPortIndex, address);
-	p->Color = White;
-	p->FontSize = FontSmall;
-	
-	OLED* c = malloc(sizeof(OLED));
-	c->p = p;
-	c->trans = &_oled_trans;
-	#ifdef OLED_USE_PRIVATE_FUN
-	c->writeCommand = &_oled_writeCommand;
-	c->writeData = &_oled_writeData;
-	c->setPosition = &_oled_setPosition;
-	#endif
-	c->color = &_oled_color;
-	c->font = &_oled_font;
-	c->clear = &_oled_clear;
-	c->init = &_oled_init;
-	c->bright = &_oled_bright;
-	c->open = &_oled_open;
-	c->close = &_oled_close;
-	c->flash = &_oled_flash;
-	c->draw = &_oled_draw;
-	c->print = &_oled_print;
-	c->printf = &_oled_printf;
-	c->printfc = &_oled_printfc;
-	
-	return c;
-}
-
-
-#endif

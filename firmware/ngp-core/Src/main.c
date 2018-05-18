@@ -49,12 +49,11 @@
 /* USER CODE BEGIN Includes */
 #include "usbd_core.h"
 
-#include "IRQ.h"
-#include "OLED.h"
-#include "LCD.h"
-#include "Keypad.h"
-#include "Beeper.h"
-#include "Flash.h"
+#include "irq.h"
+#include "lcd.h"
+#include "keypad.h"
+#include "beeper.h"
+#include "flash.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -264,7 +263,7 @@ int main(void)
 	lcd->colorb(lcd->p, 0xFFFFFF);
 	lcd->colorf(lcd->p, 0x000000);
 	lcd->clear(lcd->p);
-	lcd->bitmapsc(lcd->p, 63, 63, 64, 64, __NYAGAME_LOGO_);
+	lcd->bitmapsc(lcd->p, 63, 63, 64, 64, getLogo());
 	HAL_Delay(2000);
 	lcd->colorb(lcd->p, 0x000000);
 	lcd->colorf(lcd->p, 0xFFFFFF);
@@ -389,43 +388,43 @@ int main(void)
 						case 0:
 							lcd->printfc(lcd->p, 64, "Septet for");
 							lcd->printfc(lcd->p, 72, "the Dead Princess");
-							playMusicWithSpace(SYMBOL, MID_remilia, MID_remilia_LENGTH, 233, 16, 1);
+							playMusicWithSpace(getSymbol(), getMusic(0), 233, 16, 1);
 							break;
 						case 1:
 							lcd->printfc(lcd->p, 64, "The Way of Doom God");
 							lcd->printfc(lcd->p, 72, "- Dark Road -");
-							playMusicWithSpace(SYMBOL, MID_hina, MID_hina_LENGTH, 233, 16, 1);
+							playMusicWithSpace(getSymbol(), getMusic(1), 233, 16, 1);
 							break;
 						case 2:
 							lcd->printfc(lcd->p, 64, "Romantic Escape");
 							lcd->printfc(lcd->p, 72, "Flight & Foul for");
 							lcd->printfc(lcd->p, 80, "Impossible Bullets"); 
-							playMusicWithSpace(SYMBOL, MID_seija, MID_seija_LENGTH, 233, 16, 1);
+							playMusicWithSpace(getSymbol(), getMusic(2), 233, 16, 1);
 							break;
 						case 3:
 							lcd->printfc(lcd->p, 64, "Lively and Innocent");
 							lcd->printfc(lcd->p, 72, "Girl (9)");
-							playMusicWithSpace(SYMBOL, MID_9, MID_9_LENGTH, 233, 16, 1);
+							playMusicWithSpace(getSymbol(), getMusic(3), 233, 16, 1);
 							break;
 						case 4:
 							lcd->printfc(lcd->p, 64, "Broken Moon");
-							playMusicWithSpace(SYMBOL, MUSIC, MUSIC_LENGTH, 233, 16, 1);
+							playMusicWithSpace(getSymbol(), getMusic(4), 233, 16, 1);
 							break;
 						case 5:
 							lcd->printfc(lcd->p, 64, "U.N. Owen was her?");
-							playMusicWithSpace(SYMBOL, MID_U_N_Owen_was_her, MID_U_N_Owen_was_her_LENGTH, 128, 16, 1);
+							playMusicWithSpace(getSymbol(), getMusic(5), 128, 16, 1);
 							break;
 						case 6:
 							lcd->printfc(lcd->p, 64, "Staking Your Life");
 							lcd->printfc(lcd->p, 72, "on a Prank");
-							playMusicWithSpace(SYMBOL, MID_Staking_Your_Life_on_a_Prank, MID_Staking_Your_Life_on_a_Prank_LENGTH, 192, 8, 1);
+							playMusicWithSpace(getSymbol(), getMusic(6), 192, 8, 1);
 							break;
 					}
 					break;
 				case 14:
 					lcd->colorb(lcd->p, 0xFFFFFF);
 					lcd->colorf(lcd->p, 0x000000);
-					lcd->bitmapsc(lcd->p, 63, 48, 64, 64, __NYAGAME_LOGO_);
+					lcd->bitmapsc(lcd->p, 63, 48, 64, 64, getLogo());
 					lcd->printfc(lcd->p, 86, "NyaGame Portable");
 					lcd->printfc(lcd->p, 98, "dev170503");
 					break;

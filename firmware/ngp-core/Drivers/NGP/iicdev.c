@@ -1,27 +1,4 @@
-#include <stdlib.h>
-
-#include "stm32f4xx_hal.h"
-
-#ifndef __IICDEVICE_H_
-#define __IICDEVICE_H_
-
-
-typedef struct {
-	GPIO_TypeDef* SDAPortGroup;
-	uint16_t SDAPortIndex;
-	GPIO_TypeDef* SCLPortGroup;
-	uint16_t SCLPortIndex;
-	uint8_t IICAddress;
-} pSoftIIC;
-
-typedef struct {
-	pSoftIIC* p;
-	void (*turn)(pSoftIIC* p, uint8_t addr);
-	void (*start)(pSoftIIC* p);
-	void (*stop)(pSoftIIC* p);
-	void (*wait)(pSoftIIC* p);
-	void (*send)(pSoftIIC* p, uint8_t byte);
-} SoftIIC;
+#include "./Include/iicdev.h"
 
 void _soft_iic_turn(pSoftIIC* p, uint8_t addr) {
 	p->IICAddress = addr;
@@ -62,14 +39,17 @@ void _soft_iic_send(pSoftIIC* p, uint8_t byte) {
 	}
 }
 
-SoftIIC* SoftIICInit(GPIO_TypeDef* pSDAPortGroup, uint16_t pSDAPortIndex, GPIO_TypeDef* pSCLPortGroup, uint16_t pSCLPortIndex, uint8_t pIICAddress) {
+SoftIIC* SoftIICInit(
+		GPIO_TypeDef* pSDAPortGroup, uint16_t pSDAPortIndex,
+		GPIO_TypeDef* pSCLPortGroup, uint16_t pSCLPortIndex,
+		uint8_t pIICAddress) {
 	pSoftIIC* p = malloc(sizeof(pSoftIIC));
 	p->SDAPortGroup = pSDAPortGroup;
 	p->SDAPortIndex = pSDAPortIndex;
 	p->SCLPortGroup = pSCLPortGroup;
 	p->SCLPortIndex = pSCLPortIndex;
 	p->IICAddress = pIICAddress;
-	
+
 	SoftIIC* c = malloc(sizeof(SoftIIC));
 	c->p = p;
 	c->turn = &_soft_iic_turn;
@@ -77,9 +57,6 @@ SoftIIC* SoftIICInit(GPIO_TypeDef* pSDAPortGroup, uint16_t pSDAPortIndex, GPIO_T
 	c->stop = &_soft_iic_stop;
 	c->wait = &_soft_iic_wait;
 	c->send = &_soft_iic_send;
-	
+
 	return c;
 }
-
-
-#endif

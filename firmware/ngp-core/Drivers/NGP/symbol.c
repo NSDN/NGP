@@ -1,18 +1,6 @@
-/*
-* Copy from NSDN(TM)-Beeper
-**/
+#include "./Include/symbol.h"
 
-/*
-* Music Player with STC15W408AS
-* Created by D.zzm in 2016.7.29
-* 
-* The symbol file
-**/
-
-#ifndef __SYMBOL_H_
-#define __SYMBOL_H_
-
-/* Timer2: 10us */
+// Time base: 10us
 
 #define SYMBOL_LENGTH 60
 
@@ -32,4 +20,5 @@ const unsigned short SYMBOL_HALF[] = {
 	 11,  11,  10,  10,   9,   8,   8,   7,   7,   7,   6,   6, // C8 - B8
 };
 
-#endif
+const unsigned short* getSymbol() { return (const unsigned char*) &SYMBOL; }
+const unsigned short* getSymbolHalf() { return (const unsigned char*) &SYMBOL_HALF; }
