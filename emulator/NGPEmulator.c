@@ -165,7 +165,8 @@ void loop() {
 			lcd->printfc(lcd->p, 8, "Sample");
 			lcd->colorb(lcd->p, 0x000000);
 			lcd->colorf(lcd->p, 0xFFFFFF);
-			lcd->bitmapsc(lcd->p, 63, 63, 32, 32, test);
+			lcd->line(lcd->p, 16, 24, 112, 96);
+			lcd->line(lcd->p, 16, 96, 112, 24);
 			break;
 		case 11:
 			STG(STG_MAIN);

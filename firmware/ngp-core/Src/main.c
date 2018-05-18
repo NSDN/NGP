@@ -331,7 +331,7 @@ int main(void)
 						break;
 					case 13:
 						HAL_TIM_Base_Start_IT(&htim10);
-						setVolume(2);
+						setVolume(5);
 						music = 0;
 						break;
 					case 14:
@@ -427,7 +427,7 @@ int main(void)
 					lcd->colorf(lcd->p, 0x000000);
 					lcd->bitmapsc(lcd->p, 63, 48, 64, 64, __NYAGAME_LOGO_);
 					lcd->printfc(lcd->p, 86, "NyaGame Portable");
-					lcd->printfc(lcd->p, 98, "dev161229");
+					lcd->printfc(lcd->p, 98, "dev170503");
 					break;
 				default:
 					break;
