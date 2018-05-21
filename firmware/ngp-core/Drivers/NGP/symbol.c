@@ -20,5 +20,5 @@ const unsigned short SYMBOL_HALF[] = {
 	 11,  11,  10,  10,   9,   8,   8,   7,   7,   7,   6,   6, // C8 - B8
 };
 
-const unsigned short* getSymbol() { return (const unsigned char*) &SYMBOL; }
-const unsigned short* getSymbolHalf() { return (const unsigned char*) &SYMBOL_HALF; }
+const unsigned short* getSymbol() { return SYMBOL; }
+const unsigned short* getSymbolHalf() { return SYMBOL_HALF; }

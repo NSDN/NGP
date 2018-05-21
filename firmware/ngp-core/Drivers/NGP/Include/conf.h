@@ -4,7 +4,7 @@
 
 #define HUART huart1
 
-#define SCREEN lcd
+#define SCREEN dev
 #define SCREENTYPE LCD
 
 //#define USE_FLASH

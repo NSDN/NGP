@@ -1,23 +1,22 @@
 #include "./Include/flash.h"
 
-
 #include <stdlib.h>
 
-void _flash_select(pFlash* p) {
+void _flash_select(pFlashR* p) {
 	HAL_GPIO_WritePin(p->CSPortGroup, p->CSPortIndex, GPIO_PIN_RESET);
 }
 
-void _flash_deselect(pFlash* p) {
+void _flash_deselect(pFlashR* p) {
 	HAL_GPIO_WritePin(p->CSPortGroup, p->CSPortIndex, GPIO_PIN_SET);
 }
 
-uint8_t _flash_transfer(pFlash* p, uint8_t x) {
+uint8_t _flash_transfer(pFlashR* p, uint8_t x) {
 	uint8_t data = 0;
 	HAL_SPI_TransmitReceive(p->spi, &x, &data, 1, 1);
 	return data;
 }
 
-uint16_t _flash_readSR(pFlash* p) {
+uint16_t _flash_readSR(pFlashR* p) {
     uint8_t r1,r2;
     _flash_select(p);
     _flash_transfer(p, R_SR1);
@@ -31,7 +30,7 @@ uint16_t _flash_readSR(pFlash* p) {
     return (((uint16_t)r2) << 8) | r1;
 }
 
-uint8_t _flash_readManufacturer(pFlash* p) {
+uint8_t _flash_readManufacturer(pFlashR* p) {
     uint8_t c;
     _flash_select(p);
     _flash_transfer(p, R_JEDEC_ID);
@@ -42,7 +41,7 @@ uint8_t _flash_readManufacturer(pFlash* p) {
     return c;
 }
 
-uint64_t _flash_readUniqueID(pFlash* p) {
+uint64_t _flash_readUniqueID(pFlashR* p) {
     uint64_t uid;
     uint8_t *arr;
     arr = (uint8_t*)&uid;
@@ -61,7 +60,7 @@ uint64_t _flash_readUniqueID(pFlash* p) {
     return uid;
 }
 
-uint16_t _flash_readPartID(pFlash* p) {
+uint16_t _flash_readPartID(pFlashR* p) {
     uint8_t a,b;
     _flash_select(p);
     _flash_transfer(p, R_JEDEC_ID);
@@ -72,7 +71,7 @@ uint16_t _flash_readPartID(pFlash* p) {
     return (a << 8) | b;
 }
 
-uint8_t _flash_checkPartNo(pFlash* p, partNumber _partno) {
+uint8_t _flash_checkPartNo(pFlashR* p, partNumber _partno) {
     uint8_t manuf;
     uint16_t id;
 
@@ -111,7 +110,7 @@ uint8_t _flash_checkPartNo(pFlash* p, partNumber _partno) {
     return 0; //partNo not found
 }
 
-uint8_t _flash_busy(pFlash* p) {
+uint8_t _flash_busy(pFlashR* p) {
     uint8_t r1;
     _flash_select(p);
     _flash_transfer(p, R_SR1);
@@ -122,13 +121,13 @@ uint8_t _flash_busy(pFlash* p) {
     return 0;
 }
 
-void _flash_setWriteEnable(pFlash* p, uint8_t cmd) {
+void _flash_setWriteEnable(pFlashR* p, uint8_t cmd) {
     _flash_select(p);
     _flash_transfer(p, cmd ? W_EN : W_DE);
     _flash_deselect(p);
 }
 
-long _flash_bytes(pFlash* p) {
+long _flash_bytes(pFlashR* p) {
     for(int i = 0; i < sizeof(pnList) / sizeof(pnList[0]); i++) {
         if(p->partno == pnList[i].pn)
             return pnList[i].bytes;
@@ -136,7 +135,7 @@ long _flash_bytes(pFlash* p) {
     return 0;
 }
 
-uint16_t _flash_pages(pFlash* p) {
+uint16_t _flash_pages(pFlashR* p) {
     for(int i = 0; i < sizeof(pnList) / sizeof(pnList[0]); i++) {
         if(p->partno == pnList[i].pn)
             return pnList[i].pages;
@@ -144,7 +143,7 @@ uint16_t _flash_pages(pFlash* p) {
     return 0;
 }
 
-uint16_t _flash_sectors(pFlash* p) {
+uint16_t _flash_sectors(pFlashR* p) {
     for(int i = 0; i < sizeof(pnList) / sizeof(pnList[0]); i++) {
         if(p->partno == pnList[i].pn)
             return pnList[i].sectors;
@@ -152,7 +151,7 @@ uint16_t _flash_sectors(pFlash* p) {
     return 0;
 }
 
-uint16_t _flash_blocks(pFlash* p) {
+uint16_t _flash_blocks(pFlashR* p) {
     for(int i = 0; i < sizeof(pnList) / sizeof(pnList[0]); i++) {
         if(p->partno == pnList[i].pn)
             return pnList[i].blocks;
@@ -160,7 +159,7 @@ uint16_t _flash_blocks(pFlash* p) {
     return 0;
 }
 
-uint8_t _flash_begin(pFlash* p) {
+uint8_t _flash_begin(pFlashR* p) {
     _flash_select(p);
     _flash_transfer(p, RELEASE);
     _flash_deselect(p);
@@ -170,14 +169,14 @@ uint8_t _flash_begin(pFlash* p) {
     return 1;
 }
 
-void _flash_end(pFlash* p) {
+void _flash_end(pFlashR* p) {
     _flash_select(p);
     _flash_transfer(p, PDWN);
     _flash_deselect(p);
     HAL_Delay(1); //>3us
 }
 
-uint16_t _flash_read(pFlash* p, uint32_t addr, uint8_t *buf, uint16_t n) {
+uint16_t _flash_read(pFlashR* p, uint32_t addr, uint8_t *buf, uint16_t n) {
     if(_flash_busy(p)) return 0;
 
     _flash_select(p);
@@ -193,7 +192,7 @@ uint16_t _flash_read(pFlash* p, uint32_t addr, uint8_t *buf, uint16_t n) {
     return n;
 }
 
-void _flash_writePage(pFlash* p, uint32_t addr_start, uint8_t *buf) {
+void _flash_writePage(pFlashR* p, uint32_t addr_start, uint8_t *buf) {
 	_flash_setWriteEnable(p, 1);
     _flash_select(p);
     _flash_transfer(p, PAGE_PGM);
@@ -210,7 +209,7 @@ void _flash_writePage(pFlash* p, uint32_t addr_start, uint8_t *buf) {
 	_flash_setWriteEnable(p, 0);
 }
 
-void _flash_eraseSector(pFlash* p, uint32_t addr_start) {
+void _flash_eraseSector(pFlashR* p, uint32_t addr_start) {
 	_flash_setWriteEnable(p, 1);
     _flash_select(p);
     _flash_transfer(p, SECTOR_E);
@@ -222,7 +221,7 @@ void _flash_eraseSector(pFlash* p, uint32_t addr_start) {
 	_flash_setWriteEnable(p, 0);
 }
 
-void _flash_erase32kBlock(pFlash* p, uint32_t addr_start) {
+void _flash_erase32kBlock(pFlashR* p, uint32_t addr_start) {
     _flash_select(p);
     _flash_transfer(p, BLK_E_32K);
     _flash_transfer(p, addr_start >> 16);
@@ -231,7 +230,7 @@ void _flash_erase32kBlock(pFlash* p, uint32_t addr_start) {
     _flash_deselect(p);
 }
 
-void _flash_erase64kBlock(pFlash* p, uint32_t addr_start) {
+void _flash_erase64kBlock(pFlashR* p, uint32_t addr_start) {
     _flash_select(p);
     _flash_transfer(p, BLK_E_64K);
     _flash_transfer(p, addr_start >> 16);
@@ -240,26 +239,26 @@ void _flash_erase64kBlock(pFlash* p, uint32_t addr_start) {
     _flash_deselect(p);
 }
 
-void _flash_eraseAll(pFlash* p) {
+void _flash_eraseAll(pFlashR* p) {
     _flash_select(p);
     _flash_transfer(p, CHIP_ERASE);
     _flash_deselect(p);
 }
 
-void _flash_eraseSuspend(pFlash* p) {
+void _flash_eraseSuspend(pFlashR* p) {
     _flash_select(p);
     _flash_transfer(p, E_SUSPEND);
     _flash_deselect(p);
 }
 
-void _flash_eraseResume(pFlash* p) {
+void _flash_eraseResume(pFlashR* p) {
     _flash_select(p);
     _flash_transfer(p, E_RESUME);
     _flash_deselect(p);
 }
 
 Flash* FlashInit(SPI_HandleTypeDef* hspi, GPIO_TypeDef* CSGroup, uint16_t CSIndex, partNumber partnum) {
-    pFlash* p = malloc(sizeof(pFlash));
+    pFlashR* p = malloc(sizeof(pFlashR));
     p->spi = hspi;
     p->CSPortGroup = CSGroup;
     p->CSPortIndex = CSIndex;

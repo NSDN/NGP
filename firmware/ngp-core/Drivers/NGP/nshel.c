@@ -2,14 +2,15 @@
 #include "./Include/nshel.h"
 #include "./Include/nsasm.h"
 
-#include "./Include/lcd.h"
 #include "./Include/logo.h"
 #include "./Include/flash.h"
 
 #include <malloc.h>
 #include <string.h>
 
-extern LCD* lcd;
+#include "./Include/lcd.h"
+#include "./Include/rgboled.h"
+extern SCREENTYPE* SCREEN;
 #ifdef USE_FLASH
 extern Flash* flash;
 #endif
@@ -81,21 +82,21 @@ int _nshel_fun_print(int argc, char* argv[]) {
 	return OK;
 }
 int _nshel_fun_clear(int argc, char* argv[]) {
-	lcd->clear(lcd->p);
+	dev->clear(dev->p);
 	return OK;
 }
 int _nshel_fun_logo(int argc, char* argv[]) {
-	lcd->colorb(lcd->p, 0xFFFFFF);
-	lcd->colorf(lcd->p, 0x000000);
-	lcd->clear(lcd->p);
+	dev->colorb(dev->p, 0xFFFFFF);
+	dev->colorf(dev->p, 0x000000);
+	dev->clear(dev->p);
 
-	lcd->bitmapsc(lcd->p, 240, 140, 64, 64, getLogo());
-	lcd->printfc(lcd->p, 180, "nyagame vita");
-	lcd->printfc(lcd->p, 200, "this is a factory system");
+	dev->bitmapsc(dev->p, 240, 140, 64, 64, getLogo());
+	dev->printfc(dev->p, 180, "nyagame vita");
+	dev->printfc(dev->p, 200, "this is a factory system");
 	HAL_Delay(1000);
 	uint8_t buf = 0;
 	while (HAL_UART_Receive(&HUART, &buf, 1, 1) != HAL_OK);
-	lcd->clear(lcd->p);
+	dev->clear(dev->p);
 	return OK;
 }
 int _nshel_fun_ver(int argc, char* argv[]) {
@@ -138,34 +139,34 @@ int _nshel_fun_delay(int argc, char* argv[]) {
 }
 int _nshel_fun_colorb(int argc, char* argv[]) {
 	if (argc == 1) {
-		print("Back color: %06X\n", __get_color__(lcd->p->backColor));
+		print("Back color: %06X\n", __get_color__(dev->p->backColor));
 	} else {
 		int color = 0;
 		if (__getvar__(argv[1], &color) == ERR) return ERR;
-		lcd->colorb(lcd->p, color);
+		dev->colorb(dev->p, color);
 	}
 	return OK;
 }
 int _nshel_fun_colorf(int argc, char* argv[]) {
 	if (argc == 1) {
-		print("Fore color: %06X\n", __get_color__(lcd->p->foreColor));
+		print("Fore color: %06X\n", __get_color__(dev->p->foreColor));
 	} else {
 		int color = 0;
 		if (__getvar__(argv[1], &color) == ERR) return ERR;
-		lcd->colorf(lcd->p, color);
+		dev->colorf(dev->p, color);
 	}
 	return OK;
 }
 int _nshel_fun_font(int argc, char* argv[]) {
 	if (argc == 1) {
-		print("Font size: %s\n", lcd->p->Font == Big ? "Big" : "Small");
+		print("Font size: %s\n", dev->p->Font == Big ? "Big" : "Small");
 	} else {
 		if (strcmp(strlwr(argv[1]), "big") == 0) {
-			lcd->font(lcd->p, Big);
-			lcd->clear(lcd->p);
+			dev->font(dev->p, Big);
+			dev->clear(dev->p);
 		} else if (strcmp(strlwr(argv[1]), "small") == 0) {
-			lcd->font(lcd->p, Small);
-			lcd->clear(lcd->p);
+			dev->font(dev->p, Small);
+			dev->clear(dev->p);
 		} else {
 			return ERR;
 		}
@@ -177,29 +178,29 @@ int _nshel_fun_style(int argc, char* argv[]) {
 		print("You can choose: black, white, orange, green, amber, bonus\n");
 	} else if (argc == 2) {
 		if (strcmp(strlwr(argv[1]), "black") == 0) {
-			lcd->colorf(lcd->p, 0xFFFFFF);
-			lcd->colorb(lcd->p, 0x000000);
-			lcd->clear(lcd->p);
+			dev->colorf(dev->p, 0xFFFFFF);
+			dev->colorb(dev->p, 0x000000);
+			dev->clear(dev->p);
 		} else if (strcmp(strlwr(argv[1]), "white") == 0) {
-			lcd->colorf(lcd->p, 0x000000);
-			lcd->colorb(lcd->p, 0xFFFFFF);
-			lcd->clear(lcd->p);
+			dev->colorf(dev->p, 0x000000);
+			dev->colorb(dev->p, 0xFFFFFF);
+			dev->clear(dev->p);
 		} else if (strcmp(strlwr(argv[1]), "orange") == 0) {
-			lcd->colorf(lcd->p, 0xFFFFFF);
-			lcd->colorb(lcd->p, 0xE65100);
-			lcd->clear(lcd->p);
+			dev->colorf(dev->p, 0xFFFFFF);
+			dev->colorb(dev->p, 0xE65100);
+			dev->clear(dev->p);
 		} else if (strcmp(strlwr(argv[1]), "green") == 0) {
-			lcd->colorf(lcd->p, 0x259B24);
-			lcd->colorb(lcd->p, 0x000000);
-			lcd->clear(lcd->p);
+			dev->colorf(dev->p, 0x259B24);
+			dev->colorb(dev->p, 0x000000);
+			dev->clear(dev->p);
 		} else if (strcmp(strlwr(argv[1]), "amber") == 0) {
-			lcd->colorf(lcd->p, 0xFCB326);
-			lcd->colorb(lcd->p, 0x000000);
-			lcd->clear(lcd->p);
+			dev->colorf(dev->p, 0xFCB326);
+			dev->colorb(dev->p, 0x000000);
+			dev->clear(dev->p);
 		} else if (strcmp(strlwr(argv[1]), "bonus") == 0) {
-			lcd->colorf(lcd->p, 0x455A64);
-			lcd->colorb(lcd->p, 0x78909C);
-			lcd->clear(lcd->p);
+			dev->colorf(dev->p, 0x455A64);
+			dev->colorb(dev->p, 0x78909C);
+			dev->clear(dev->p);
 		} else {
 			print("You can choose: black, white, orange, green, amber, bonus\n");
 		}
@@ -215,17 +216,17 @@ int _nshel_fun_rotate(int argc, char* argv[]) {
 		print("    la (as landscape-anti)\n");
 	} else if (argc == 2) {
 		if (strcmp(strlwr(argv[1]), "p") == 0) {
-			lcd->rotate(lcd->p, LCD_PORTRAIT);
-			lcd->clear(lcd->p);
+			SCREEN->rotate(dev->p, 0);
+			SCREEN->clear(dev->p);
 		} else if (strcmp(strlwr(argv[1]), "l") == 0) {
-			lcd->rotate(lcd->p, LCD_LANDSCAPE);
-			lcd->clear(lcd->p);
+			SCREEN->rotate(dev->p, 1);
+			SCREEN->clear(dev->p);
 		} else if (strcmp(strlwr(argv[1]), "pa") == 0) {
-			lcd->rotate(lcd->p, LCD_PORTRAIT_ANTI);
-			lcd->clear(lcd->p);
+			SCREEN->rotate(dev->p, 2);
+			SCREEN->clear(dev->p);
 		} else if (strcmp(strlwr(argv[1]), "la") == 0) {
-			lcd->rotate(lcd->p, LCD_LANDSCAPE_ANTI);
-			lcd->clear(lcd->p);
+			SCREEN->rotate(dev->p, 3);
+			SCREEN->clear(dev->p);
 		} else {
 			print("You can choose:\n");
 			print("    p (as portrait)\n");
@@ -303,7 +304,7 @@ int _nshel_fun_erase(int argc, char* argv[]) {
 #endif
 #ifdef USE_GRAPH
 int _nshel_fun_graph(int argc, char* argv[]) {
-	lcd->clear(lcd->p);
+	dev->clear(dev->p);
 	HAL_Delay(1000);
 	uint8_t buf = 0; uint16_t data = 0, prev = 0;
 	uint16_t time = 1;
@@ -313,16 +314,16 @@ int _nshel_fun_graph(int argc, char* argv[]) {
 		HAL_ADC_PollForConversion(&hadc3, 5);
 		data = HAL_ADC_GetValue(&hadc3);
 		HAL_ADC_Stop(&hadc3);
-		data = data * lcd->p->height / 4095;
-		lcd->line(lcd->p, time - 1, prev, time, data);
+		data = data * dev->p->height / 4095;
+		dev->line(dev->p, time - 1, prev, time, data);
 		time += 1;
-		if (time > lcd->p->width - 1) {
+		if (time > dev->p->width - 1) {
 			time = 1;
-			lcd->clear(lcd->p);
+			dev->clear(dev->p);
 		}
 		HAL_Delay(5);
 	}
-	lcd->clear(lcd->p);
+	dev->clear(dev->p);
 	return OK;
 }
 #endif

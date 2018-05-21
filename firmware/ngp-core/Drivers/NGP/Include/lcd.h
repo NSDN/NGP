@@ -8,10 +8,10 @@
 #define IOBUF_WIDTH 40
 #define IOBUF_HEIGHT 30
 
-#define LCD_PORTRAIT 2
-#define LCD_PORTRAIT_ANTI 0
-#define LCD_LANDSCAPE 3
-#define LCD_LANDSCAPE_ANTI 1
+#define LCD_PORTRAIT 0
+#define LCD_PORTRAIT_ANTI 1
+#define LCD_LANDSCAPE 2
+#define LCD_LANDSCAPE_ANTI 3
 
 //#define LCD_USE_PRIVATE_FUN
 
@@ -22,6 +22,7 @@ typedef enum {
 
 typedef struct {
 	SPIDevice* base;
+	uint8_t type;
 	GPIO_TypeDef* RSTPortGroup;
 	uint16_t RSTPortIndex;
 	GPIO_TypeDef* BKPortGroup;
@@ -71,7 +72,7 @@ typedef struct {
 } LCD;
 
 LCD* LCDInit(
-		SPI_HandleTypeDef* pspi,
+		SPI_HandleTypeDef* pspi, uint8_t type,
 		GPIO_TypeDef* pDCPortGroup, uint16_t pDCPortIndex,
 		GPIO_TypeDef* pCSPortGroup, uint16_t pCSPortIndex,
 		GPIO_TypeDef* pRSTPortGroup, uint16_t pRSTPortIndex,

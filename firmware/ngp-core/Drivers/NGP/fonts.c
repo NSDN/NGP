@@ -383,7 +383,7 @@ const unsigned char __FONTS_BIG_[] = {
 	0x01,0x00,0x00,0x00,0x01,0x01,0x00,0x00,
 };
 
-unsigned char* getFont(uint8_t type) {
+const unsigned char* getFont(uint8_t type) {
 	switch (type) {
 		case 0: return __FONTS_SMALL_;
 		case 1: return __FONTS_BIG_;

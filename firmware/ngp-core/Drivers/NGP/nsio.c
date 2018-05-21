@@ -6,6 +6,7 @@
 #include <malloc.h>
 
 #include "./Include/lcd.h"
+#include "./Include/rgboled.h"
 extern SCREENTYPE* SCREEN;
 
 #include "fatfs.h"

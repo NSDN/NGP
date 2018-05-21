@@ -1,7 +1,6 @@
+#include <regscreen.h>
 #include "./Include/lcd.h"
 #include "./Include/fonts.h"
-#include "./Include/reglcd.h"
-
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
@@ -65,14 +64,25 @@ void _lcd_writeReg32(pLCD* p, uint8_t cmd, uint32_t data) {
 void _lcd_setPosition(pLCD* p, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) { 
 	uint32_t t;
 
-    t = (x1 + 2);
-    t <<= 16;
-    t |= (x2 + 2);
-    _lcd_writeReg32(p, LCD_CADDR, t);
-    t = (y1 + 3);
-    t <<= 16;
-    t |= (y2 + 3);
-    _lcd_writeReg32(p, LCD_PADDR, t);
+    if (p->type == ST7735) {
+    	t = (x1 + 2);
+		t <<= 16;
+		t |= (x2 + 2);
+		_lcd_writeReg32(p, LCD_CADDR, t);
+		t = (y1 + 3);
+		t <<= 16;
+		t |= (y2 + 3);
+		_lcd_writeReg32(p, LCD_PADDR, t);
+    } else if (p->type == ST7789) {
+    	t = x1;
+		t <<= 16;
+		t |= x2;
+		_lcd_writeReg32(p, LCD_CADDR, t);
+		t = y1;
+		t <<= 16;
+		t |= y2;
+		_lcd_writeReg32(p, LCD_PADDR, t);
+    }
 }
 
 void _lcd_reset(pLCD* p) {
@@ -89,23 +99,27 @@ void _lcd_backLight(pLCD* p, uint8_t state) {
 void _lcd_rotate(pLCD* p, uint8_t r) {
 	uint8_t t = 0; uint16_t tmp;
 	p->rotate = r;
-	switch (r) {
-		case LCD_PORTRAIT:
-			t = 0;
-			break;
-		case LCD_LANDSCAPE:
-			t = LCD_MADCTL_MV | LCD_MADCTL_HF;
-			tmp = p->width; p->width = p->height; p->height = tmp;
-			break;
-		case LCD_PORTRAIT_ANTI:
-			t = LCD_MADCTL_MY | LCD_MADCTL_HF;
-			break;
-		case LCD_LANDSCAPE_ANTI:
-			t = LCD_MADCTL_MV | LCD_MADCTL_MY ;
-			tmp = p->width; p->width = p->height; p->height = tmp;
-			break;
+	if (p->type == ST7735) {
+		switch (r) {
+			case LCD_PORTRAIT:
+				t = LCD_MADCTL_MX | LCD_MADCTL_MY;
+				break;
+			case LCD_LANDSCAPE:
+				t = LCD_MADCTL_MY | LCD_MADCTL_MV;
+				tmp = p->width; p->width = p->height; p->height = tmp;
+				break;
+			case LCD_PORTRAIT_ANTI:
+				t = 0;
+				break;
+			case LCD_LANDSCAPE_ANTI:
+				t = LCD_MADCTL_MX | LCD_MADCTL_MV;
+				tmp = p->width; p->width = p->height; p->height = tmp;
+				break;
+		}
+		_lcd_writeReg8(p, LCD_MADCTL, t | LCD_MADCTL_BGR);
+	} else if (p->type == ST7789) {
+
 	}
-	_lcd_writeReg8(p, LCD_MADCTL, t | LCD_MADCTL_BGR);
 	_lcd_setPosition(p, 0, 0, p->width - 1, p->height - 1);
 }
 
@@ -115,7 +129,8 @@ void _lcd_init(pLCD* p) {
 	
 	uint32_t i = 0;
 	uint16_t r = 0, len = 0, x = 0;
-	uint16_t size = sizeof(_regValues) / sizeof(unsigned short);
+	uint16_t size = getRegSize(p->type);
+	uint16_t* _regValues = getRegValues(p->type);
 	while(i < size) {
 		r = _regValues[i++];
 		len = _regValues[i++];
@@ -130,20 +145,23 @@ void _lcd_init(pLCD* p) {
 		}
     }
 	
-	//_lcd_rotate(p, p->rotate);
+	_lcd_rotate(p, p->rotate);
 }
 
-uint16_t _color_conv(uint32_t color) {
-	uint16_t c = ((uint16_t)((double)((color & 0xFF0000) >> 16) * 0.122) << 11) |
-				 ((uint16_t)((double)((color & 0x00FF00) >> 8 ) * 0.247) << 5 ) |
-				 ((uint16_t)((double)((color & 0x0000FF)      ) * 0.122)      ),
-		   tmp = c & 0x00FF;
-	return (c >> 8) | (tmp << 8);
+uint16_t _lcd_color_conv(uint32_t color) {
+	uint16_t c;
+	c =  (((color & 0xFF0000) >> 16) & 0xFF) >> 3;
+	c <<= 6;
+	c |= (((color & 0x00FF00) >> 8 ) & 0xFF) >> 2;
+	c <<= 5;
+	c |= (((color & 0x0000FF)      ) & 0xFF) >> 3;
+
+	return c >> 8 | c << 8;
 }
 
-void _lcd_back_color(pLCD* p, uint32_t color) { p->backColor = _color_conv(color); }
+void _lcd_back_color(pLCD* p, uint32_t color) { p->backColor = _lcd_color_conv(color); }
 
-void _lcd_fore_color(pLCD* p, uint32_t color) { p->foreColor = _color_conv(color); }
+void _lcd_fore_color(pLCD* p, uint32_t color) { p->foreColor = _lcd_color_conv(color); }
 
 void _lcd_font(pLCD* p, LCDFont f) { p->Font = f; }
 
@@ -549,20 +567,23 @@ int _lcd_printfa(pLCD* p, const char* format, ...) {
 }
 
 LCD* LCDInit(
-		SPI_HandleTypeDef* pspi,
+		SPI_HandleTypeDef* pspi, uint8_t type,
 		GPIO_TypeDef* pDCPortGroup, uint16_t pDCPortIndex,
 		GPIO_TypeDef* pCSPortGroup, uint16_t pCSPortIndex,
 		GPIO_TypeDef* pRSTPortGroup, uint16_t pRSTPortIndex,
 		GPIO_TypeDef* pBKPortGroup, uint16_t pBKPortIndex) {
 	pLCD* p = malloc(sizeof(pLCD));
 	p->base = SPIDeviceInit(pspi, pDCPortGroup, pDCPortIndex, pCSPortGroup, pCSPortIndex);
+	p->type = type;
 	p->RSTPortGroup = pRSTPortGroup;
 	p->RSTPortIndex = pRSTPortIndex;
 	p->BKPortGroup = pBKPortGroup;
 	p->BKPortIndex = pBKPortIndex;
 
-	p->width = 128;
-	p->height = 128;
+	if (p->type == ST7735)
+		p->width = p->height = 128;
+	else if (p->type == ST7789)
+		p->width = p->height = 240;
 	p->Font = Small;
 	p->backColor = 0x0000;
 	p->foreColor = 0xFFFF;

@@ -4,7 +4,7 @@
 
 #include "halinc.h"
 
-unsigned char* getFont(uint8_t type);
+const unsigned char* getFont(uint8_t type);
 
 
 #endif
