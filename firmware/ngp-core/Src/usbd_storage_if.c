@@ -281,7 +281,7 @@ int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t b
 int8_t STORAGE_GetMaxLun_FS(void)
 {
   /* USER CODE BEGIN 8 */
-  return (SDCardInfo.BlockNbr - 1);
+  return (STORAGE_LUN_NBR - 1);
   /* USER CODE END 8 */
 }
 
