@@ -58,10 +58,10 @@ typedef struct {
 	void (*line)(pLCD* p, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 	void (*tri)(pLCD* p, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t x3, uint16_t y3, uint8_t fill);
 	void (*rect)(pLCD* p, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint8_t fill);
-	void (*bitmap)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t* data);
-	void (*bitmapc)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t* data);
-	void (*bitmapt)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t trans, uint32_t* data);
-	void (*bitmaptc)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t trans, uint32_t* data);
+	void (*bitmap)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t* data);
+	void (*bitmapc)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t* data);
+	void (*bitmapt)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t trans, uint16_t* data);
+	void (*bitmaptc)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t trans, uint16_t* data);
 	void (*bitmaps)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, const unsigned char* data);
 	void (*bitmapsc)(pLCD* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, const unsigned char* data);
 	void (*draw)(pLCD* p, uint16_t x, uint16_t y, char character);

@@ -237,8 +237,8 @@ void _rgb_rect(pRGBOLED* p, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, 
 	}
 }
 
-void _rgb_bitmap(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t* data) {
-	_rgb_setPosition(p, x, y, x + w, y + h);
+void _rgb_bitmap(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t* data) {
+	_rgb_setPosition(p, x, y, x + w - 1, y + h - 1);
 	_rgb_writeCommand(p, SSD1351_CMD_WRITERAM);
 	uint32_t c = 0;
 	for (uint16_t i = 0; i < w; i++) {
@@ -249,8 +249,8 @@ void _rgb_bitmap(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, ui
 	}
 }
 
-void _rgb_bitmapc(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t* data) {
-	_rgb_setPosition(p, x - w / 2, y - h / 2, x + w / 2, y + h / 2);
+void _rgb_bitmapc(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t* data) {
+	_rgb_setPosition(p, x - w / 2, y - h / 2, x + w / 2 - 1, y + h / 2 - 1);
 	_rgb_writeCommand(p, SSD1351_CMD_WRITERAM);
 	uint32_t c = 0;
 	for (uint16_t i = 0; i < w; i++) {
@@ -261,10 +261,10 @@ void _rgb_bitmapc(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, u
 	}
 }
 
-void _rgb_bitmapt(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t trans, uint32_t* data) {
-	_rgb_setPosition(p, x, y, x + w, y + h);
+void _rgb_bitmapt(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t trans, uint16_t* data) {
+	_rgb_setPosition(p, x, y, x + w - 1, y + h - 1);
 	_rgb_writeCommand(p, SSD1351_CMD_WRITERAM);
-	uint32_t c = 0; uint32_t colort = trans & 0xFFFFFF;
+	uint32_t c = 0; uint16_t colort = _rgb_color_conv(trans & 0xFFFFFF);
 	for (uint16_t i = 0; i < w; i++) {
 		for (uint16_t j = 0; j < h; j++) {
 			if (data[c] != colort) _rgb_writeData16(p, data[c]);
@@ -273,10 +273,10 @@ void _rgb_bitmapt(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, u
 	}
 }
 
-void _rgb_bitmaptc(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t trans, uint32_t* data) {
-	_rgb_setPosition(p, x - w / 2, y - h / 2, x + w / 2, y + h / 2);
+void _rgb_bitmaptc(pRGBOLED* p, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint32_t trans, uint16_t* data) {
+	_rgb_setPosition(p, x - w / 2, y - h / 2, x + w / 2 - 1, y + h / 2 - 1);
 	_rgb_writeCommand(p, SSD1351_CMD_WRITERAM);
-	uint32_t c = 0; uint32_t colort = trans & 0xFFFFFF;
+	uint32_t c = 0; uint16_t colort = _rgb_color_conv(trans & 0xFFFFFF);
 	for (uint16_t i = 0; i < w; i++) {
 		for (uint16_t j = 0; j < h; j++) {
 			if (data[c] != colort) _rgb_writeData16(p, data[c]);
@@ -595,5 +595,64 @@ RGBOLED* RGBOLEDInit(
 	c->printfc = &_rgb_printfc;
 	c->printfa = &_rgb_printfa;
 	
+	return c;
+}
+
+RGBOLED* SoftRGBInit(
+		GPIO_TypeDef* pSDAPortGroup, uint16_t pSDAPortIndex,
+		GPIO_TypeDef* pSCLPortGroup, uint16_t pSCLPortIndex,
+		GPIO_TypeDef* pDCPortGroup, uint16_t pDCPortIndex,
+		GPIO_TypeDef* pCSPortGroup, uint16_t pCSPortIndex,
+		GPIO_TypeDef* pRSTPortGroup, uint16_t pRSTPortIndex) {
+	pRGBOLED* p = malloc(sizeof(pRGBOLED));
+	p->base = SoftSPIInit(
+			pSDAPortGroup, pSDAPortIndex,
+			pSCLPortGroup, pSCLPortIndex,
+			pDCPortGroup, pDCPortIndex,
+			pCSPortGroup, pCSPortIndex);
+	p->RSTPortGroup = pRSTPortGroup;
+	p->RSTPortIndex = pRSTPortIndex;
+
+	p->width = 128;
+	p->height = 128;
+	p->Font = RGBSmall;
+	p->backColor = 0x0000;
+	p->foreColor = 0xFFFF;
+	p->rotate = RGB_PORTRAIT;
+	p->ptrX = p->ptrY = 0;
+	memset(p->buffer, 0, RGB_IOBUF_WIDTH * RGB_IOBUF_HEIGHT);
+
+	RGBOLED* c = malloc(sizeof(RGBOLED));
+	c->p = p;
+	#ifdef RGB_USE_PRIVATE_FUN
+	c->writeCommand = &_rgb_writeCommand;
+	c->writeData = &_rgb_writeData;
+	c->writeData16 = &_rgb_writeData16;
+	c->setPosition = &_rgb_setPosition;
+	#endif
+	c->init = &_rgb_init;
+	c->reset = &_rgb_reset;
+	c->colorb = &_rgb_back_color;
+	c->colorf = &_rgb_fore_color;
+	c->font = &_rgb_font;
+	c->clear = &_rgb_clear;
+	c->scroll = *_rgb_scroll;
+	c->rotate = &_rgb_rotate;
+	c->pixel = &_rgb_pixel;
+	c->line = &_rgb_line;
+	c->tri = &_rgb_tri;
+	c->rect = &_rgb_rect;
+	c->bitmap = &_rgb_bitmap;
+	c->bitmapc = &_rgb_bitmapc;
+	c->bitmapt = &_rgb_bitmapt;
+	c->bitmaptc = &_rgb_bitmaptc;
+	c->bitmaps = &_rgb_bitmaps;
+	c->bitmapsc = &_rgb_bitmapsc;
+	c->draw = &_rgb_draw;
+	c->print = &_rgb_print;
+	c->printf = &_rgb_printf;
+	c->printfc = &_rgb_printfc;
+	c->printfa = &_rgb_printfa;
+
 	return c;
 }
