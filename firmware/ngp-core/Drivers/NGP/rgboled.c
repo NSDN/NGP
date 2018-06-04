@@ -541,6 +541,7 @@ int _rgb_printfa(pRGBOLED* p, const char* format, ...) {
 	int result = vsprintf(iobuf, format, args);
 	va_end(args);
 	_rgb_printa_(p, iobuf);
+	free(iobuf);
 	return result;
 }
 
