@@ -1,5 +1,7 @@
 #MicroXplorer Configuration settings - do not modify
 FATFS.BSP.number=1
+FATFS.IPParameters=USE_DMA_CODE_SD
+FATFS.USE_DMA_CODE_SD=0
 FATFS0.BSP.STBoard=false
 FATFS0.BSP.api=UnknownBspDriver
 FATFS0.BSP.component=
