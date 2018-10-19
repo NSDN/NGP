@@ -1,0 +1,82 @@
+#ifndef __REGLCD_H_
+#define __REGLCD_H_
+
+
+#define ST7735 0
+#define ST7789 1
+#define SSD1351 2
+
+/*
+ * ST7789 use this SPI initialize code:
+ * hspi.Init.CLKPolarity = SPI_POLARITY_HIGH;
+ * hspi.Init.CLKPhase = SPI_PHASE_2EDGE;
+ *
+ * SSD1351 needs f-SPI < 6MHz
+ *
+ * */
+
+#define LCD_INVON		0x20
+#define LCD_INVOFF		0x21
+#define LCD_CADDR		0x2A
+#define LCD_PADDR		0x2B
+#define LCD_MEMWR		0x2C
+#define LCD_MADCTL		0x36
+
+#define LCD_MADCTL_MY  0x80
+#define LCD_MADCTL_MX  0x40
+#define LCD_MADCTL_MV  0x20
+#define LCD_MADCTL_ML  0x10
+#define LCD_MADCTL_RGB 0x00
+#define LCD_MADCTL_BGR 0x08
+#define LCD_MADCTL_MH  0x04
+#define LCD_MADCTL_HF  0x02
+#define LCD_MADCTL_VF  0x01
+
+#define LCD_DELAY 0xFFFF
+
+#define SSD1351_CMD_SETCOLUMN 		0x15
+#define SSD1351_CMD_SETROW    		0x75
+#define SSD1351_CMD_WRITERAM   		0x5C
+#define SSD1351_CMD_READRAM   		0x5D
+#define SSD1351_CMD_SETREMAP 		0xA0
+#define SSD1351_CMD_STARTLINE 		0xA1
+#define SSD1351_CMD_DISPLAYOFFSET 	0xA2
+#define SSD1351_CMD_DISPLAYALLOFF 	0xA4
+#define SSD1351_CMD_DISPLAYALLON  	0xA5
+#define SSD1351_CMD_NORMALDISPLAY 	0xA6
+#define SSD1351_CMD_INVERTDISPLAY 	0xA7
+#define SSD1351_CMD_FUNCTIONSELECT 	0xAB
+#define SSD1351_CMD_DISPLAYOFF 		0xAE
+#define SSD1351_CMD_DISPLAYON     	0xAF
+#define SSD1351_CMD_PRECHARGE 		0xB1
+#define SSD1351_CMD_DISPLAYENHANCE	0xB2
+#define SSD1351_CMD_CLOCKDIV 		0xB3
+#define SSD1351_CMD_SETVSL 			0xB4
+#define SSD1351_CMD_SETGPIO 		0xB5
+#define SSD1351_CMD_PRECHARGE2 		0xB6
+#define SSD1351_CMD_SETGRAY 		0xB8
+#define SSD1351_CMD_USELUT 			0xB9
+#define SSD1351_CMD_PRECHARGELEVEL 	0xBB
+#define SSD1351_CMD_VCOMH 			0xBE
+#define SSD1351_CMD_CONTRASTABC		0xC1
+#define SSD1351_CMD_CONTRASTMASTER	0xC7
+#define SSD1351_CMD_MUXRATIO        0xCA
+#define SSD1351_CMD_COMMANDLOCK     0xFD
+#define SSD1351_CMD_HORIZSCROLL     0x96
+#define SSD1351_CMD_STOPSCROLL      0x9E
+#define SSD1351_CMD_STARTSCROLL     0x9F
+
+#define SSD1351_REMAP_VI 0x01
+#define SSD1351_REMAP_VF 0x02
+#define SSD1351_REMAP_CR 0x04
+#define SSD1351_REMAP_SD 0x10
+#define SSD1351_REMAP_OE 0x20
+#define SSD1351_COLOR_8  0x00
+#define SSD1351_COLOR_16 0x40
+#define SSD1351_COLOR_18 0x80
+
+unsigned short* getRegValues(unsigned char type);
+unsigned short getRegSize(unsigned char type);
+
+
+#endif
