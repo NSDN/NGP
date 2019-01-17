@@ -9,7 +9,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * Copyright (c) 2018 STMicroelectronics International N.V. 
+  * Copyright (c) 2019 STMicroelectronics International N.V. 
   * All rights reserved.
   *
   * Redistribution and use in source and binary forms, with or without 
@@ -48,13 +48,14 @@
 #include "fatfs_platform.h"
 
 uint8_t	BSP_PlatformIsDetected(void) {
-  uint8_t status = (uint8_t)0x01;
-  /* Check SD card detect pin */
-  if (HAL_GPIO_ReadPin(SD_PORT,SD_PIN) == GPIO_PIN_RESET) {
-    status = (uint8_t)0x00;
-  }
-  /* USER CODE BEGIN 1 */
+    uint8_t status = SD_PRESENT;
+    /* Check SD card detect pin */
+    if(HAL_GPIO_ReadPin(SD_DETECT_GPIO_PORT, SD_DETECT_PIN) != GPIO_PIN_RESET)
+    {
+        status = SD_NOT_PRESENT;
+    }
+    /* USER CODE BEGIN 1 */
   /* user code can be inserted here */
-  /* USER CODE END 1 */ 
-  return status;
+    /* USER CODE END 1 */ 
+    return status;
 }  

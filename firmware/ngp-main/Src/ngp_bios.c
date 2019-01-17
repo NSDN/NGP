@@ -5,7 +5,6 @@
 #include "fatfs.h"
 
 #include "lcd.h"
-#include "rgboled.h"
 #include "keypad.h"
 #include "beeper.h"
 #include "flash.h"
@@ -13,9 +12,9 @@
 #include "logo.h"
 #include "stg.h"
 
-#define NGP_SYS_VERSION "dev181018"
+#define NGP_SYS_VERSION "dev190117"
 
-RGBOLED* dev;
+LCD* dev;
 Flash* flash;
 uint8_t sdOK = 0;
 static uint8_t menu = 0;
@@ -24,8 +23,10 @@ static uint8_t music = 0;
 const uint8_t cmusic = 7;
 
 extern SD_HandleTypeDef hsd;
+extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi2;
 extern TIM_HandleTypeDef htim10;
+extern USBD_HandleTypeDef hUsbDeviceFS;
 
 HAL_SD_CardInfoTypeDef SDCardInfo;
 
@@ -110,16 +111,15 @@ void setup() {
 
 	HAL_Delay(500);
 
-	flash = FlashInit(&hspi2,
-			FLASH_CS_GPIO_Port, FLASH_CS_Pin, W25Q128);
+	flash = FlashInit(&hspi2, FLASH_CS_GPIO_Port, FLASH_CS_Pin, W25Q128);
 
-	dev = SoftRGBInit(
-			OLED_SDA_GPIO_Port, OLED_SDA_Pin,
-			OLED_SCL_GPIO_Port, OLED_SCL_Pin,
-			OLED_DC_GPIO_Port, OLED_DC_Pin,
-			OLED_CS_GPIO_Port, OLED_CS_Pin,
-			OLED_RST_GPIO_Port, OLED_RST_Pin
-			);
+	dev = LCDInit(
+		&hspi1, 0,
+		LCD_DC_GPIO_Port, LCD_DC_Pin,
+		LCD_CS_GPIO_Port, LCD_CS_Pin,
+		LCD_RST_GPIO_Port, LCD_RST_Pin,
+		LCD_BL_GPIO_Port, LCD_BL_Pin
+	);
 
 	dev->reset(dev->p);
 
@@ -329,5 +329,5 @@ void loop() {
 
 	HAL_GPIO_TogglePin(LED_A_GPIO_Port, LED_A_Pin);
 	HAL_GPIO_TogglePin(LED_B_GPIO_Port, LED_B_Pin);
-	checkSD();
+	if (HAL_GetTick() % 1000 == 0) checkSD();
 }
